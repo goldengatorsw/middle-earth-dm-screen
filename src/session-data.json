@@ -7,42 +7,81 @@
     "expectedRuntime": "4–4.5 hours",
     "openingContext": "Party is mid-travel at higher elevation. Adrik is now with them. The session opens with a brief narrative bridge compressing 2 days of climbing, then begins proper at the bat ambush at a switchback."
   },
-
   "hiddenConditions": [
-    { "subject": "Tyr", "condition": "Exhaustion 2", "note": "Carrying over from S18. Long rests can decrement." },
-    { "subject": "Tyr", "condition": "Nightmare mechanic", "note": "DC 12 INT save before each long rest, or +1 exhaustion. Tracking continues." },
-    { "subject": "Carl", "condition": "Unexamined ring", "note": "Still no effect. Slow burn." },
-    { "subject": "Adrik", "condition": "Locator pendant active", "note": "Pings will INTENSIFY this session as the party approaches Amon Lhuin. Christian drives what Adrik shares." }
+    {
+      "subject": "Tyr",
+      "condition": "Exhaustion 2",
+      "note": "Carrying over from S18. Long rests can decrement."
+    },
+    {
+      "subject": "Tyr",
+      "condition": "Nightmare mechanic",
+      "note": "DC 12 INT save before each long rest, or +1 exhaustion. Tracking continues."
+    },
+    {
+      "subject": "Carl",
+      "condition": "Unexamined ring",
+      "note": "Still no effect. Slow burn."
+    },
+    {
+      "subject": "Adrik",
+      "condition": "Locator pendant active",
+      "note": "Carries the locator pendant. The pendant ONLY reacts within ½ mile of a shard. Stays cold for early session. Will activate once party closes on Amon Lhuin (Scene 5B trail or Scene 6 approach)."
+    }
   ],
-
   "tickingClocks": [
-    { "label": "The pit prisoners", "detail": "9 swamp village survivors are in the lower workings. Each long rest the party takes BEFORE reaching the lair, 1 prisoner risks death (DM call — narrative). If 4+ days pass before rescue, the party finds bodies, not survivors." },
-    { "label": "Pharazôr's awareness", "detail": "He has been watching the bat couriers' reports. Knows a small armed group climbed past the bear cove. Does NOT yet know about Adrik or Tyr's sword specifically. Will learn both during Scene 8." },
-    { "label": "The shard", "detail": "Embedded in the lower workings in a place Pharazôr believes is secured. He is wrong about how secure it is. Adrik's pendant will lead the party to it if Adrik follows the signal." }
+    {
+      "label": "The pit prisoners",
+      "detail": "9 swamp village survivors are in the lower workings. Each long rest the party takes BEFORE reaching the lair, 1 prisoner risks death (DM call — narrative). If 4+ days pass before rescue, the party finds bodies, not survivors."
+    },
+    {
+      "label": "Pharazôr's awareness",
+      "detail": "He has been watching the bat couriers' reports. Knows a small armed group climbed past the bear cove. Does NOT yet know about Adrik or Tyr's sword specifically. Will learn both during Scene 8."
+    },
+    {
+      "label": "The shard",
+      "detail": "Embedded in the lower workings in a place Pharazôr believes is secured. He is wrong about how secure it is. Adrik's pendant will lead the party to it if Adrik follows the signal."
+    }
   ],
-
   "foreshadowingChecklist": [
-    { "id": "f1", "label": "Pacts are plural", "detail": "Pharazôr should reference 'agreements like Maldwin's' or 'the others who serve' — implying Maldwin's pact was one of several. Don't name a specific second pact. Just imply the pattern." },
-    { "id": "f2", "label": "The shard is not unique", "detail": "Without naming what shards ARE, Pharazôr should react to the pendant in a way that says he KNOWS what Adrik is hunting. ('I sense you carry something that should not have come this far north.') Christian decides whether Adrik responds." },
-    { "id": "f3", "label": "Tyr's smithing house", "detail": "Pharazôr recognizes the Iron of Death's lineage. Names the smith-house (DM call: invent a Númenórean house name on the fly). Line lands as: 'I knew that steel when it was newly forged. Your great-grandfather's grandfather, perhaps.' Tyr-mirror beat." },
-    { "id": "f4", "label": "Dwarven workings have a name", "detail": "Adrik can read a name carved on the lintel on a Nat 20 History. DM: don't invent it; Christian gets first refusal to name it. Otherwise leave it unread." },
-    { "id": "f5", "label": "Gothmog NOT named this session", "detail": "Pharazôr alludes to 'my master' or 'the hand that holds the chain' once at most. No further specificity." }
+    {
+      "id": "f1",
+      "label": "Pacts are plural",
+      "detail": "Pharazôr should reference 'agreements like Maldwin's' or 'the others who serve' — implying Maldwin's pact was one of several. Don't name a specific second pact. Just imply the pattern."
+    },
+    {
+      "id": "f2",
+      "label": "The shard is not unique",
+      "detail": "Without naming what shards ARE, Pharazôr should react to the pendant in a way that says he KNOWS what Adrik is hunting. ('I sense you carry something that should not have come this far north.') Christian decides whether Adrik responds."
+    },
+    {
+      "id": "f3",
+      "label": "Tyr's smithing house",
+      "detail": "Pharazôr recognizes the Iron of Death's lineage. Names the smith-house (DM call: invent a Númenórean house name on the fly). Line lands as: 'I knew that steel when it was newly forged. Your great-grandfather's grandfather, perhaps.' Tyr-mirror beat."
+    },
+    {
+      "id": "f4",
+      "label": "Dwarven workings have a name",
+      "detail": "Adrik can read a name carved on the lintel on a Nat 20 History. DM: don't invent it; Christian gets first refusal to name it. Otherwise leave it unread."
+    },
+    {
+      "id": "f5",
+      "label": "Gothmog NOT named this session",
+      "detail": "Pharazôr alludes to 'my master' or 'the hand that holds the chain' once at most. No further specificity."
+    }
   ],
-
   "mustBeTrue": [
     "The party has fought bats in force.",
     "The party has reached Amon Lhuin (whether by abduction or tracking).",
     "Pharazôr has been seen and named on screen, OR (if combat ended the session before audience) the party has direct evidence of his existence (his throne room, his journal, his spoken voice from another room).",
     "Adrik's pendant has reacted visibly enough that the rest of the party noticed at least once."
   ],
-
   "canHappen": [
     "The shard is recovered by Adrik (or anyone).",
     "The pit prisoners are rescued.",
     "A direct fight with Pharazôr begins (vs. ending the session before combat).",
     "Tyr's nightmare advances or resolves."
   ],
-
   "npcs": [
     {
       "id": "bat-couriers",
@@ -90,45 +129,69 @@
       "stats": "DM judgment — he's a major NPC. Suggested: HP 95, AC 16, Cha-based caster + martial. Has a Númenórean longsword. Avoid running him as a stat block until necessary; he's a story figure first."
     }
   ],
-
   "scenes": [
     {
       "id": "scene-1",
       "number": "1",
       "title": "The Climb",
-      "subtitle": "Narrative bridge",
-      "trigger": "Opens the session.",
-      "location": "Mountain trail, transitioning from sub-alpine forest to bare rock and snow.",
-      "lighting": "Two days of brisk wind and thin sun. Cold nights. Game becoming scarce.",
-      "runtime": "5–10 minutes real-time",
-      "readAloud": "Two days pass. The trail steepens, then levels at a high traverse where the air thins and a cold wind cuts steady from the north. Behind you, the lowlands have flattened into a green-grey haze. Ahead, the High Pass climbs toward a notch between two peaks still streaked with last winter's snow. You have seen no one. The bear meat from the cove is gone. The lembas is rationed. Adrik has not spoken much. Twice, around a bend, you have seen a single bat — alone, large, unhurried — wheel against the late afternoon sky and disappear north over the ridges. Nobody mentioned it. Everyone saw it.",
-      "purpose": "Compress in-world time. Plant the bat. Set the hunger beat.",
+      "subtitle": "Narrative bridge — 3 days compressed",
+      "trigger": "Opens the session. Cold open, no recap.",
+      "location": "The High Pass — three days deeper than where Session 18 left off.",
+      "lighting": "Midday on Day 5 of mountain ascent (third day of climbing since S18 ended). Pale sun, thin cold wind, breath visible.",
+      "runtime": "8–12 minutes real-time",
+      "readAloud": "Three days have passed since the bears.\n\nThe mountains do not give them up easily. The trail steepens until walking becomes work and breathing becomes work and rest stops come oftener than any of you would prefer. Five miles a day, on the good days. Less on the bad. The air thins as you climb, and you find yourselves stopping to catch breath at moments that should not have been hard — pulling yourselves up over a ledge, shouldering a pack, calling back to the line. None of you say it, but all of you feel it: the lowlands are below you, and your bodies are not made for this height.\n\nThe cold settles in. Nights at this elevation are sharp and starlit and unforgiving. The bear meat from the cove lasts the first day and a half. The lembas is rationed after that. Carl insists he isn't hungry. He is.\n\nAdrik travels with you. The first day he barely speaks — keeps to the back of the line, watches the trail behind. By the evening of the second day, he and Borin are walking close enough to share words; on the third morning, Adrik shares the last of his pipe-weed with him, and neither of them comments on it. Carl reaches a hand back at one point on a bad patch of scree, and Adrik takes it without hesitation. By the third dusk, the silences in camp feel less like distance and more like the kind of quiet that grows between people who have been cold and tired together. Adrik knows what he carries. The party doesn't, and hasn't asked.\n\nEach of the three nights, Borin sets his hand to the stone of the mountain and asks it the question he has asked a hundred times. The first night: no. The second night: no. On the third night, his hand rests against the rock a long moment before he opens his eyes. Yes. Within three miles. He cannot say how many. He cannot say where. Just: yes.\n\nTwice, around a bend on the trail, you have seen a single bat — alone, large, unhurried — wheel against the late afternoon sky and disappear north over the ridges. Nobody has mentioned it. Everyone saw it.\n\nNow it is midday on the fourth day out from the cove. The trail folds and switches across a high traverse where the air thins further. Behind you, the lowlands have flattened into a green-grey haze. Ahead, the High Pass climbs toward a notch between two peaks still streaked with last winter's snow. You have a few hours of full daylight before the sun begins its drop behind the western ridge.\n\nWhat do you do?",
+      "purpose": "1) Compress 3 days into one immersive monologue. 2) Establish altitude/hunger/cold pressure. 3) Build Adrik bonding through concrete shared moments. 4) Plant the bat — twice seen, going north, unspoken. 5) Plant Borin's 'yes' — orcs within 3 miles, no specifics. 6) Drop the party at midday with daylight to spare for the hunt decision.",
       "dmNotes": [
-        "ADRIK'S PENDANT BEGINS ESCALATING. Tell Christian privately: 'Your pendant has been getting warmer. You felt it start a few hours ago. Right now it's distinctly hot to the touch — not painful, but undeniable. You have not told the others.' Christian decides what to do."
+        "ADRIK'S PENDANT IS COLD. The pendant only reacts within ½ mile of a shard, and the party isn't yet within range of Amon Lhuin. Do NOT pass any private information to Christian during this scene. The pendant will activate later (Scene 5B trail or Scene 6 approach).",
+        "BORIN'S RUMOR OF THE EARTH gives only YES/NO — no direction, no count. Played as: Day 1 night NO, Day 2 night NO, Day 3 night YES (within 3 miles). 'Yes' is genuinely ambiguous. Could be the half-orc lair guards, could be orc scouts on the next ridge, could be both. Don't commit to specifics.",
+        "OPENING STYLE: Pure cold open. Read the monologue. Do not recap S18. Adrik bonded with the party through the climb (concrete moments + atmospheric quiet) — this is now the established baseline."
       ],
       "skillChecks": [
         {
           "skill": "Survival",
           "dc": 12,
-          "context": "Anyone hunting will note that the larger game has been driven from this part of the range.",
+          "context": "Anyone observing the surroundings — the mountain feels wrong.",
           "tiers": [
-            { "range": "On success", "outcome": "Birds of prey are scarce. The mountain is wrong." }
+            {
+              "range": "DC 12",
+              "outcome": "The hunter notices that the larger game has been driven from this part of the range. Birds of prey are scarce. The mountain is wrong."
+            }
           ]
         },
         {
-          "skill": "Wisdom (passive)",
+          "skill": "Perception (passive or active)",
           "dc": 14,
-          "context": "Anyone gets a vague sense of being watched.",
+          "context": "Vague unease — only triggers if someone explicitly looks.",
           "tiers": [
-            { "range": "Passive ≥ 14", "outcome": "Vague sense of being watched. No more specificity." }
+            {
+              "range": "Passive ≥ 14",
+              "outcome": "A vague sense of being watched. No more specificity."
+            }
+          ]
+        },
+        {
+          "skill": "Medicine",
+          "dc": 10,
+          "context": "Optional rule — light altitude effects on the party (any healer).",
+          "tiers": [
+            {
+              "range": "DC 10",
+              "outcome": "Slowed reactions, shorter wind. Optional: -1 to Athletics/Acrobatics for sustained physical effort at this elevation."
+            }
           ]
         }
       ],
       "branches": [
-        { "condition": "End of bridge", "outcome": "DM asks: 'Are any of you watching for something to hunt?' Proceed to Scene 2." }
+        {
+          "condition": "Party wants to hunt or pause",
+          "outcome": "→ Scene 2 (the switchback / the hunting decision)"
+        },
+        {
+          "condition": "Party pushes through and skips hunting",
+          "outcome": "→ Scene 2 still — bat ambush still finds them at the switchback, just with everyone present. No party split. Worse positioning for the bats."
+        }
       ]
     },
-
     {
       "id": "scene-2",
       "number": "2",
@@ -149,30 +212,62 @@
           "skill": "Survival",
           "context": "Whoever leads the hunt — 5-tier table.",
           "tiers": [
-            { "range": "< 10", "outcome": "Hunters lose the trail in the scree. They find nothing and waste 90 minutes. The light is failing when they regroup." },
-            { "range": "10–14", "outcome": "They locate goat sign within thirty minutes. Within bow range of two goats. (Roll attack normally.)" },
-            { "range": "15–19", "outcome": "All of the above. Plus: they notice a single, very large bat circling once overhead at unusual altitude — too high to be hunting, too purposeful to be drifting." },
-            { "range": "20+", "outcome": "All of the above. Plus: they spot a second bat, then a third, converging on a peak about a mile north. A pattern. They are watching something — or being signalled." },
-            { "range": "Nat 20", "outcome": "All of the above. Plus: they see, for less than a second, the silhouette of something humanoid standing at the top of a distant ridge, watching the bats converge. It is gone before anyone can confirm. The hunter is the only one who saw it." }
+            {
+              "range": "< 10",
+              "outcome": "Hunters lose the trail in the scree. They find nothing and waste 90 minutes. The light is failing when they regroup."
+            },
+            {
+              "range": "10–14",
+              "outcome": "They locate goat sign within thirty minutes. Within bow range of two goats. (Roll attack normally.)"
+            },
+            {
+              "range": "15–19",
+              "outcome": "All of the above. Plus: they notice a single, very large bat circling once overhead at unusual altitude — too high to be hunting, too purposeful to be drifting."
+            },
+            {
+              "range": "20+",
+              "outcome": "All of the above. Plus: they spot a second bat, then a third, converging on a peak about a mile north. A pattern. They are watching something — or being signalled."
+            },
+            {
+              "range": "Nat 20",
+              "outcome": "All of the above. Plus: they see, for less than a second, the silhouette of something humanoid standing at the top of a distant ridge, watching the bats converge. It is gone before anyone can confirm. The hunter is the only one who saw it."
+            }
           ]
         },
         {
           "skill": "Perception",
           "context": "Everyone in the hunting group, passive — determines ambush type.",
           "tiers": [
-            { "range": "< 10", "outcome": "Nothing." },
-            { "range": "10–14", "outcome": "The wind has shifted. Animal sounds have stopped. Something is wrong, but the hunter can't say why." },
-            { "range": "15–19", "outcome": "Three large shapes wheeling against a high cloud. Coming closer. The hunter has time to shout a warning. Roll initiative — go to Scene 3A." },
-            { "range": "20+", "outcome": "All of the above. Plus: the hunter sees the iron harness on the largest one and understands in one second this is not random predation. Roll initiative with one round of preparation — go to Scene 3A, but the hunting group gets surprise INSTEAD OF being surprised." }
+            {
+              "range": "< 10",
+              "outcome": "Nothing."
+            },
+            {
+              "range": "10–14",
+              "outcome": "The wind has shifted. Animal sounds have stopped. Something is wrong, but the hunter can't say why."
+            },
+            {
+              "range": "15–19",
+              "outcome": "Three large shapes wheeling against a high cloud. Coming closer. The hunter has time to shout a warning. Roll initiative — go to Scene 3A."
+            },
+            {
+              "range": "20+",
+              "outcome": "All of the above. Plus: the hunter sees the iron harness on the largest one and understands in one second this is not random predation. Roll initiative with one round of preparation — go to Scene 3A, but the hunting group gets surprise INSTEAD OF being surprised."
+            }
           ]
         }
       ],
       "branches": [
-        { "condition": "If anyone in the hunting group passes Perception ≥ 15", "outcome": "→ Scene 3A (Forewarned Ambush)" },
-        { "condition": "If everyone in the hunting group fails Perception", "outcome": "→ Scene 3B (Surprise Ambush)" }
+        {
+          "condition": "If anyone in the hunting group passes Perception ≥ 15",
+          "outcome": "→ Scene 3A (Forewarned Ambush)"
+        },
+        {
+          "condition": "If everyone in the hunting group fails Perception",
+          "outcome": "→ Scene 3B (Surprise Ambush)"
+        }
       ]
     },
-
     {
       "id": "scene-3a",
       "number": "3A",
@@ -197,11 +292,16 @@
       ],
       "skillChecks": [],
       "branches": [
-        { "condition": "If the Alpha successfully carries off a PC", "outcome": "→ Scene 4: The Carry, then Scene 5A: The Pit (parallel with 5B)" },
-        { "condition": "If the Alpha is killed or repulsed before it lifts anyone", "outcome": "→ Scene 4: The Carry as 'failed abduction' — bats retreat north — then Scene 5B: The Trail" }
+        {
+          "condition": "If the Alpha successfully carries off a PC",
+          "outcome": "→ Scene 4: The Carry, then Scene 5A: The Pit (parallel with 5B)"
+        },
+        {
+          "condition": "If the Alpha is killed or repulsed before it lifts anyone",
+          "outcome": "→ Scene 4: The Carry as 'failed abduction' — bats retreat north — then Scene 5B: The Trail"
+        }
       ]
     },
-
     {
       "id": "scene-3b",
       "number": "3B",
@@ -221,10 +321,12 @@
       ],
       "skillChecks": [],
       "branches": [
-        { "condition": "Same branches as 3A — abduction or trail", "outcome": "→ Scene 4" }
+        {
+          "condition": "Same branches as 3A — abduction or trail",
+          "outcome": "→ Scene 4"
+        }
       ]
     },
-
     {
       "id": "scene-4",
       "number": "4",
@@ -247,18 +349,32 @@
           "dc": 13,
           "context": "If bats killed in combat — Outcomes B or C.",
           "tiers": [
-            { "range": "DC 13", "outcome": "Harness is fitted Númenórean ironwork. Tyr or Adrik recognize the smithing style." },
-            { "range": "Adrik specifically", "outcome": "Recognizes dwarven rivetwork holding the harness together — old, OLD work. Looted from dwarven workings, not made by Pharazôr's people." }
+            {
+              "range": "DC 13",
+              "outcome": "Harness is fitted Númenórean ironwork. Tyr or Adrik recognize the smithing style."
+            },
+            {
+              "range": "Adrik specifically",
+              "outcome": "Recognizes dwarven rivetwork holding the harness together — old, OLD work. Looted from dwarven workings, not made by Pharazôr's people."
+            }
           ]
         }
       ],
       "branches": [
-        { "condition": "Outcome A (PC carried off)", "outcome": "→ Scene 5A and 5B in parallel" },
-        { "condition": "Outcome B (bats killed)", "outcome": "→ Scene 5B" },
-        { "condition": "Outcome C (PC dropped)", "outcome": "→ Scene 5B" }
+        {
+          "condition": "Outcome A (PC carried off)",
+          "outcome": "→ Scene 5A and 5B in parallel"
+        },
+        {
+          "condition": "Outcome B (bats killed)",
+          "outcome": "→ Scene 5B"
+        },
+        {
+          "condition": "Outcome C (PC dropped)",
+          "outcome": "→ Scene 5B"
+        }
       ]
     },
-
     {
       "id": "scene-5a",
       "number": "5A",
@@ -281,7 +397,10 @@
           "dc": 12,
           "context": "A dropped weapon is usually within ~10 feet, but the Alpha's grip may have flung it.",
           "tiers": [
-            { "range": "DC 12", "outcome": "Locate the weapon." }
+            {
+              "range": "DC 12",
+              "outcome": "Locate the weapon."
+            }
           ]
         },
         {
@@ -289,17 +408,28 @@
           "dc": 18,
           "context": "The walls are slick old stone.",
           "tiers": [
-            { "range": "Failure", "outcome": "Take 1d6 from a slip and back to the floor." },
-            { "range": "Success", "outcome": "Climb out — but the upper chamber is part of the lair. Where do they go from here?" }
+            {
+              "range": "Failure",
+              "outcome": "Take 1d6 from a slip and back to the floor."
+            },
+            {
+              "range": "Success",
+              "outcome": "Climb out — but the upper chamber is part of the lair. Where do they go from here?"
+            }
           ]
         }
       ],
       "branches": [
-        { "condition": "Captive escapes alone", "outcome": "→ Lair exploration solo until they meet rescuers" },
-        { "condition": "Captive stays with prisoners", "outcome": "→ Wait for rescue (Scene 5B → Scene 6)" }
+        {
+          "condition": "Captive escapes alone",
+          "outcome": "→ Lair exploration solo until they meet rescuers"
+        },
+        {
+          "condition": "Captive stays with prisoners",
+          "outcome": "→ Wait for rescue (Scene 5B → Scene 6)"
+        }
       ]
     },
-
     {
       "id": "scene-5b",
       "number": "5B",
@@ -321,20 +451,40 @@
           "dc": 13,
           "context": "Following the bat trail — 5-tier table.",
           "tiers": [
-            { "range": "< 10", "outcome": "Lost in the dark. Camp here, lose 8 hours, prisoners suffer in the meantime (DM: 1 may not survive)." },
-            { "range": "10–14", "outcome": "Trail followed for ~1 mile. Lost in the dark. Camp here. Lose 6 hours." },
-            { "range": "15–19", "outcome": "Trail followed all the way to a tower silhouette on a high ridge. The party reaches it before midnight." },
-            { "range": "20+", "outcome": "All of the above. Plus: the tracker spots that the half-orc boot prints from the cove track UP this same trail — they go up and don't come back down. Pharazôr's ground guards also live here." },
-            { "range": "Nat 20", "outcome": "All of the above. Plus: the tracker finds, off the trail in the scrub, a sealed letter dropped by a bat courier. Black Speech and Westron mixed. Half-page hint about Pharazôr's 'agreements' being checked-on by his master. Vague. No Gothmog name." }
+            {
+              "range": "< 10",
+              "outcome": "Lost in the dark. Camp here, lose 8 hours, prisoners suffer in the meantime (DM: 1 may not survive)."
+            },
+            {
+              "range": "10–14",
+              "outcome": "Trail followed for ~1 mile. Lost in the dark. Camp here. Lose 6 hours."
+            },
+            {
+              "range": "15–19",
+              "outcome": "Trail followed all the way to a tower silhouette on a high ridge. The party reaches it before midnight."
+            },
+            {
+              "range": "20+",
+              "outcome": "All of the above. Plus: the tracker spots that the half-orc boot prints from the cove track UP this same trail — they go up and don't come back down. Pharazôr's ground guards also live here."
+            },
+            {
+              "range": "Nat 20",
+              "outcome": "All of the above. Plus: the tracker finds, off the trail in the scrub, a sealed letter dropped by a bat courier. Black Speech and Westron mixed. Half-page hint about Pharazôr's 'agreements' being checked-on by his master. Vague. No Gothmog name."
+            }
           ]
         }
       ],
       "branches": [
-        { "condition": "Trail successful (Survival 15+)", "outcome": "→ Scene 6: Approach Amon Lhuin" },
-        { "condition": "Trail failed", "outcome": "Forced camp. Resume in the morning. Prisoner clock advances. → Scene 6 next morning." }
+        {
+          "condition": "Trail successful (Survival 15+)",
+          "outcome": "→ Scene 6: Approach Amon Lhuin"
+        },
+        {
+          "condition": "Trail failed",
+          "outcome": "Forced camp. Resume in the morning. Prisoner clock advances. → Scene 6 next morning."
+        }
       ]
     },
-
     {
       "id": "scene-6",
       "number": "6",
@@ -356,32 +506,70 @@
           "skill": "History — TYR has advantage",
           "context": "Recognizing the tower's origin (Tyr's Númenórean ancestry).",
           "tiers": [
-            { "range": "< 10", "outcome": "Old. Important once. Can't say more." },
-            { "range": "10–14", "outcome": "Númenórean construction. Second or Third Age work. The kind of watch-post Aragorn's people would have manned in better times." },
-            { "range": "15–19", "outcome": "Specifically: a late Númenórean foothold-tower, of the kind built when the kingdom was still expanding north and east. This one was almost certainly abandoned during the Last Alliance era or shortly after. Three thousand years, give or take." },
-            { "range": "20+", "outcome": "All of the above. Plus: there are old shield-marks on the doorway. Faded. The crest of a noble house Tyr can almost — almost — name. (DM: leave it ambiguous; Pharazôr will name it later.)" },
-            { "range": "Nat 20", "outcome": "All of the above. Plus: Tyr knows in his bones this place was abandoned because something *happened* here. Not a withdrawal. A loss. He doesn't know what." }
+            {
+              "range": "< 10",
+              "outcome": "Old. Important once. Can't say more."
+            },
+            {
+              "range": "10–14",
+              "outcome": "Númenórean construction. Second or Third Age work. The kind of watch-post Aragorn's people would have manned in better times."
+            },
+            {
+              "range": "15–19",
+              "outcome": "Specifically: a late Númenórean foothold-tower, of the kind built when the kingdom was still expanding north and east. This one was almost certainly abandoned during the Last Alliance era or shortly after. Three thousand years, give or take."
+            },
+            {
+              "range": "20+",
+              "outcome": "All of the above. Plus: there are old shield-marks on the doorway. Faded. The crest of a noble house Tyr can almost — almost — name. (DM: leave it ambiguous; Pharazôr will name it later.)"
+            },
+            {
+              "range": "Nat 20",
+              "outcome": "All of the above. Plus: Tyr knows in his bones this place was abandoned because something *happened* here. Not a withdrawal. A loss. He doesn't know what."
+            }
           ]
         },
         {
           "skill": "History — ADRIK has advantage",
           "context": "Recognizing the dwarven work below (Healing Hands background).",
           "tiers": [
-            { "range": "< 10", "outcome": "Dwarven work, behind the cave. Old. Not anyone he knows." },
-            { "range": "10–14", "outcome": "An outpost. Small. Pre-Erebor era. Most likely a mining hold for a deposit that ran out." },
-            { "range": "15–19", "outcome": "The work is old enough that the carving conventions predate the styles Adrik was raised seeing — meaning the dwarves who built this were very old indeed. First or early Second Age dwarves, possibly." },
-            { "range": "20+", "outcome": "All of the above. Plus: there is a name carved into the doorway lintel. Adrik can read it if he wants to. (DM: leave it unread unless Christian asks. If he asks, give Christian first refusal to invent the name.)" },
-            { "range": "Nat 20", "outcome": "All of the above. Plus: Adrik knows that this hold was *not* abandoned voluntarily. The carvings show signs of being defaced after the dwarves left — by hands that were not dwarves." }
+            {
+              "range": "< 10",
+              "outcome": "Dwarven work, behind the cave. Old. Not anyone he knows."
+            },
+            {
+              "range": "10–14",
+              "outcome": "An outpost. Small. Pre-Erebor era. Most likely a mining hold for a deposit that ran out."
+            },
+            {
+              "range": "15–19",
+              "outcome": "The work is old enough that the carving conventions predate the styles Adrik was raised seeing — meaning the dwarves who built this were very old indeed. First or early Second Age dwarves, possibly."
+            },
+            {
+              "range": "20+",
+              "outcome": "All of the above. Plus: there is a name carved into the doorway lintel. Adrik can read it if he wants to. (DM: leave it unread unless Christian asks. If he asks, give Christian first refusal to invent the name.)"
+            },
+            {
+              "range": "Nat 20",
+              "outcome": "All of the above. Plus: Adrik knows that this hold was *not* abandoned voluntarily. The carvings show signs of being defaced after the dwarves left — by hands that were not dwarves."
+            }
           ]
         }
       ],
       "branches": [
-        { "condition": "Party enters the watchtower", "outcome": "→ Scene 7, Level 1" },
-        { "condition": "Party enters the cave", "outcome": "→ Scene 7, Level 2" },
-        { "condition": "Party goes deeper to the workings", "outcome": "→ Scene 7, Level 3" }
+        {
+          "condition": "Party enters the watchtower",
+          "outcome": "→ Scene 7, Level 1"
+        },
+        {
+          "condition": "Party enters the cave",
+          "outcome": "→ Scene 7, Level 2"
+        },
+        {
+          "condition": "Party goes deeper to the workings",
+          "outcome": "→ Scene 7, Level 3"
+        }
       ]
     },
-
     {
       "id": "scene-7",
       "number": "7",
@@ -407,7 +595,10 @@
           "dc": 14,
           "context": "Slip past the half-orcs on the ground floor.",
           "tiers": [
-            { "range": "DC 14", "outcome": "Bypass guards without combat." }
+            {
+              "range": "DC 14",
+              "outcome": "Bypass guards without combat."
+            }
           ]
         },
         {
@@ -415,7 +606,10 @@
           "dc": 15,
           "context": "Move through the bat roost without waking sleeping bats.",
           "tiers": [
-            { "range": "DC 15", "outcome": "Pass without combat." }
+            {
+              "range": "DC 15",
+              "outcome": "Pass without combat."
+            }
           ]
         },
         {
@@ -423,7 +617,10 @@
           "dc": 12,
           "context": "Read sealed letters on his desk.",
           "tiers": [
-            { "range": "DC 12", "outcome": "Three sealed letters: 'Brother Mehlin,' 'the Western Pact-Keeper,' and one untitled. Implies wider operations. NO Gothmog name." }
+            {
+              "range": "DC 12",
+              "outcome": "Three sealed letters: 'Brother Mehlin,' 'the Western Pact-Keeper,' and one untitled. Implies wider operations. NO Gothmog name."
+            }
           ]
         },
         {
@@ -431,28 +628,54 @@
           "dc": 17,
           "context": "Brute-force the wedged stone sealing the alcove.",
           "tiers": [
-            { "range": "DC 17", "outcome": "Wedge dislodges. Shard accessible." },
-            { "range": "Alternative", "outcome": "Tools + 10 minutes, no roll." }
+            {
+              "range": "DC 17",
+              "outcome": "Wedge dislodges. Shard accessible."
+            },
+            {
+              "range": "Alternative",
+              "outcome": "Tools + 10 minutes, no roll."
+            }
           ]
         },
         {
           "skill": "Investigation (the pit)",
           "context": "Examining the pit interior — 5-tier table.",
           "tiers": [
-            { "range": "< 10", "outcome": "The pit is grim. There are people in it." },
-            { "range": "10–14", "outcome": "9 people. Swamp villagers. They have been here for weeks." },
-            { "range": "15–19", "outcome": "All the above. Plus: there are MORE sets of marks on the wall than 9 — older marks. Scratches. Many people have been kept here over the years. The pit is a long-running operation." },
-            { "range": "20+", "outcome": "All the above. Plus: one set of marks shows a tally. Going by the tally, this pit has held perhaps 60+ people across the years." },
-            { "range": "Nat 20", "outcome": "All the above. Plus: among the older bones at the very bottom of the pit (largely buried), there is one that is not human. Investigation reveals it as an elf-bone — very old, very long-dead. The party doesn't have time or context to learn more." }
+            {
+              "range": "< 10",
+              "outcome": "The pit is grim. There are people in it."
+            },
+            {
+              "range": "10–14",
+              "outcome": "9 people. Swamp villagers. They have been here for weeks."
+            },
+            {
+              "range": "15–19",
+              "outcome": "All the above. Plus: there are MORE sets of marks on the wall than 9 — older marks. Scratches. Many people have been kept here over the years. The pit is a long-running operation."
+            },
+            {
+              "range": "20+",
+              "outcome": "All the above. Plus: one set of marks shows a tally. Going by the tally, this pit has held perhaps 60+ people across the years."
+            },
+            {
+              "range": "Nat 20",
+              "outcome": "All the above. Plus: among the older bones at the very bottom of the pit (largely buried), there is one that is not human. Investigation reveals it as an elf-bone — very old, very long-dead. The party doesn't have time or context to learn more."
+            }
           ]
         }
       ],
       "branches": [
-        { "condition": "Party reaches third floor of watchtower", "outcome": "→ Scene 8: Audience with Pharazôr" },
-        { "condition": "Pharazôr descends to confront them", "outcome": "→ Scene 8 (DM judgment based on noise, time, stealth)" }
+        {
+          "condition": "Party reaches third floor of watchtower",
+          "outcome": "→ Scene 8: Audience with Pharazôr"
+        },
+        {
+          "condition": "Pharazôr descends to confront them",
+          "outcome": "→ Scene 8 (DM judgment based on noise, time, stealth)"
+        }
       ]
     },
-
     {
       "id": "scene-8",
       "number": "8",
@@ -486,38 +709,125 @@
           "skill": "Insight (read Pharazôr)",
           "context": "5-tier table.",
           "tiers": [
-            { "range": "< 10", "outcome": "He seems reasonable." },
-            { "range": "10–14", "outcome": "He is calm in a way that means he is not afraid of you. Take that as you will." },
-            { "range": "15–19", "outcome": "He is offering terms but he intends to break them. He is buying time. He has called for help (the bats are returning)." },
-            { "range": "20+", "outcome": "All the above. Plus: he is genuinely uncertain about Adrik. Whatever Adrik has, Pharazôr does NOT know what it is — and that uncertainty unsettles him. He is more dangerous because of it." },
-            { "range": "Nat 20", "outcome": "All the above. Plus: the party reads that Pharazôr is NOT acting alone. He answered to someone. He has not heard from that someone in some time, and that absence weighs on him. (Closest the party gets to a Gothmog hint this session. Still no name.)" }
+            {
+              "range": "< 10",
+              "outcome": "He seems reasonable."
+            },
+            {
+              "range": "10–14",
+              "outcome": "He is calm in a way that means he is not afraid of you. Take that as you will."
+            },
+            {
+              "range": "15–19",
+              "outcome": "He is offering terms but he intends to break them. He is buying time. He has called for help (the bats are returning)."
+            },
+            {
+              "range": "20+",
+              "outcome": "All the above. Plus: he is genuinely uncertain about Adrik. Whatever Adrik has, Pharazôr does NOT know what it is — and that uncertainty unsettles him. He is more dangerous because of it."
+            },
+            {
+              "range": "Nat 20",
+              "outcome": "All the above. Plus: the party reads that Pharazôr is NOT acting alone. He answered to someone. He has not heard from that someone in some time, and that absence weighs on him. (Closest the party gets to a Gothmog hint this session. Still no name.)"
+            }
           ]
         }
       ],
       "branches": [
-        { "condition": "Cliffhanger A — Combat erupts mid-conversation", "outcome": "Pharazôr's bats arrive, OR the party draws first, OR Tyr can't bear what he hears and attacks. END the session ON the initiative roll. 'We'll start there next time.' (Recommended if energy is high.)" },
-        { "condition": "Cliffhanger B — Pharazôr's deal is on the table", "outcome": "Players are debating it. Cut the session on the choice. 'Take a week to decide. We'll start there.' (Recommended if energy is medium.)" },
-        { "condition": "Cliffhanger C — Adrik claims the shard, Pharazôr reacts", "outcome": "Pharazôr's sense of the pendant resolves — he understands what Adrik has just done. His face changes. End scene as he stands. 'He is no longer being patient.' (Recommended if Adrik's arc was the strongest thread of the night.)" }
+        {
+          "condition": "Cliffhanger A — Combat erupts mid-conversation",
+          "outcome": "Pharazôr's bats arrive, OR the party draws first, OR Tyr can't bear what he hears and attacks. END the session ON the initiative roll. 'We'll start there next time.' (Recommended if energy is high.)"
+        },
+        {
+          "condition": "Cliffhanger B — Pharazôr's deal is on the table",
+          "outcome": "Players are debating it. Cut the session on the choice. 'Take a week to decide. We'll start there.' (Recommended if energy is medium.)"
+        },
+        {
+          "condition": "Cliffhanger C — Adrik claims the shard, Pharazôr reacts",
+          "outcome": "Pharazôr's sense of the pendant resolves — he understands what Adrik has just done. His face changes. End scene as he stands. 'He is no longer being patient.' (Recommended if Adrik's arc was the strongest thread of the night.)"
+        }
       ]
     }
   ],
-
   "wrapChecklist": [
-    { "id": "w1", "category": "Must verify", "label": "Bats fought in force?" },
-    { "id": "w2", "category": "Must verify", "label": "Amon Lhuin reached?" },
-    { "id": "w3", "category": "Must verify", "label": "Pharazôr seen or named on screen (or strong direct evidence: voice, journal, throne room)?" },
-    { "id": "w4", "category": "Must verify", "label": "Adrik's pendant reacted visibly enough that the rest of the party noticed at least once?" },
-    { "id": "w5", "category": "Track for master doc", "label": "Kill log: who landed final blow on each bat / each half-orc?" },
-    { "id": "w6", "category": "Track for master doc", "label": "Notable rolls: every Nat 20 and Nat 1" },
-    { "id": "w7", "category": "Track for master doc", "label": "New items: shard (if recovered), letters, harness ironwork, anything from Pharazôr's chamber" },
-    { "id": "w8", "category": "Track for master doc", "label": "Tyr's exhaustion level at end of session" },
-    { "id": "w9", "category": "Track for master doc", "label": "Tyr's nightmare save (DC 12 INT before the next long rest)" },
-    { "id": "w10", "category": "Track for master doc", "label": "Adrik's pendant status — does he still have it? Did it cool down after the shard? Was it taken from him?" },
-    { "id": "w11", "category": "Track for master doc", "label": "Foreshadowing dropped — which of the items above came up?" },
-    { "id": "w12", "category": "Track for master doc", "label": "Ben's arc thematically referenced? (Pit prisoners' 'you left us' beat.)" },
-    { "id": "w13", "category": "Lock for Session 20", "label": "Party's location at session end (in the tower? fled? camped on the slope?)" },
-    { "id": "w14", "category": "Lock for Session 20", "label": "Pharazôr's status (alive? wounded? gone?)" },
-    { "id": "w15", "category": "Lock for Session 20", "label": "Prisoner status (alive and following the party? still in the pit?)" },
-    { "id": "w16", "category": "Lock for Session 20", "label": "What's in the cliffhanger image — specific moment, specific tableau" }
+    {
+      "id": "w1",
+      "category": "Must verify",
+      "label": "Bats fought in force?"
+    },
+    {
+      "id": "w2",
+      "category": "Must verify",
+      "label": "Amon Lhuin reached?"
+    },
+    {
+      "id": "w3",
+      "category": "Must verify",
+      "label": "Pharazôr seen or named on screen (or strong direct evidence: voice, journal, throne room)?"
+    },
+    {
+      "id": "w4",
+      "category": "Must verify",
+      "label": "Adrik's pendant reacted visibly enough that the rest of the party noticed at least once?"
+    },
+    {
+      "id": "w5",
+      "category": "Track for master doc",
+      "label": "Kill log: who landed final blow on each bat / each half-orc?"
+    },
+    {
+      "id": "w6",
+      "category": "Track for master doc",
+      "label": "Notable rolls: every Nat 20 and Nat 1"
+    },
+    {
+      "id": "w7",
+      "category": "Track for master doc",
+      "label": "New items: shard (if recovered), letters, harness ironwork, anything from Pharazôr's chamber"
+    },
+    {
+      "id": "w8",
+      "category": "Track for master doc",
+      "label": "Tyr's exhaustion level at end of session"
+    },
+    {
+      "id": "w9",
+      "category": "Track for master doc",
+      "label": "Tyr's nightmare save (DC 12 INT before the next long rest)"
+    },
+    {
+      "id": "w10",
+      "category": "Track for master doc",
+      "label": "Adrik's pendant status — does he still have it? Did it cool down after the shard? Was it taken from him?"
+    },
+    {
+      "id": "w11",
+      "category": "Track for master doc",
+      "label": "Foreshadowing dropped — which of the items above came up?"
+    },
+    {
+      "id": "w12",
+      "category": "Track for master doc",
+      "label": "Ben's arc thematically referenced? (Pit prisoners' 'you left us' beat.)"
+    },
+    {
+      "id": "w13",
+      "category": "Lock for Session 20",
+      "label": "Party's location at session end (in the tower? fled? camped on the slope?)"
+    },
+    {
+      "id": "w14",
+      "category": "Lock for Session 20",
+      "label": "Pharazôr's status (alive? wounded? gone?)"
+    },
+    {
+      "id": "w15",
+      "category": "Lock for Session 20",
+      "label": "Prisoner status (alive and following the party? still in the pit?)"
+    },
+    {
+      "id": "w16",
+      "category": "Lock for Session 20",
+      "label": "What's in the cliffhanger image — specific moment, specific tableau"
+    }
   ]
 }
