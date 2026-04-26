@@ -149,34 +149,79 @@
       "skillChecks": [
         {
           "skill": "Survival",
-          "dc": 12,
           "context": "Anyone observing the surroundings — the mountain feels wrong.",
           "tiers": [
             {
-              "range": "DC 12",
-              "outcome": "The hunter notices that the larger game has been driven from this part of the range. Birds of prey are scarce. The mountain is wrong."
+              "range": "< 10",
+              "outcome": "Nothing unusual stands out. The mountain is just the mountain."
+            },
+            {
+              "range": "10–14",
+              "outcome": "The larger game has been driven from this part of the range. Something feels off."
+            },
+            {
+              "range": "15–19",
+              "outcome": "All the above. Plus: birds of prey are scarce. The wrongness has a shape — predators are AVOIDING this area."
+            },
+            {
+              "range": "20+",
+              "outcome": "All the above. Plus: the hunter notices old droppings and fresh — but no mid-aged sign. Animals stopped passing through here suddenly, perhaps a few weeks ago."
+            },
+            {
+              "range": "Nat 20",
+              "outcome": "All the above. Plus: the hunter spots a single feather-like membrane caught in scrub — large, leathery, not from any mountain bird they know. They've seen one like it twice on the trail recently, wheeling north."
             }
           ]
         },
         {
-          "skill": "Perception (passive or active)",
-          "dc": 14,
-          "context": "Vague unease — only triggers if someone explicitly looks.",
+          "skill": "Perception",
+          "context": "Sense of being watched — passive or active.",
           "tiers": [
             {
-              "range": "Passive ≥ 14",
-              "outcome": "A vague sense of being watched. No more specificity."
+              "range": "< 10",
+              "outcome": "Nothing."
+            },
+            {
+              "range": "10–14",
+              "outcome": "A vague sense of being watched. No specifics."
+            },
+            {
+              "range": "15–19",
+              "outcome": "The watching has a direction — north, ahead, somewhere past the next ridges. Whatever is watching is not close. But it knows you are here."
+            },
+            {
+              "range": "20+",
+              "outcome": "All the above. Plus: the watching is intermittent, not constant. As if something looks, then turns away, then looks again — patrolling rather than fixated."
+            },
+            {
+              "range": "Nat 20",
+              "outcome": "All the above. Plus: the PC realizes the bat they saw twice was NOT the same bat. Different size, different wing-shape. There are at least two of them, possibly more, and they have been watching the party's progress for longer than two days."
             }
           ]
         },
         {
           "skill": "Medicine",
-          "dc": 10,
-          "context": "Optional rule — light altitude effects on the party (any healer).",
+          "context": "Healer assesses altitude effects on the party.",
           "tiers": [
             {
-              "range": "DC 10",
-              "outcome": "Slowed reactions, shorter wind. Optional: -1 to Athletics/Acrobatics for sustained physical effort at this elevation."
+              "range": "< 10",
+              "outcome": "Everyone seems tired but fine."
+            },
+            {
+              "range": "10–14",
+              "outcome": "Slowed reactions, shorter wind. Optional rule: -1 to Athletics/Acrobatics for sustained physical effort at this elevation until they descend or acclimate."
+            },
+            {
+              "range": "15–19",
+              "outcome": "All the above. Plus: Tyr is doing measurably worse than the others. He's pushing through, but his sleep is poor and his color is off. (Reflects the carried-over nightmare mechanic — DC 12 INT before each long rest.)"
+            },
+            {
+              "range": "20+",
+              "outcome": "All the above. Plus: Adrik is acclimated to high elevations in a way the others aren't. Either he climbs frequently — or he's spent extended time in mountains recently. (Adrik was in the cove for unknown duration before S18.)"
+            },
+            {
+              "range": "Nat 20",
+              "outcome": "All the above. Plus: the healer notes that Borin's heart-rate spikes when he uses Rumor of the Earth — there is a physical cost to that ability the party hadn't noticed. Mention but don't mechanize unless Josh wants to develop it."
             }
           ]
         }
