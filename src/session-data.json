@@ -331,33 +331,112 @@
       "id": "scene-3a",
       "number": "3A",
       "title": "Forewarned Ambush",
-      "subtitle": "Hunters had warning",
-      "trigger": "Hunting group passed Perception ≥ 15 in Scene 2.",
-      "location": "The hunting gully OR the lower switchback (DM choice based on where they descended).",
-      "lighting": "Failing light. Sunset 30–60 minutes out. Long shadows.",
+      "subtitle": "Bat combat — hunters warned",
+      "trigger": "Anyone passes Perception ≥ 15 at a transition point in Scene 2.",
+      "location": "The hunting gully (lower zone) and the switchback above. ~80 ft of vertical separation. Bats enter from above the gully.",
+      "lighting": "Failing afternoon light. Sun dropping toward western ridge. Long shadows in gully. ~30–60 min until sunset. Wind steady from north (down the gully).",
       "runtime": "30–40 minutes real-time",
-      "readAloud": null,
-      "purpose": "Bat combat with party split. Determine if a PC gets carried off.",
+      "readAloud": "The shout goes up first — someone has spotted them. The warning carries down the gully and up to the switchback in the same breath. Time slows to that strange clarity that comes before violence: weapons coming free, hands finding rock to crouch behind. Above you, four shapes drop out of the cloud cover like falling stones. A fifth is bigger. Wider. Something glints on its chest. They are coming fast.",
+      "purpose": "Bat combat with the party split. Determine end-state (abduction successful / abduction prevented / bats killed). Forewarned setup: hunters have cover/weapons readied, warning relayed up to switchback group. Standard initiative for everyone.",
       "dmNotes": [
-        "Hunting group has time to take cover, ready weapons, and shout up to the rest of the party at the higher switchback.",
-        "Bats arrive within one round.",
-        "Hunting group acts first round (or gets surprise on bats if they hit Perception 20+).",
-        "Then bats. Then the upper switchback group acts on subsequent rounds — they have to descend (Athletics/Acrobatics to make it down fast) or fire from range.",
-        "BAT TACTICS: 4 couriers fight at range — diving attacks, retreating, looping. Their goal is NOT to kill. Goal is to wound and harass while the Alpha picks its target.",
-        "ALPHA TACTICS: Targets the lightest exposed PC. Roll opposed STR vs the Alpha's grapple. If Alpha succeeds, it lifts the PC into the air on its harness.",
-        "If Alpha is grappling a PC: +5 to fly speed, AC drops by 2, tries to leave the battlefield.",
-        "If Alpha is reduced below 50% HP, it drops grappled prey from a height of 1d6 × 10 ft and retreats.",
-        "Couriers retreat if reduced to 1 remaining."
+        "BATTLEFIELD: 3 vertical zones. UPPER (switchback, +80 ft elevation, where remainers stayed). GULLY (combat floor, ~50×80 ft, scrub juniper, scree). AERIAL (60–200 ft above gully, where bats fly). Half-cover behind boulders. Difficult terrain on scree (half movement).",
+        "INITIATIVE: Standard 5e individual initiative. Suggested grouping: PCs individual, Couriers as group (single slot) or individual (per Jesse's preference), Alpha as separate slot.",
+        "ALPHA TACTICS: Round 1, enters at ~120 ft up. Closes distance. Round 2+, attempts grapple on closest qualifying target (Dudo/Mungo/Adrik — random d3 if multiple in reach).",
+        "COURIER TACTICS: Dive-attack from 60+ ft up. After attack, fly out of melee reach (60 ft fly speed). Goal is harass and break up rescue attempts. Retreat when 1 remaining.",
+        "GRAPPLE MECHANIC: Alpha makes Athletics +5 vs target's Athletics OR Acrobatics. If Alpha wins, target is grappled AND immediately flies upward at half speed (50 ft/round, AC drops to 11 burdened). If target wins, no grapple this turn.",
+        "ABDUCTION PREVENTION: Path 1 = damage Alpha to ≤11 HP (25% of 44, requires ~33 dmg). Path 2 = creative tactics (net, grapple bat, knock prone in flight, entangle, sever harness, jump on bat). Rule generously on creative options — see skill check tables.",
+        "SWITCHBACK GROUP: Three options each round. (1) Fire from range — shortbow disadvantage beyond 80 ft, longbow fine to 150 ft, wind imposes -2 to ranged attacks vs bats. (2) Climb down — Athletics/Acrobatics DC 12, fail = falling damage and 2-3 round delay. (3) ROPE (DISCOVERABLE) — if any PC says they're rigging rope, DC 10 to descend safely in 1 round. Reward initiative.",
+        "WEATHER: Wind from north imposes -2 to PC ranged attacks vs bats. Bats unaffected (they're banking with the wind).",
+        "RETREAT CONDITIONS: Couriers retreat at 1 remaining. Alpha drops grappled prey at ≤11 HP and retreats. If Alpha killed before grapple lands, couriers' morale breaks within 1 round."
       ],
-      "skillChecks": [],
-      "branches": [
+      "skillChecks": [
         {
-          "condition": "If the Alpha successfully carries off a PC",
-          "outcome": "→ Scene 4: The Carry, then Scene 5A: The Pit (parallel with 5B)"
+          "skill": "Athletics (footing on scree)",
+          "context": "If knocked prone or forced movement on scree.",
+          "tiers": [
+            {
+              "range": "< 10",
+              "outcome": "Slip, prone, half movement next round."
+            },
+            {
+              "range": "10–14",
+              "outcome": "Recover footing, half movement this round."
+            },
+            {
+              "range": "15+",
+              "outcome": "No effect — handle the scree fine."
+            }
+          ]
         },
         {
-          "condition": "If the Alpha is killed or repulsed before it lifts anyone",
-          "outcome": "→ Scene 4: The Carry as 'failed abduction' — bats retreat north — then Scene 5B: The Trail"
+          "skill": "Investigation (search bat corpses post-combat)",
+          "context": "Examines harness fragments and bodies after the fight.",
+          "tiers": [
+            {
+              "range": "< 10",
+              "outcome": "Just dead bats."
+            },
+            {
+              "range": "10–14",
+              "outcome": "The harness on the Alpha is military-grade leather and metalwork. Not from any beast-handler the party knows."
+            },
+            {
+              "range": "15–19",
+              "outcome": "All the above. Plus: harness is fitted with Númenórean ironwork — Tyr or Adrik would recognize the smithing tradition."
+            },
+            {
+              "range": "20+",
+              "outcome": "All the above. Plus: ADRIK specifically recognizes dwarven rivetwork holding the harness together. The metal is OLD — older than Pharazôr's involvement. Made by reusing dwarven craft from somewhere nearby."
+            },
+            {
+              "range": "Nat 20",
+              "outcome": "All the above. Plus: a small symbol stamped into the inner harness — a stylized bird-of-prey silhouette. (DM: this is Pharazôr's mark. Don't name it. Surface again later.)"
+            }
+          ]
+        },
+        {
+          "skill": "Survival (track where bats came from)",
+          "context": "If the party pursues after combat.",
+          "tiers": [
+            {
+              "range": "< 10",
+              "outcome": "The bats came from the north. That's all you can say."
+            },
+            {
+              "range": "10–14",
+              "outcome": "From a peak roughly 2-3 miles north. There is structure on that peak — maybe a tower silhouette in the failing light."
+            },
+            {
+              "range": "15–19",
+              "outcome": "All the above. Plus: clear flight pattern showing the bats have been making this run repeatedly — same flight lanes, well-worn."
+            },
+            {
+              "range": "20+",
+              "outcome": "All the above. Plus: blood spots on the trail leading north (party blood on bat claws, dropped during retreat). The trail can be followed even at night with a torch."
+            },
+            {
+              "range": "Nat 20",
+              "outcome": "All the above. Plus: tracker spots half-orc boot prints at the trail's start, mingled with the bat blood. Whatever ground patrols come from the same place the bats do."
+            }
+          ]
+        }
+      ],
+      "branches": [
+        {
+          "condition": "A — Successful Abduction (Alpha escaped with prey)",
+          "outcome": "→ Scene 4 (transition) → Scene 5A (captive POV) and Scene 5B (rescuers POV) IN PARALLEL."
+        },
+        {
+          "condition": "B — Failed Abduction (Alpha killed)",
+          "outcome": "→ Scene 4 (search corpses, find harness lineage) → Scene 5B (track north)."
+        },
+        {
+          "condition": "C — Failed Abduction (Alpha dropped prey, retreated)",
+          "outcome": "→ Scene 4 (everyone alive but bruised) → Scene 5B."
+        },
+        {
+          "condition": "D — Catastrophic outcome (TPK or near-TPK)",
+          "outcome": "DM call. Most likely retreat to cove or mass capture → Scene 5A with multiple captives."
         }
       ]
     },
@@ -365,24 +444,38 @@
       "id": "scene-3b",
       "number": "3B",
       "title": "Surprise Ambush",
-      "subtitle": "Hunters caught flat-footed",
-      "trigger": "Everyone in the hunting group failed Perception in Scene 2.",
-      "location": "Same as 3A.",
-      "lighting": "Same.",
+      "subtitle": "Bat combat — hunters caught flat-footed",
+      "trigger": "Everyone fails Perception (< 15) at the transition point, OR party never reached a transition point.",
+      "location": "Same as 3A — gully and switchback, ~80 ft vertical.",
+      "lighting": "Same as 3A — failing afternoon, long shadows, wind from north.",
       "runtime": "30–40 minutes real-time",
-      "readAloud": null,
-      "purpose": "Bat combat — but bats get a free surprise round. Abduction much more likely.",
+      "readAloud": "The first you know is the sound — not a screech, not a roar, but the hard percussive WHUMP of leathern wings folding into a dive. Three feet from your face, something the size of a hunting dog has its claws out. Then another. Then another. And rising over them, blocking what's left of the sun, the shape of something WIDER, an iron flash on its chest as it banks for its angle. Roll initiative.",
+      "purpose": "Bat combat — but with TRUE SURPRISE for the hunting group. Same battlefield and tactics as 3A, but the Alpha gets a free first action. Abduction is highly likely.",
       "dmNotes": [
-        "The bats get a free surprise round. The hunting group is caught flat-footed.",
-        "The Alpha goes first and gets one free grapple attempt.",
-        "Otherwise the encounter proceeds identically to Scene 3A.",
-        "The danger is meaningfully higher here. A surprise round + Alpha first action = abduction is much more likely."
+        "TRUE SURPRISE — round 1 rule: Hunting group PCs CANNOT act on round 1 (they are surprised per 5e rules). They cannot move, cannot take actions, cannot use reactions until start of round 2.",
+        "ALPHA FREE ACTION: Before initiative is rolled, the Alpha makes ONE free grapple attempt against a randomly chosen target. Roll d3: 1=Dudo, 2=Mungo, 3=Adrik (whichever are in the hunting group). Use the standard grapple mechanic — Alpha Athletics +5 vs target's Athletics OR Acrobatics. If Alpha wins, the target is grappled and lifted (Snatch and Carry).",
+        "COURIERS ACT NORMALLY ROUND 1: Couriers roll initiative and act on their turn with full actions. They dive on the hunting group while the Alpha begins its escape with the grappled PC.",
+        "SWITCHBACK GROUP NOT SURPRISED: They roll initiative normally and CAN act on round 1, but they're 80 ft above and reacting to confusion below — they may need a moment to figure out what's happening. They have full actions but limited tactical options on round 1.",
+        "ROUND 2 ONWARD: Standard initiative for everyone. Hunting group can finally act. Alpha is already at altitude with prey if grapple succeeded — pursuit is now the question.",
+        "ALL OTHER MECHANICS IDENTICAL TO 3A — see Scene 3A DM notes for: battlefield zones, courier tactics, switchback descent options, prevention paths, retreat conditions.",
+        "DANGER LEVEL: Meaningfully higher than 3A. Free grapple attempt + lost round of action means Alpha is likely flying off with a PC by round 2. Players will need to react FAST or commit to pursuit."
       ],
-      "skillChecks": [],
+      "skillChecks": [
+        {
+          "skill": "Same as Scene 3A",
+          "context": "All skill check tables (Athletics, Investigation, Survival) work identically. See Scene 3A for full tables.",
+          "tiers": [
+            {
+              "range": "All",
+              "outcome": "Reference Scene 3A's skill check tables — surprise mechanic only changes round 1 action economy, not check resolution."
+            }
+          ]
+        }
+      ],
       "branches": [
         {
-          "condition": "Same branches as 3A — abduction or trail",
-          "outcome": "→ Scene 4"
+          "condition": "Same end-state branches as Scene 3A",
+          "outcome": "Reference Scene 3A — A (abduction), B (Alpha killed), C (prey dropped), D (TPK) all apply."
         }
       ]
     },
