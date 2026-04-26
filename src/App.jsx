@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import data from "./session-data.json";
-
+ 
 // ============================================================================
 // THEME — DM Cockpit
 // Higher contrast than the player wiki. Same campaign palette, rebalanced
@@ -30,7 +30,7 @@ const C = {
   warningBg: "#2a1d0a",
   success: "#5fa86c",     // checked items
 };
-
+ 
 // ============================================================================
 // FONTS — Cinzel for headers (matches campaign), Crimson for body, IBM Plex
 // Mono for stat blocks and skill check tables (functional, scannable).
@@ -40,7 +40,7 @@ const fonts = {
   body: "'Crimson Text', Georgia, serif",
   mono: "'IBM Plex Mono', 'Menlo', monospace",
 };
-
+ 
 // ============================================================================
 // Storage helpers — localStorage with namespaced keys
 // ============================================================================
@@ -58,7 +58,7 @@ const lsSet = (key, value) => {
     localStorage.setItem(STORAGE_PREFIX + key, JSON.stringify(value));
   } catch {}
 };
-
+ 
 // ============================================================================
 // Reusable atoms
 // ============================================================================
@@ -75,7 +75,7 @@ function HeadingDisplay({ children, size = 24, color = C.goldBright, mb = 0 }) {
     }}>{children}</h1>
   );
 }
-
+ 
 function Label({ children, color = C.goldDeep, size = 10 }) {
   return (
     <span style={{
@@ -88,7 +88,7 @@ function Label({ children, color = C.goldDeep, size = 10 }) {
     }}>{children}</span>
   );
 }
-
+ 
 function Body({ children, color = C.text, size = 15, italic = false, mb = 0 }) {
   return (
     <div style={{
@@ -101,7 +101,7 @@ function Body({ children, color = C.text, size = 15, italic = false, mb = 0 }) {
     }}>{children}</div>
   );
 }
-
+ 
 function Card({ children, bg = C.panel, border = C.border, padding = 14, mb = 10, onClick }) {
   return (
     <div
@@ -118,7 +118,7 @@ function Card({ children, bg = C.panel, border = C.border, padding = 14, mb = 10
     >{children}</div>
   );
 }
-
+ 
 // Box for read-aloud-style scenery — visually distinct, easy to glance at
 function ReadAloudBox({ children }) {
   return (
@@ -137,7 +137,7 @@ function ReadAloudBox({ children }) {
     </div>
   );
 }
-
+ 
 // Box for DM-only secret info — distinctly red, scannable
 function SecretBox({ children, label = "🔒 DM only" }) {
   return (
@@ -156,7 +156,7 @@ function SecretBox({ children, label = "🔒 DM only" }) {
     </div>
   );
 }
-
+ 
 // Box for dialogue seeds — visually distinct from prose
 function DialogueBox({ children }) {
   return (
@@ -175,7 +175,7 @@ function DialogueBox({ children }) {
     }}>"{children}"</div>
   );
 }
-
+ 
 // Toggle for showing/hiding hidden NPC info
 function HiddenToggle({ open, onToggle, children }) {
   return (
@@ -200,7 +200,7 @@ function HiddenToggle({ open, onToggle, children }) {
     </div>
   );
 }
-
+ 
 // ============================================================================
 // Skill check table — 5-tier display
 // ============================================================================
@@ -249,7 +249,7 @@ function SkillCheckTable({ check }) {
     </div>
   );
 }
-
+ 
 function ResultTier({ range, outcome }) {
   // Color-code ranges by tier
   const isBest = range.toLowerCase().includes("nat 20") || range.toLowerCase().includes("20+") || range.toLowerCase().includes("nat20");
@@ -273,14 +273,14 @@ function ResultTier({ range, outcome }) {
     </>
   );
 }
-
+ 
 // ============================================================================
 // Page: Scene Navigator (the main DM-runner view)
 // ============================================================================
 function ScenePage({ sceneId, scenes, onSelect, sceneState, toggleScene }) {
   const scene = scenes.find(s => s.id === sceneId) || scenes[0];
   const completed = sceneState[scene.id]?.completed || false;
-
+ 
   return (
     <div style={{ display: "grid", gridTemplateColumns: "minmax(200px, 240px) 1fr", height: "100%", overflow: "hidden" }}>
       {/* Scene list sidebar */}
@@ -336,7 +336,7 @@ function ScenePage({ sceneId, scenes, onSelect, sceneState, toggleScene }) {
           );
         })}
       </div>
-
+ 
       {/* Scene detail */}
       <div style={{ overflowY: "auto", padding: "20px 24px" }}>
         <SceneDetail scene={scene} completed={completed} onToggleComplete={() => toggleScene(scene.id)} />
@@ -344,7 +344,7 @@ function ScenePage({ sceneId, scenes, onSelect, sceneState, toggleScene }) {
     </div>
   );
 }
-
+ 
 function SceneDetail({ scene, completed, onToggleComplete }) {
   return (
     <div style={{ maxWidth: 760 }}>
@@ -374,7 +374,7 @@ function SceneDetail({ scene, completed, onToggleComplete }) {
           }}
         >{completed ? "✓ Done" : "Mark done"}</button>
       </div>
-
+ 
       {/* Meta strip */}
       <div style={{
         display: "flex",
@@ -395,7 +395,7 @@ function SceneDetail({ scene, completed, onToggleComplete }) {
           <Meta label="Trigger" value={scene.trigger} />
         )}
       </div>
-
+ 
       {/* Location */}
       {scene.location && (
         <div style={{ marginBottom: 16 }}>
@@ -403,10 +403,10 @@ function SceneDetail({ scene, completed, onToggleComplete }) {
           <Body size={14} color={C.textMute}>{scene.location}</Body>
         </div>
       )}
-
+ 
       {/* Read-aloud */}
       {scene.readAloud && <ReadAloudBox>{scene.readAloud}</ReadAloudBox>}
-
+ 
       {/* Purpose */}
       {scene.purpose && (
         <Card bg={C.panelMute} mb={14}>
@@ -414,7 +414,7 @@ function SceneDetail({ scene, completed, onToggleComplete }) {
           <Body size={14} mb={0}>{scene.purpose}</Body>
         </Card>
       )}
-
+ 
       {/* DM notes */}
       {scene.dmNotes && scene.dmNotes.length > 0 && (
         <div style={{ marginBottom: 18 }}>
@@ -426,7 +426,7 @@ function SceneDetail({ scene, completed, onToggleComplete }) {
           ))}
         </div>
       )}
-
+ 
       {/* Skill checks */}
       {scene.skillChecks && scene.skillChecks.length > 0 && (
         <div style={{ marginBottom: 18 }}>
@@ -438,7 +438,7 @@ function SceneDetail({ scene, completed, onToggleComplete }) {
           ))}
         </div>
       )}
-
+ 
       {/* Dialogue seeds */}
       {scene.dialogueSeeds && scene.dialogueSeeds.length > 0 && (
         <div style={{ marginBottom: 18 }}>
@@ -450,7 +450,7 @@ function SceneDetail({ scene, completed, onToggleComplete }) {
           ))}
         </div>
       )}
-
+ 
       {/* Branches */}
       {scene.branches && scene.branches.length > 0 && (
         <div style={{ marginBottom: 18 }}>
@@ -477,7 +477,7 @@ function SceneDetail({ scene, completed, onToggleComplete }) {
     </div>
   );
 }
-
+ 
 function Meta({ label, value }) {
   return (
     <div style={{ minWidth: 100 }}>
@@ -493,21 +493,21 @@ function Meta({ label, value }) {
     </div>
   );
 }
-
+ 
 // ============================================================================
 // Page: NPCs
 // ============================================================================
 function NpcPage() {
   const [revealed, setRevealed] = useState({});
   const toggle = id => setRevealed(prev => ({ ...prev, [id]: !prev[id] }));
-
+ 
   return (
-    <div style={{ overflowY: "auto", padding: "20px 24px", maxWidth: 800, margin: "0 auto" }}>
+    <div style={{ overflowY: "auto", padding: "20px 24px", maxWidth: 800, margin: "0 auto", height: "100%" }}>
       <HeadingDisplay size={28} mb={6}>NPC Roster</HeadingDisplay>
       <Body color={C.textMute} mb={20} size={14}>
         Five NPCs across the session. Surface read shown by default; tap to reveal hidden motive and stats.
       </Body>
-
+ 
       {data.npcs.map(npc => {
         const isRevealed = revealed[npc.id];
         return (
@@ -535,12 +535,12 @@ function NpcPage() {
                 borderRadius: 2,
               }}>{npc.status}</span>
             </div>
-
+ 
             <div style={{ marginBottom: 12 }}>
               <Label>Surface read</Label>
               <Body size={14} mb={0}>{npc.surfaceRead}</Body>
             </div>
-
+ 
             <HiddenToggle open={isRevealed} onToggle={() => toggle(npc.id)}>
               <SecretBox label="🔒 Hidden motive">{npc.hidden}</SecretBox>
               {npc.stats && (
@@ -568,38 +568,38 @@ function NpcPage() {
     </div>
   );
 }
-
+ 
 // ============================================================================
 // Page: Skill Checks Reference
 // ============================================================================
 function SkillsPage() {
   const [filter, setFilter] = useState("all");
-
+ 
   // Flatten all skill checks across all scenes with scene context
   const allChecks = data.scenes.flatMap(scene =>
     (scene.skillChecks || []).map(check => ({ ...check, scene: scene.title, sceneNum: scene.number }))
   );
-
+ 
   // Build unique skill list for filter
   const allSkills = [...new Set(allChecks.map(c => c.skill.split(" ")[0]))].sort();
-
+ 
   const filtered = filter === "all" ? allChecks :
                    allChecks.filter(c => c.skill.toLowerCase().includes(filter.toLowerCase()));
-
+ 
   return (
-    <div style={{ overflowY: "auto", padding: "20px 24px", maxWidth: 800, margin: "0 auto" }}>
+    <div style={{ overflowY: "auto", padding: "20px 24px", maxWidth: 800, margin: "0 auto", height: "100%" }}>
       <HeadingDisplay size={28} mb={6}>Skill Checks</HeadingDisplay>
       <Body color={C.textMute} mb={16} size={14}>
         All skill check tables in one place. {filtered.length} {filtered.length === 1 ? "check" : "checks"} {filter !== "all" ? `(filtered to ${filter})` : ""}.
       </Body>
-
+ 
       <div style={{ display: "flex", gap: 6, marginBottom: 18, flexWrap: "wrap" }}>
         <FilterButton active={filter === "all"} onClick={() => setFilter("all")}>All</FilterButton>
         {allSkills.map(s => (
           <FilterButton key={s} active={filter === s} onClick={() => setFilter(s)}>{s}</FilterButton>
         ))}
       </div>
-
+ 
       {filtered.map((check, i) => (
         <div key={i} style={{ marginBottom: 18 }}>
           <div style={{ marginBottom: 6 }}>
@@ -611,7 +611,7 @@ function SkillsPage() {
     </div>
   );
 }
-
+ 
 function FilterButton({ active, onClick, children }) {
   return (
     <button
@@ -631,19 +631,19 @@ function FilterButton({ active, onClick, children }) {
     >{children}</button>
   );
 }
-
+ 
 // ============================================================================
 // Page: Scenery (read-aloud passages in one place)
 // ============================================================================
 function SceneryPage() {
   const scenesWithReadAloud = data.scenes.filter(s => s.readAloud);
   return (
-    <div style={{ overflowY: "auto", padding: "20px 24px", maxWidth: 760, margin: "0 auto" }}>
+    <div style={{ overflowY: "auto", padding: "20px 24px", maxWidth: 760, margin: "0 auto", height: "100%" }}>
       <HeadingDisplay size={28} mb={6}>Scenery</HeadingDisplay>
       <Body color={C.textMute} mb={20} size={14}>
         All read-aloud-style passages in one place. Paraphrase — never read verbatim.
       </Body>
-
+ 
       {scenesWithReadAloud.map(scene => (
         <div key={scene.id} style={{ marginBottom: 24 }}>
           <div style={{ marginBottom: 8 }}>
@@ -658,13 +658,13 @@ function SceneryPage() {
     </div>
   );
 }
-
+ 
 // ============================================================================
 // Page: Tracker (hidden conditions, foreshadowing, wrap checklist)
 // ============================================================================
 function TrackerPage({ trackerState, toggleTracker, resetSession }) {
   return (
-    <div style={{ overflowY: "auto", padding: "20px 24px", maxWidth: 800, margin: "0 auto" }}>
+    <div style={{ overflowY: "auto", padding: "20px 24px", maxWidth: 800, margin: "0 auto", height: "100%" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20, gap: 16 }}>
         <div>
           <HeadingDisplay size={28} mb={6}>Session Tracker</HeadingDisplay>
@@ -687,7 +687,7 @@ function TrackerPage({ trackerState, toggleTracker, resetSession }) {
           }}
         >Reset session</button>
       </div>
-
+ 
       {/* Hidden conditions */}
       <Section title="Active Hidden Conditions">
         {data.hiddenConditions.map((c, i) => (
@@ -709,14 +709,14 @@ function TrackerPage({ trackerState, toggleTracker, resetSession }) {
           </Card>
         ))}
       </Section>
-
+ 
       {/* Ticking clocks */}
       <Section title="Ticking Clocks (party doesn't know)">
         {data.tickingClocks.map((c, i) => (
           <SecretBox key={i} label={c.label}>{c.detail}</SecretBox>
         ))}
       </Section>
-
+ 
       {/* Foreshadowing */}
       <Section title="Foreshadowing — drop these if you can">
         {data.foreshadowingChecklist.map(item => {
@@ -732,7 +732,7 @@ function TrackerPage({ trackerState, toggleTracker, resetSession }) {
           );
         })}
       </Section>
-
+ 
       {/* Must be true */}
       <Section title="Must be true by end of session">
         {data.mustBeTrue.map((item, i) => (
@@ -745,7 +745,7 @@ function TrackerPage({ trackerState, toggleTracker, resetSession }) {
           </div>
         ))}
       </Section>
-
+ 
       {/* Can happen */}
       <Section title="Can happen but not required">
         {data.canHappen.map((item, i) => (
@@ -758,7 +758,7 @@ function TrackerPage({ trackerState, toggleTracker, resetSession }) {
           </div>
         ))}
       </Section>
-
+ 
       {/* Wrap checklist */}
       <Section title="Session Wrap Checklist">
         {["Must verify", "Track for master doc", "Lock for Session 20"].map(category => {
@@ -787,7 +787,7 @@ function TrackerPage({ trackerState, toggleTracker, resetSession }) {
     </div>
   );
 }
-
+ 
 function Section({ title, children }) {
   return (
     <div style={{ marginBottom: 24 }}>
@@ -798,7 +798,7 @@ function Section({ title, children }) {
     </div>
   );
 }
-
+ 
 function ChecklistItem({ checked, onToggle, title, detail }) {
   return (
     <div
@@ -852,25 +852,25 @@ function ChecklistItem({ checked, onToggle, title, detail }) {
     </div>
   );
 }
-
+ 
 // ============================================================================
 // Page: Overview (the home screen — quick session snapshot)
 // ============================================================================
 function OverviewPage({ onJump }) {
   return (
-    <div style={{ overflowY: "auto", padding: "20px 24px", maxWidth: 760, margin: "0 auto" }}>
+    <div style={{ overflowY: "auto", padding: "20px 24px", maxWidth: 760, margin: "0 auto", height: "100%" }}>
       <div style={{ marginBottom: 24 }}>
         <div style={{ marginBottom: 4 }}>
           <Label color={C.goldDeep}>Session {data.session.number} · {data.session.miniArc}</Label>
         </div>
         <HeadingDisplay size={36}>{data.session.title}</HeadingDisplay>
       </div>
-
+ 
       <Card bg={C.panel} mb={16} padding={18}>
         <Label>Opens with</Label>
         <Body size={15} mb={0}>{data.session.openingContext}</Body>
       </Card>
-
+ 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 18 }}>
         <Card bg={C.panelMute} padding={14} mb={0}>
           <Label size={9}>In-world start</Label>
@@ -881,7 +881,7 @@ function OverviewPage({ onJump }) {
           <Body size={13} color={C.text} mb={0}>{data.session.expectedRuntime}</Body>
         </Card>
       </div>
-
+ 
       {/* Quick links */}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 16 }}>
         <QuickLink onClick={() => onJump("scenes", "scene-1")} title="▸ Start at Scene 1" subtitle="The Climb (narrative bridge)" />
@@ -889,7 +889,7 @@ function OverviewPage({ onJump }) {
         <QuickLink onClick={() => onJump("skills")} title="▸ Skill Check Reference" subtitle="All tables, filterable" />
         <QuickLink onClick={() => onJump("tracker")} title="▸ Session Tracker" subtitle="Conditions + wrap checklist" />
       </div>
-
+ 
       {/* Three cliffhangers preview */}
       <div style={{ marginBottom: 18 }}>
         <div style={{ marginBottom: 8 }}>
@@ -908,7 +908,7 @@ function OverviewPage({ onJump }) {
     </div>
   );
 }
-
+ 
 function QuickLink({ onClick, title, subtitle }) {
   return (
     <button
@@ -946,7 +946,7 @@ function QuickLink({ onClick, title, subtitle }) {
     </button>
   );
 }
-
+ 
 // ============================================================================
 // Top navigation bar
 // ============================================================================
@@ -959,7 +959,7 @@ function TopNav({ page, onNav }) {
     { id: "scenery", label: "Scenery", icon: "❡" },
     { id: "tracker", label: "Tracker", icon: "✓" },
   ];
-
+ 
   return (
     <nav style={{
       background: C.panelMute,
@@ -1029,7 +1029,7 @@ function TopNav({ page, onNav }) {
     </nav>
   );
 }
-
+ 
 // ============================================================================
 // Root App
 // ============================================================================
@@ -1038,36 +1038,36 @@ export default function App() {
   const [activeScene, setActiveScene] = useState(() => lsGet("activeScene", "scene-1"));
   const [sceneState, setSceneState] = useState(() => lsGet("sceneState", {}));
   const [trackerState, setTrackerState] = useState(() => lsGet("trackerState", {}));
-
+ 
   // Persist page state to localStorage
   useEffect(() => { lsSet("page", page); }, [page]);
   useEffect(() => { lsSet("activeScene", activeScene); }, [activeScene]);
   useEffect(() => { lsSet("sceneState", sceneState); }, [sceneState]);
   useEffect(() => { lsSet("trackerState", trackerState); }, [trackerState]);
-
+ 
   const toggleScene = id => {
     setSceneState(prev => ({
       ...prev,
       [id]: { ...prev[id], completed: !prev[id]?.completed }
     }));
   };
-
+ 
   const toggleTracker = id => {
     setTrackerState(prev => ({ ...prev, [id]: !prev[id] }));
   };
-
+ 
   const resetSession = () => {
     if (confirm("Reset all session progress? Scene completion, foreshadowing, and wrap checklist will be cleared. This can't be undone.")) {
       setSceneState({});
       setTrackerState({});
     }
   };
-
+ 
   const handleJump = (targetPage, sceneId) => {
     setPage(targetPage);
     if (sceneId) setActiveScene(sceneId);
   };
-
+ 
   return (
     <div style={{
       background: C.bg,
@@ -1078,7 +1078,7 @@ export default function App() {
       overflow: "hidden",
     }}>
       <TopNav page={page} onNav={setPage} />
-      <div style={{ flex: 1, overflow: "hidden", position: "relative" }}>
+      <div style={{ flex: 1, overflow: "hidden", position: "relative", minHeight: 0 }}>
         {page === "overview" && <OverviewPage onJump={handleJump} />}
         {page === "scenes" && (
           <ScenePage
@@ -1103,3 +1103,4 @@ export default function App() {
     </div>
   );
 }
+ 
