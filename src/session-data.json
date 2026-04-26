@@ -242,74 +242,88 @@
       "number": "2",
       "title": "The Hunting Detour",
       "subtitle": "Party splits at the switchback",
-      "trigger": "End of Scene 1. The DM asks who wants to break off and hunt.",
-      "location": "A switchback in the trail. A side gully drops off the main path into rocky scrub where a small herd of mountain goats has left fresh sign.",
-      "lighting": "Late afternoon, perhaps 4 PM. Light failing within 90 minutes.",
-      "runtime": "15–20 minutes real-time",
-      "readAloud": "The trail folds back on itself at a sharp switchback. From the higher loop, you can see the lower loop perhaps eighty feet below. Between them, a steep gully drops away — choked with scrub juniper and loose scree, the kind of slope a careful person could descend in fifteen minutes. There is sign in the gully: dropped pellets, a hoof-scuff on a stone, the mineral salt-smell of mountain goat. Someone, somewhere down there, ate well last week.",
-      "purpose": "Justify a party split (huntable goats, defensible base camp at the switchback). Smaller hunting group is more vulnerable to the bat ambush. Mungo, Dudo, Adrik, or Gilgamesh are likely volunteers; Borin or Carl might prefer to stay with the heavier gear.",
+      "trigger": "End of Scene 1. Party at a switchback with daylight to spare. DM lets them choose: keep climbing or pause to hunt.",
+      "location": "A switchback in the trail. From the upper loop, a steep gully drops 80 ft into rocky scrub where mountain goats have left fresh sign. The trail folds back on itself; lower loop visible from above.",
+      "lighting": "Mid-to-late afternoon, ~3 PM. Sun still well up. Roughly 3–4 hours of full daylight remain. Wind blowing down the gully — favorable for a stalk.",
+      "runtime": "15–25 minutes real-time",
+      "readAloud": "The trail folds back on itself at a sharp switchback. From the higher loop, you can see the lower loop perhaps eighty feet below. Between them, a steep gully drops away — choked with scrub juniper and loose scree, the kind of slope a careful person could descend in fifteen minutes. There is sign in the gully: dropped pellets, a hoof-scuff on a stone, the mineral salt-smell of mountain goat. Someone, somewhere down there, ate well last week. The wind is at your back, blowing down the gully — favorable for a stalk.\n\nTyr leans against the rock at the switchback for a moment. Catches his breath. Doesn't say anything. The others notice. He waves them off.",
+      "purpose": "1) Justify a party split (small hunting group descends, others stay at switchback). 2) Plant Tyr's exhaustion atmospherically (the lean, the pause). 3) Set up the bat ambush in Scene 3. 4) Optional Nat 20 plants: half-orc footprint, distant tower silhouette.",
       "dmNotes": [
-        "If nobody wants to hunt, you can soft-push by saying 'You haven't eaten meat in two days' to Carl or Borin. Don't force a split if the party really refuses — adapt by having the bats spot them on the trail.",
-        "Note who goes hunting and who stays. The hunting group is the ambush target."
+        "PARTY SPLIT: Likely volunteers for hunt: Mungo, Dudo, Adrik, Gilgamesh (light/agile/scouts). Likely stays: Borin, Carl, Tyr. Don't force the split — let it emerge from RP. Push back gently if everyone wants the same side.",
+        "TYR'S EXHAUSTION: He CAN descend the gully if he tries. But describe him stopping halfway, breath ragged, hands on knees. He makes it. No mechanical penalty unless Gabe leans into it.",
+        "BAT-SPOTTING TIMING (CRITICAL): Bats can position freely overhead during active tracking — eyes are DOWN. NO Perception check during the hunt itself. Bats accumulate over an unsuspecting party. This is a feature, not a bug.",
+        "PERCEPTION CHECK ONLY HAPPENS AT TRANSITION POINTS: (1) If trail goes cold (Survival < 10) — hunters give up and look up. (2) When kill is made and they hike back — they look up to navigate the climb.",
+        "SWITCHBACK GROUP also has eyes DOWN — watching the hunters from above. They get a Perception check only when the hunters' transition point happens, since they look up too if they hear/see something change.",
+        "ALPHA TARGETING: When grapple attempted, target is RANDOM among Dudo / Mungo / Adrik (lightest PCs). Roll d3.",
+        "ABDUCTION DIFFICULTY: Alpha drops its prey only at 25% HP — that's 11 HP or less out of 44. Needs 33+ damage in 1-2 rounds to prevent. Highly likely to succeed unless party focus-fires aggressively.",
+        "OPTIONAL SETUP BEATS: Carl irritable joke about Tyr lounging (Tyr doesn't reply). Mungo naps on rock. Gilgamesh sketches. Borin checks the stone again — still YES, within 3 miles, no specifics."
       ],
       "skillChecks": [
         {
-          "skill": "Survival",
-          "context": "Whoever leads the hunt — 5-tier table.",
+          "skill": "Survival (the hunt)",
+          "context": "Whoever leads the hunt — eyes are DOWN, no Perception possible during this roll.",
           "tiers": [
             {
               "range": "< 10",
-              "outcome": "Hunters lose the trail in the scree. They find nothing and waste 90 minutes. The light is failing when they regroup."
+              "outcome": "Hunters lose the trail in the scree. Find nothing, waste 60–90 minutes. Light starting to slant when they regroup. TRAIL GOES COLD → Transition Point 1 → Perception check available."
             },
             {
               "range": "10–14",
-              "outcome": "They locate goat sign within thirty minutes. Within bow range of two goats. (Roll attack normally.)"
+              "outcome": "Locate goat sign within 30 minutes. Within bow range of two goats. Roll attack normally (DEX or ranged, AC 11, HP 9 each). On kill, hike back → Transition Point 2 → Perception check available."
             },
             {
               "range": "15–19",
-              "outcome": "All of the above. Plus: they notice a single, very large bat circling once overhead at unusual altitude — too high to be hunting, too purposeful to be drifting."
+              "outcome": "Same but faster — 20 minutes to find. Two goats within bow range. On kill, hike back → Transition Point 2 → Perception check available."
             },
             {
               "range": "20+",
-              "outcome": "All of the above. Plus: they spot a second bat, then a third, converging on a peak about a mile north. A pattern. They are watching something — or being signalled."
+              "outcome": "All the above. Plus: while tracking, the hunter notices something OFF in the soil — a half-buried impression, NOT a goat hoof. Heavy. Booted. Can't stop to examine without breaking the stalk; mark it for later. (Adrik or Borin can recognize 'boot, not goat' if asked — but don't volunteer this.)"
             },
             {
               "range": "Nat 20",
-              "outcome": "All of the above. Plus: they see, for less than a second, the silhouette of something humanoid standing at the top of a distant ridge, watching the bats converge. It is gone before anyone can confirm. The hunter is the only one who saw it."
+              "outcome": "All the above. Plus: the impression is unmistakably a HALF-ORC FOOTPRINT. Recent — within the last day or two. Heading uphill, not down. The hunter recognizes what it means: someone has been hunting this gully too, and they didn't come back the way they went."
             }
           ]
         },
         {
-          "skill": "Perception",
-          "context": "Everyone in the hunting group, passive — determines ambush type.",
+          "skill": "Perception (transition point only)",
+          "context": "Available ONLY at: (1) trail-cold give-up moment, OR (2) hike back from kill. Multiple PCs at the transition each roll separately — highest result determines outcome.",
           "tiers": [
             {
               "range": "< 10",
-              "outcome": "Nothing."
+              "outcome": "Nothing. The sky is just sky. Continue back to switchback or keep moving."
             },
             {
               "range": "10–14",
-              "outcome": "The wind has shifted. Animal sounds have stopped. Something is wrong, but the hunter can't say why."
+              "outcome": "The wind has shifted. Animal sounds have stopped. Something is wrong, but the hunter can't say why. → Roll initiative when ambush hits. Scene 3B (Surprise Ambush)."
             },
             {
               "range": "15–19",
-              "outcome": "Three large shapes wheeling against a high cloud. Coming closer. The hunter has time to shout a warning. Roll initiative — go to Scene 3A."
+              "outcome": "Three or four large shapes wheeling against a high cloud, descending. The hunter has time to shout a warning, ready a weapon, take cover. → Scene 3A (Forewarned Ambush)."
             },
             {
               "range": "20+",
-              "outcome": "All of the above. Plus: the hunter sees the iron harness on the largest one and understands in one second this is not random predation. Roll initiative with one round of preparation — go to Scene 3A, but the hunting group gets surprise INSTEAD OF being surprised."
+              "outcome": "All the above. Plus: the hunter sees the iron harness on the largest one. This is not random predation — these bats are being commanded. Roll initiative with ONE round of preparation; the hunting group acts before the bats. → Scene 3A with surprise on the bats."
+            },
+            {
+              "range": "Nat 20",
+              "outcome": "All the above. Plus: the hunter glimpses, on a far ridge perhaps three miles north, the unmistakable silhouette of a stone TOWER cut into the mountain face. It's there for a moment in the changing light, then the angle shifts and it's gone. They have seen something built. (DM: this is Amon Lhuin. Don't say the name.)"
             }
           ]
         }
       ],
       "branches": [
         {
-          "condition": "If anyone in the hunting group passes Perception ≥ 15",
-          "outcome": "→ Scene 3A (Forewarned Ambush)"
+          "condition": "Anyone passes Perception ≥ 15 at a transition point",
+          "outcome": "→ Scene 3A — Forewarned Ambush. Hunters and watchers have time to react."
         },
         {
-          "condition": "If everyone in the hunting group fails Perception",
-          "outcome": "→ Scene 3B (Surprise Ambush)"
+          "condition": "Everyone fails Perception (< 15) at the transition point, or party never has a transition point",
+          "outcome": "→ Scene 3B — Surprise Ambush. Bats descend before anyone realizes."
+        },
+        {
+          "condition": "Party skips the hunt entirely, keeps climbing",
+          "outcome": "→ Scene 3B but with everyone together. No party split. Bats still ambush — Alpha targets the lightest exposed PC."
         }
       ]
     },
