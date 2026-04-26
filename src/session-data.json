@@ -483,47 +483,55 @@
       "id": "scene-4",
       "number": "4",
       "title": "The Carry",
-      "subtitle": "Aftermath of the bat ambush",
-      "trigger": "End of Scene 3A or 3B — bats are dead, fled, or have a captive.",
-      "location": "Same.",
-      "lighting": "Sunset arriving. Long shadows. The party should feel exposed now.",
+      "subtitle": "Transition — route to Scene 5",
+      "trigger": "End of Scene 3A or 3B — bats are dead, fled, or have a captive. Combat is over.",
+      "location": "The gully and switchback. Same battlefield, post-combat. Bat corpses where they fell. Possibly PC blood on the rocks.",
+      "lighting": "Sunset arriving — perhaps 30–45 min of usable light remaining. Long shadows. Wind still steady from the north.",
       "runtime": "5–10 minutes real-time",
       "readAloud": null,
-      "purpose": "Determine which path the session takes — abduction story or tracking story.",
+      "purpose": "Transition scene. Confirm which end-state happened. Give the party a beat to process. Route to Scene 5A and/or 5B. NOT a content scene — it's a hinge. Don't pad it. Most mechanics already live in Scene 3A's skill check tables.",
       "dmNotes": [
-        "OUTCOME A — Alpha got away with a PC: The captive PC is being carried north over the ridges. The rest of the party watches it disappear. They have minutes to react before night and altitude eat the trail. → Scene 5A (parallel with 5B).",
-        "OUTCOME B — Alpha killed before lifting anyone: The bat corpses can be searched. Search check DC 13: the harness on the Alpha is fitted Númenórean ironwork — Tyr or Adrik would recognize the smithing style. ADRIK recognizes dwarven rivetwork holding the harness together — old, OLD work, not made by Pharazôr. The harness was looted from the dwarven workings under Amon Lhuin. The bat trail leads north. → Scene 5B.",
-        "OUTCOME C — Alpha wounded and dropped its prey: Everyone is alive, captive is bruised and shaken. Bats fled north. → Scene 5B."
+        "BRANCH A (Successful Abduction): Captive flown north. Read 'The shape of it doesn't quite register at first...' Pause; ask captive PC privately what their character notices/feels in that moment (NOT escape — that's Scene 5A). Then return to surviving party for the pursuit decision.",
+        "BRANCH A — Routing: Scene 5A (captive POV) and Scene 5B (rescuers POV) run IN PARALLEL going forward. DM cuts between them at natural beats.",
+        "BRANCH A — Pursuit decision: (1) Pursue NOW in failing light → Scene 5B begins immediately. (2) Camp and pursue at dawn → Scene 5B with prisoner clock advanced (1 pit prisoner risks dying overnight). (3) Split — DM call on logistics.",
+        "BRANCH B (Alpha killed before grappling): Read 'The Alpha hits the ground hard...' Couriers fled north. Use Scene 3A's Investigation table for harness inspection — whoever rolls highest gets the result. Do NOT pre-script which PC investigates.",
+        "BRANCH C (Alpha dropped prey): Read 'The grip breaks...' Roll 1d6 per 10 ft for falling damage on the dropped PC. Pause briefly — let the player describe how their character is reacting emotionally. Not a roll, just a beat.",
+        "CRITICAL — DO NOT name a specific Númenórean smithing-house here. Even on a Nat 20 Investigation, the party learns 'Númenórean style' but NOT 'made by THAT house in THAT era.' Pharazôr's lineage recognition is saved for Scene 8 — that's the big reveal moment.",
+        "All branches B and C route to Scene 5B (track north or camp).",
+        "BRANCH D (TPK / near-TPK): DM call. Most likely retreat to cove → end session early. If mass capture → Scene 5A with multiple captives, skip Scene 5B."
       ],
       "skillChecks": [
         {
-          "skill": "Investigation (search bat corpses)",
-          "dc": 13,
-          "context": "If bats killed in combat — Outcomes B or C.",
+          "skill": "All checks reference Scene 3A",
+          "context": "Investigation (harness search), Survival (track bats), Athletics (footing) — all five-tier tables live in Scene 3A. Scene 4 doesn't introduce new mechanics; it routes outcomes.",
           "tiers": [
             {
-              "range": "DC 13",
-              "outcome": "Harness is fitted Númenórean ironwork. Tyr or Adrik recognize the smithing style."
+              "range": "Investigation",
+              "outcome": "See Scene 3A — five-tier ladder with Nat 20 plant of Pharazôr's bird-of-prey symbol."
             },
             {
-              "range": "Adrik specifically",
-              "outcome": "Recognizes dwarven rivetwork holding the harness together — old, OLD work. Looted from dwarven workings, not made by Pharazôr's people."
+              "range": "Survival",
+              "outcome": "See Scene 3A — five-tier ladder for tracking the bats north."
             }
           ]
         }
       ],
       "branches": [
         {
-          "condition": "Outcome A (PC carried off)",
-          "outcome": "→ Scene 5A and 5B in parallel"
+          "condition": "A — Successful Abduction (Alpha escaped with prey)",
+          "outcome": "→ Scene 5A (captive POV) and Scene 5B (rescuers POV) IN PARALLEL."
         },
         {
-          "condition": "Outcome B (bats killed)",
-          "outcome": "→ Scene 5B"
+          "condition": "B — Alpha killed before grappling",
+          "outcome": "→ Scene 5B (track north or camp)."
         },
         {
-          "condition": "Outcome C (PC dropped)",
-          "outcome": "→ Scene 5B"
+          "condition": "C — Alpha grappled but dropped prey when wounded",
+          "outcome": "→ Scene 5B."
+        },
+        {
+          "condition": "D — Catastrophic outcome (TPK / near-TPK)",
+          "outcome": "DM call: retreat to cove (end session) OR mass capture → Scene 5A with multiple captives."
         }
       ]
     },
