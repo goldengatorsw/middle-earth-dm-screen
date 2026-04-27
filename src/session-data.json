@@ -113,10 +113,10 @@
     {
       "id": "pit-prisoners",
       "order": 4,
-      "name": "The Pit Prisoners (9 swamp villagers)",
+      "name": "The Pit Prisoners (9 swamp villagers, including Mez)",
       "status": "Friendly, traumatized",
-      "surfaceRead": "Bruised, malnourished, frightened. Some recognize the party.",
-      "hidden": "At least one is a named NPC from the swamp village arc — DM: pick from Mez, Bonkey, or another the party met. At least one will say something that lands — not blame, but grief. 'You left us.'",
+      "surfaceRead": "Bruised, malnourished, frightened. MEZ is among them — the innkeeper from the swamp village (S13), gaunt and silent.",
+      "hidden": "After party left swamp village in S17.2, Pharazôr's bat swarms harvested survivors. The 9 in pit are what's left of ~48 villagers (rest dead). Mez survived ~3 weeks because he's useful (cooking for prisoners). His 'you left us' beat should land flat — not blame, grief.",
       "stats": "Non-combatants. HP 1d4 each effectively. Cannot fight; can move slowly."
     },
     {
@@ -539,54 +539,119 @@
       "id": "scene-5a",
       "number": "5A",
       "title": "The Pit",
-      "subtitle": "Captive PC alone with the prisoners",
-      "trigger": "A PC was abducted in Scene 3/4.",
-      "location": "A circular pit cut into ancient dwarven stonework, ~30 feet across, ~20 feet deep. Above the pit: the cracked vault of an old chamber, partly collapsed, with daylight bleeding in through fractures. Around the captured PC: nine swamp village survivors, half-conscious, weeping or silent.",
-      "lighting": "Twilight bleeding into night.",
-      "runtime": "10–15 minutes real-time. Run this in PARALLEL with Scene 5B (split-screen DMing — go back and forth between captive and rescuers).",
-      "readAloud": "You are dropped. Fifteen feet, maybe twenty. Stone underfoot — old stone, dwarf-cut, the corners worn smooth by centuries. You taste blood. Your weapon is somewhere — you don't know where. The light comes from cracks in the vault above, weak and grey. There are people here. Nine of them, maybe more in the dark you can't see. Some are sitting. Some are lying down and not moving in a healthy way. One is watching you.",
-      "purpose": "Give the captive a moment that's THEIRS. Don't hurry it. Let the table feel the helplessness of the situation, then cut to Scene 5B.",
+      "subtitle": "Captive POV — only if abducted",
+      "trigger": "A PC was abducted in Scene 3/4. Run in PARALLEL with Scene 5B (split-screen DMing).",
+      "location": "Circular pit, ~30 ft across, ~20 ft deep, dwarven stonework. Below the lower workings of Amon Lhuin. Above: cracked vault of an old chamber, daylight bleeding through fractures. Around the captive: 9 swamp village survivors. MEZ is among them.",
+      "lighting": "Twilight bleeding into night. Light from cracks above is grey and weakening.",
+      "runtime": "10–15 minutes real-time",
+      "readAloud": "You are dropped. Fifteen feet, maybe twenty. Stone underfoot — old stone, dwarf-cut, the corners worn smooth by centuries. You taste blood. Your weapon is somewhere — you don't know where. The light comes from cracks in the vault above, weak and grey, and there are people here. Nine of them, maybe more in the dark you can't see. Some are sitting against the walls. Some are lying down and not moving in a healthy way. One of them is watching you, and you know him.\n\nIt is Mez. The innkeeper. From the village in the swamp. He has lost weight. He looks like he hasn't slept in weeks. His face is the same and not the same. He sees you, and his expression doesn't change at all.",
+      "purpose": "1) Give the captive a moment that's THEIRS — quiet, claustrophobic, alone in the dark. 2) Land the 'you left us' beat through Mez (a known character). 3) Build the lair atmosphere — sounds from above, evidence of long use. 4) Set up the rescue arrival in Scene 7.",
       "dmNotes": [
-        "If the captive PC is ADRIK, his pendant is now BURNING. The shard is in this lair. He knows it. Christian will decide what to share, what to hunt for, what to risk. Be ready for him to want to act fast.",
-        "Run the prisoner recognition. The line 'you left us' should land — not as blame, but as grief.",
-        "Pre-pick which named villager is in the pit before the session: Mez, Bonkey, or another."
+        "IF CAPTIVE IS ADRIK: His pendant is BURNING. The shard is well within ½ mile, in this lair. Pull Christian aside: 'The pendant is hotter than it has ever been. It's pulling toward the eastern wall of this pit — there's something behind that wall. Close. Maybe within fifty feet.' Christian decides what to share/risk.",
+        "MEZ CONTEXT: After the party killed Maldwin and walked away from the village in S17.2, the bat swarms came. Pharazôr's network harvested the survivors over weeks. The 9 prisoners are what's left of ~48 villagers. Mez survived because he was useful (cooking for prisoners). He's been here ~3 weeks.",
+        "MEZ'S 'YOU LEFT US' BEAT: He doesn't shout. He doesn't rage. He's been here too long for either. Use the dialogue seeds — paraphrase, don't read verbatim. Keep his voice flat, factual.",
+        "RHYTHM: Cut to/from Scene 5B at natural breaks. Good rhythm: 3-5 min with captive, then 'meanwhile, the rescue party...' for 5-7 min, then back. Don't let either thread go more than 10 min without a check-in.",
+        "WHEN RESCUERS ARRIVE (end of Scene 7): the two threads merge. Captive's actions in 5A may shape what rescuers walk into."
+      ],
+      "dialogueSeeds": [
+        "You came back.",
+        "Is there food.",
+        "You said the world was different now. After Maldwin. You said we were safe.",
+        "My wife was the price for fifteen winters of safety. You broke the pact. They came for the rest of us in three days.",
+        "I don't blame you for leaving. I blame you for thinking we would be alright."
       ],
       "skillChecks": [
         {
-          "skill": "Investigation (find dropped weapon)",
-          "dc": 12,
-          "context": "A dropped weapon is usually within ~10 feet, but the Alpha's grip may have flung it.",
+          "skill": "Investigation (locate dropped weapon / search pit)",
+          "context": "The Alpha's grip flung the weapon somewhere; pit may have other things to find.",
           "tiers": [
             {
-              "range": "DC 12",
-              "outcome": "Locate the weapon."
+              "range": "< 10",
+              "outcome": "Can't find the weapon. Could be in the pit, the chamber above, or lost."
+            },
+            {
+              "range": "10–14",
+              "outcome": "Locate the weapon nearby, within reach in the pit."
+            },
+            {
+              "range": "15–19",
+              "outcome": "All the above. Plus: notice that Mez is hiding something small in his hand (a sharp piece of dwarven stone, used as a tool — he'll give it to the captive if asked)."
+            },
+            {
+              "range": "20+",
+              "outcome": "All the above. Plus: notice that the wall on the east side of the pit has a hairline fracture running floor to ceiling — the stonework here has been DISTURBED, possibly within recent years. (DM: this is the alcove sealing for the shard.)"
+            },
+            {
+              "range": "Nat 20",
+              "outcome": "All the above. Plus: a tally scratched into the wall in dwarven runes — Adrik can read it (or relay to Adrik later). It marks 60+ prisoners across the years. This pit has held many cycles of captives."
             }
           ]
         },
         {
-          "skill": "Athletics (climb out)",
-          "dc": 18,
-          "context": "The walls are slick old stone.",
+          "skill": "Athletics (climb pit walls)",
+          "context": "Walls are slick old dwarven stone, ~20 ft.",
           "tiers": [
             {
-              "range": "Failure",
-              "outcome": "Take 1d6 from a slip and back to the floor."
+              "range": "< 10",
+              "outcome": "Lose grip immediately. 1d6 falling damage. Back to the floor."
             },
             {
-              "range": "Success",
-              "outcome": "Climb out — but the upper chamber is part of the lair. Where do they go from here?"
+              "range": "10–14",
+              "outcome": "Get halfway, lose grip, fall. 1d6 falling damage. Back to the floor."
+            },
+            {
+              "range": "15–17",
+              "outcome": "Climb to the rim. 8 hours of effort. Captive is exhausted (1 level)."
+            },
+            {
+              "range": "18+",
+              "outcome": "Climb to the rim in ~10 minutes. No exhaustion. The chamber above is part of the lair — solo exploration. (DM: see Scene 7.)"
+            },
+            {
+              "range": "Nat 20",
+              "outcome": "All the above. Plus: as they reach the rim, they spot something — at the far end of the chamber above, a SMALLER second pit covered by a wooden grate. Sounds come from below it. (DM: where prisoners are processed individually — empty currently, but a chilling detail.)"
+            }
+          ]
+        },
+        {
+          "skill": "Perception (listen for sounds above)",
+          "context": "What's happening in the lair from down in the pit.",
+          "tiers": [
+            {
+              "range": "< 10",
+              "outcome": "Just the sounds of the pit — breathing, shifting, wind through cracks."
+            },
+            {
+              "range": "10–14",
+              "outcome": "Boot-falls overhead, irregular. At least two people walking somewhere in the lair, occasionally crossing the upper chamber."
+            },
+            {
+              "range": "15–19",
+              "outcome": "All the above. Plus: a third set of sounds — distant, from much higher up — sounds like the bats returning to roost."
+            },
+            {
+              "range": "20+",
+              "outcome": "All the above. Plus: a man's voice, far away, speaking in a measured cadence. Cannot make out words. Has the SHAPE of a long monologue or recitation. (DM: Pharazôr in his chambers — he reads aloud at this hour every evening.)"
+            },
+            {
+              "range": "Nat 20",
+              "outcome": "All the above. Plus: the captive recognizes that the recitation is in TWO LANGUAGES, alternating — Westron and one other. The other is uncomfortable to listen to even at this distance. (DM: Black Speech.)"
             }
           ]
         }
       ],
       "branches": [
         {
-          "condition": "Captive escapes alone",
-          "outcome": "→ Lair exploration solo until they meet rescuers"
+          "condition": "Captive waits for rescue",
+          "outcome": "→ Scene 7 (when rescuers arrive)"
         },
         {
-          "condition": "Captive stays with prisoners",
-          "outcome": "→ Wait for rescue (Scene 5B → Scene 6)"
+          "condition": "Captive escapes solo (Athletics 18+)",
+          "outcome": "→ Scene 7 — solo lair exploration. Risk of capture by half-orcs or worse."
+        },
+        {
+          "condition": "Captive talks to prisoners / searches pit",
+          "outcome": "→ Information gained, atmosphere built. Rescue still required."
         }
       ]
     },
@@ -594,54 +659,64 @@
       "id": "scene-5b",
       "number": "5B",
       "title": "The Trail",
-      "subtitle": "Party tracks the bats north",
-      "trigger": "Bats have flown north (with or without a captive).",
-      "location": "The trail above the switchback, ascending into thinner air toward the peak.",
-      "lighting": "Sunset → dusk → first stars. The party is moving as fast as they can in failing light.",
-      "runtime": "15–25 minutes real-time. If running in parallel with 5A, alternate with the captive's POV.",
+      "subtitle": "Rescuers POV — track the bats north",
+      "trigger": "Bats have flown north (with or without a captive). Run in parallel with Scene 5A if there's a captive.",
+      "location": "Trail above the switchback, ascending into thinner air toward the peak. Becomes more exposed and colder with elevation.",
+      "lighting": "Sunset → dusk → first stars. Wind shifts unpredictably at higher altitude.",
+      "runtime": "15–25 minutes real-time",
       "readAloud": "The bats are gone before you can ready a second arrow. Whatever direction 'north' is from here, that is where they went — over the ridges, over a notch, into country you have not yet climbed. The wind shifts. The cold is harder now. Below you the gully goes dark first; above you, the ridge holds the last red of the sun. You have perhaps an hour before full dark.",
-      "purpose": "Get the party to Amon Lhuin. Adrik's pendant escalates further.",
+      "purpose": "1) Get the party from gully to Amon Lhuin. 2) Activate Adrik's pendant at the right narrative moment. 3) Plant the dropped letter on Nat 20 (massive foreshadowing payload). 4) Build pre-lair atmosphere: cold, exposed, the silhouette growing closer.",
       "dmNotes": [
-        "ADRIK'S PENDANT — passive: closer the party gets to Amon Lhuin, the hotter the pendant becomes. By the time they see the tower's silhouette, it is uncomfortable to hold. Adrik knows.",
-        "If party fails the tracking and has to camp, advance the prisoner clock (1 may not survive)."
+        "PACING: Compress aggressively. Full journey from gully to Amon Lhuin is ~2-3 hours of in-world hiking. Run as one Survival check + 2-3 atmospheric beats + pendant activation + tower silhouette reveal. Don't roleplay every step.",
+        "ADRIK'S PENDANT — SPECIFIC TRIGGER: At the moment the party crests a ridge and FIRST sees the tower silhouette, the pendant goes warm in Adrik's hand simultaneously. Christian decides whether/how to react. Let him steer.",
+        "PRISONER CLOCK: If Survival < 15, forced camp = 6-8 hours lost = 1 of the 9 pit prisoners may not survive overnight. The party has to choose: push on without sleep, or pay the cost.",
+        "THE LETTER (Nat 20 only): Half-page parchment, broken black wax seal with bird-of-prey silhouette (matches harness mark from S3A). Mostly Westron, switches to Black Speech mid-letter. Tyr can attempt INT (Investigation) DC 14 to translate Black Speech (he glimpsed it in Eli/booklet thread).",
+        "LETTER PAYLOAD: Don't explain to players. Foreshadowing is what the letter IS. Key beats embedded: (1) shipments north — supply chain. (2) Maldwin's pact was one of many ('older arrangements in the swamps... one of the smaller pacts has gone quiet'). (3) Pharazôr has agents in Lake Town's council ('the new agreement at the lake-town progresses... draw the bait in') — DIRECTLY connects to Palantír mission. (4) Pharazôr is autonomous from his master ('He has not written in eight moons... what He does not know is the second matter') — Pharazôr is hiding the shard agenda from Gothmog. (5) 'Ph.' signature — players may connect to Pharazôr later.",
+        "ATMOSPHERIC BEATS (use 2-3): Wind dies suddenly then returns. Scrap of leather harness in scrub. Distant view of gully far below. Single bat call far north, nothing answers. Tyr's exhaustion shows (hands on knees, Carl helps wordlessly).",
+        "SESSION-END OPTION: If forced camp (Survival < 15) and table is running long, end session at camp as cliffhanger. Resume at dawn next session."
       ],
       "skillChecks": [
         {
           "skill": "Survival (track bats in failing light)",
-          "dc": 13,
-          "context": "Following the bat trail — 5-tier table.",
+          "context": "The bat trail leads north over ridges in fading light.",
           "tiers": [
             {
               "range": "< 10",
-              "outcome": "Lost in the dark. Camp here, lose 8 hours, prisoners suffer in the meantime (DM: 1 may not survive)."
+              "outcome": "Lost in the dark. Forced camp. Lose 8 hours. Prisoner clock advances — 1 of 9 pit prisoners may not survive overnight."
             },
             {
               "range": "10–14",
-              "outcome": "Trail followed for ~1 mile. Lost in the dark. Camp here. Lose 6 hours."
+              "outcome": "Trail followed for ~1 mile. Lost in the dark. Forced camp. Lose 6 hours. Prisoner clock advances."
             },
             {
               "range": "15–19",
-              "outcome": "Trail followed all the way to a tower silhouette on a high ridge. The party reaches it before midnight."
+              "outcome": "Trail followed all the way to a tower silhouette on a high ridge. Party reaches Amon Lhuin's outer slope before midnight. → Scene 6."
             },
             {
               "range": "20+",
-              "outcome": "All of the above. Plus: the tracker spots that the half-orc boot prints from the cove track UP this same trail — they go up and don't come back down. Pharazôr's ground guards also live here."
+              "outcome": "All the above. Plus: tracker spots that the half-orc boot prints from S18's cove track UP this same trail — they go up and don't come back down. Pharazôr's ground guards live here."
             },
             {
               "range": "Nat 20",
-              "outcome": "All of the above. Plus: the tracker finds, off the trail in the scrub, a sealed letter dropped by a bat courier. Black Speech and Westron mixed. Half-page hint about Pharazôr's 'agreements' being checked-on by his master. Vague. No Gothmog name."
+              "outcome": "All the above. Plus: in scrub off the trail, the tracker finds A SEALED LETTER dropped by a courier bat. Black wax seal with bird-of-prey silhouette (matches harness from S3A). See dialogue seeds for letter content."
             }
           ]
         }
       ],
+      "dialogueSeeds": [
+        "[THE LETTER — read on Nat 20 Survival] Cousin — The work continues as agreed. The shipments north have not been disturbed and the older arrangements in the swamps hold for the moment, though I am told one of the smaller pacts has gone quiet. Look into it when you can spare the time. There is no urgency. The villagers there will not last another two winters at the current rate, and the matter resolves itself either way.",
+        "[LETTER continued] The new agreement at the lake-town progresses. Their council remains useful. I expect to draw the bait in within the season.",
+        "[LETTER — Black Speech section, alien script. Tyr INT DC 14 to translate.] He has not written in eight moons. The hand-that-holds knows what we built and approves it; what He does not know is the second matter. Keep it so. Burn this when read.",
+        "[LETTER signature, back to Westron] — yours in the long work, Ph."
+      ],
       "branches": [
         {
-          "condition": "Trail successful (Survival 15+)",
-          "outcome": "→ Scene 6: Approach Amon Lhuin"
+          "condition": "Survival 15+ — trail followed to tower",
+          "outcome": "→ Scene 6 — Approach to Amon Lhuin."
         },
         {
-          "condition": "Trail failed",
-          "outcome": "Forced camp. Resume in the morning. Prisoner clock advances. → Scene 6 next morning."
+          "condition": "Survival < 15 — forced camp",
+          "outcome": "Lose hours, prisoner clock advances. Resume at dawn → Scene 6. (Optional session-end cliffhanger.)"
         }
       ]
     },
