@@ -102,9 +102,9 @@
       "stats": "HP ~38, AC 13, fly 60 ft (50 ft when burdened). Bite +5 for 1d8+3. Grapple opposed STR. While grappling: AC -2, can fly carrying ~150 lb."
     },
     {
-      "id": "halforc-guards",
+      "id": "orc-guards",
       "order": 3,
-      "name": "Half-Orc Lair Guards × 3",
+      "name": "Orc Lair Guards × 3",
       "status": "Hostile (ground)",
       "surfaceRead": "Heavy boots, ill-fitting Númenórean-cut armor, hostile but disciplined",
       "hidden": "Sleep in shifts in the watchtower's outer chamber. Will challenge intruders. Can be bypassed by stealth (DC 14). Their boot prints match the trail Gilgamesh found in S18.",
@@ -143,7 +143,7 @@
       "purpose": "1) Compress 3 days into one immersive monologue. 2) Establish altitude/hunger/cold pressure. 3) Build Adrik bonding through concrete shared moments. 4) Plant the bat — twice seen, going north, unspoken. 5) Plant Borin's 'yes' — orcs within 3 miles, no specifics. 6) Drop the party at midday with daylight to spare for the hunt decision.",
       "dmNotes": [
         "ADRIK'S PENDANT IS COLD. The pendant only reacts within ½ mile of a shard, and the party isn't yet within range of Amon Lhuin. Do NOT pass any private information to Christian during this scene. The pendant will activate later (Scene 5B trail or Scene 6 approach).",
-        "BORIN'S RUMOR OF THE EARTH gives only YES/NO — no direction, no count. Played as: Day 1 night NO, Day 2 night NO, Day 3 night YES (within 3 miles). 'Yes' is genuinely ambiguous. Could be the half-orc lair guards, could be orc scouts on the next ridge, could be both. Don't commit to specifics.",
+        "BORIN'S RUMOR OF THE EARTH gives only YES/NO — no direction, no count. Played as: Day 1 night NO, Day 2 night NO, Day 3 night YES (within 3 miles). 'Yes' is genuinely ambiguous. Could be the orc lair guards, could be orc scouts on the next ridge, could be both. Don't commit to specifics.",
         "OPENING STYLE: Pure cold open. Read the monologue. Do not recap S18. Adrik bonded with the party through the climb (concrete moments + atmospheric quiet) — this is now the established baseline."
       ],
       "skillChecks": [
@@ -247,7 +247,7 @@
       "lighting": "Mid-to-late afternoon, ~3 PM. Sun still well up. Roughly 3–4 hours of full daylight remain. Wind blowing down the gully — favorable for a stalk.",
       "runtime": "15–25 minutes real-time",
       "readAloud": "The trail folds back on itself at a sharp switchback. From the higher loop, you can see the lower loop perhaps eighty feet below. Between them, a steep gully drops away — choked with scrub juniper and loose scree, the kind of slope a careful person could descend in fifteen minutes. There is sign in the gully: dropped pellets, a hoof-scuff on a stone, the mineral salt-smell of mountain goat. Someone, somewhere down there, ate well last week. The wind is at your back, blowing down the gully — favorable for a stalk.\n\nTyr leans against the rock at the switchback for a moment. Catches his breath. Doesn't say anything. The others notice. He waves them off.",
-      "purpose": "1) Justify a party split (small hunting group descends, others stay at switchback). 2) Plant Tyr's exhaustion atmospherically (the lean, the pause). 3) Set up the bat ambush in Scene 3. 4) Optional Nat 20 plants: half-orc footprint, distant tower silhouette.",
+      "purpose": "1) Justify a party split (small hunting group descends, others stay at switchback). 2) Plant Tyr's exhaustion atmospherically (the lean, the pause). 3) Set up the bat ambush in Scene 3. 4) Optional Nat 20 plants: orc footprint, distant tower silhouette.",
       "dmNotes": [
         "PARTY SPLIT: Likely volunteers for hunt: Mungo, Dudo, Adrik, Gilgamesh (light/agile/scouts). Likely stays: Borin, Carl, Tyr. Don't force the split — let it emerge from RP. Push back gently if everyone wants the same side.",
         "TYR'S EXHAUSTION: He CAN descend the gully if he tries. But describe him stopping halfway, breath ragged, hands on knees. He makes it. No mechanical penalty unless Gabe leans into it.",
@@ -281,7 +281,7 @@
             },
             {
               "range": "Nat 20",
-              "outcome": "All the above. Plus: the impression is unmistakably a HALF-ORC FOOTPRINT. Recent — within the last day or two. Heading uphill, not down. The hunter recognizes what it means: someone has been hunting this gully too, and they didn't come back the way they went."
+              "outcome": "All the above. Plus: the impression is unmistakably a ORC FOOTPRINT. Recent — within the last day or two. Heading uphill, not down. The hunter recognizes what it means: someone has been hunting this gully too, and they didn't come back the way they went."
             }
           ]
         },
@@ -416,7 +416,7 @@
             },
             {
               "range": "Nat 20",
-              "outcome": "All the above. Plus: tracker spots half-orc boot prints at the trail's start, mingled with the bat blood. Whatever ground patrols come from the same place the bats do."
+              "outcome": "All the above. Plus: tracker spots orc boot prints at the trail's start, mingled with the bat blood. Whatever ground patrols come from the same place the bats do."
             }
           ]
         }
@@ -647,7 +647,7 @@
         },
         {
           "condition": "Captive escapes solo (Athletics 18+)",
-          "outcome": "→ Scene 7 — solo lair exploration. Risk of capture by half-orcs or worse."
+          "outcome": "→ Scene 7 — solo lair exploration. Risk of capture by orcs or worse."
         },
         {
           "condition": "Captive talks to prisoners / searches pit",
@@ -694,7 +694,7 @@
             },
             {
               "range": "20+",
-              "outcome": "All the above. Plus: tracker spots that the half-orc boot prints from S18's cove track UP this same trail — they go up and don't come back down. Pharazôr's ground guards live here."
+              "outcome": "All the above. Plus: tracker spots that the orc boot prints from S18's cove track UP this same trail — they go up and don't come back down. Pharazôr's ground guards live here."
             },
             {
               "range": "Nat 20",
@@ -725,21 +725,25 @@
       "number": "6",
       "title": "Approach to Amon Lhuin",
       "subtitle": "First sight of the tower",
-      "trigger": "The party reaches the tower's outer slope.",
-      "location": "A high saddle between two peaks. Carved into the granite face of the higher peak: the worn, half-ruined silhouette of a Númenórean watchtower. Behind and below the tower's base: a natural cave mouth, dark, going back into the mountain. Behind that, deeper: dwarf-cut stone, perfect right angles, a doorway that has been sealed and broken open more than once.",
-      "lighting": "Full night. A waxing moon. The tower has light in its highest window.",
+      "trigger": "End of Scene 5B. Party crests the final ridge. Adrik's pendant has activated.",
+      "location": "High saddle between two peaks, ~quarter-mile from tower's outer slope. THREE-STACKED LAIR: Númenórean watchtower (carved into granite face), natural cave mouth (below tower's base), dwarf-cut doorway (deeper than the cave, OLDER work). The doorway seal has been broken — recently.",
+      "lighting": "Full night. Waxing moon. Yellow candle/lamp light burning in tower's highest window. Wind moderate from the north.",
       "runtime": "10–15 minutes real-time",
-      "readAloud": "The tower is older than anything you have seen in the wilderness. Not dwarf-work; the lines are too vertical, too proud, too sad. Three stories of cut grey stone fitted into the mountainside as if grown from it. Half the upper crenellations are gone. One window — the highest one — burns with steady yellow light. Something is awake up there. Below the tower's foundation, the mountain opens its own mouth: a cave, natural, going back into shadow. And deeper still, where the cave wall would have been solid, you can see an arched doorway of cut stone that does not match the tower above. Older work. Different hands.",
-      "purpose": "Establish the three-level lair geography. Give Tyr and Adrik their atmospheric History moments.",
+      "readAloud": "The trail crests the final ridge, and you all stop walking at the same moment. None of you decided to. None of you needed to. The thing on the next peak is older than anything you have seen in the wilderness — older than the swamp village's lottery, older than the bears in the cove, older than the Last Alliance. It is older than story.\n\nThree stories of cut grey stone, fitted into the mountainside as if the mountain had grown around it. The lines are too vertical, too proud, too sad to be dwarf-work. Half the upper crenellations are gone — broken off cleanly, by something that struck. One window — the highest one — burns with steady yellow light. Something is awake up there.\n\nBelow the tower's foundation, the mountain opens its own mouth: a cave, natural, going back into shadow. And deeper still, where the cave wall would have been solid, you can make out an arched doorway of cut stone. Older work than the tower above. Different hands. The seal has been broken — recently.\n\nAdrik's pendant is wrapped in cloth now. Even through the cloth, the heat is undeniable. The signal is not pulling toward the tower. It is pulling DOWN — toward the cave, toward the deeper doorway, toward the stone the mountain has been keeping.",
+      "purpose": "1) Land the moment of arrival — let the party FEEL the age and weight. 2) Reveal the three-stacked-level lair geography. 3) Pendant escalation: now actively pointing toward lower workings. 4) Surface Tyr/Adrik lore beats through History rolls. 5) Let the party choose how to approach (no forced check).",
       "dmNotes": [
-        "Tyr has advantage on the History check (Númenórean ancestry).",
-        "Adrik has advantage on the History check (Healing Hands background).",
-        "Adrik's pendant is now hot enough to burn through cloth. He must hold it carefully or wrap it. The signal is steady. The shard is below — in the dwarven workings."
+        "PENDANT ESCALATION: 5B (½-mile threshold) = warm. Scene 6 (outer slope) = hot, wrapped. Scene 7 (lower workings) = burning, pulling visibly. Christian decides what Adrik shares.",
+        "NO FORCED STEALTH CHECK: Present the situation, let table choose approach. Possible choices: (1) Sneak (DC 14 group/rogue-leads), (2) Open approach, (3) Wait and observe (long rest, prisoner clock advances), (4) Split the party, (5) Direct confrontation (Pharazôr may speak from window).",
+        "WHAT'S HAPPENING IN THE LAIR RIGHT NOW: 3 orcs in tower's ground-floor guardroom (2 awake changing shifts, 1 asleep). Pharazôr in third-floor chambers reading aloud (per Scene 5A's Nat 20 plant). 2-3 bats in cave roost (wounded survivors from S3 combat, possibly Alpha if it survived). 9 prisoners in the lower workings pit. Shard sealed in alcove in side gallery of lower workings.",
+        "ADRIK'S DWARVEN HOLD NAME (placeholder): Karak Melúrz. Khuzdul-style construction (Karak = fortress prefix used in Tolkien for Khazad-dûm etc.; Melúrz invented). Christian can override or expand at any time — if he wants to develop it as Adrik's backstory, run with it.",
+        "TYR'S LORE BEAT (Nat 20): The broken crenellations suggest violence, not weather. Tyr feels in his bones this place was a LOSS, not a withdrawal. Don't say what happened — Pharazôr will name it later in Scene 8.",
+        "PERCEPTION ON THE LIT WINDOW: Higher rolls reveal the watcher's silhouette. Nat 20 reveals the recitation in two languages — Westron and Black Speech. Plants Pharazôr's identity through observation.",
+        "ANTICIPATE: If party chooses 'wait and observe' (option 3), prisoner clock advances. Be willing to fast-forward to morning — and remind party of the cost (1 prisoner may not survive)."
       ],
       "skillChecks": [
         {
-          "skill": "History — TYR has advantage",
-          "context": "Recognizing the tower's origin (Tyr's Númenórean ancestry).",
+          "skill": "History (Tyr advantage — Númenórean ancestry)",
+          "context": "Recognizing the watchtower's origin and history.",
           "tiers": [
             {
               "range": "< 10",
@@ -747,25 +751,25 @@
             },
             {
               "range": "10–14",
-              "outcome": "Númenórean construction. Second or Third Age work. The kind of watch-post Aragorn's people would have manned in better times."
+              "outcome": "Númenórean construction. Second or Third Age work. Kind of watch-post Aragorn's people would have manned in better times."
             },
             {
               "range": "15–19",
-              "outcome": "Specifically: a late Númenórean foothold-tower, of the kind built when the kingdom was still expanding north and east. This one was almost certainly abandoned during the Last Alliance era or shortly after. Three thousand years, give or take."
+              "outcome": "Late Númenórean foothold-tower, kind built when kingdom was still expanding north and east. Almost certainly abandoned during Last Alliance era or shortly after. Three thousand years, give or take."
             },
             {
               "range": "20+",
-              "outcome": "All of the above. Plus: there are old shield-marks on the doorway. Faded. The crest of a noble house Tyr can almost — almost — name. (DM: leave it ambiguous; Pharazôr will name it later.)"
+              "outcome": "All the above. Plus: old shield-marks on the doorway. Faded. The crest of a noble house Tyr can almost — almost — name. (DM: leave ambiguous; Pharazôr will name it in Scene 8.)"
             },
             {
               "range": "Nat 20",
-              "outcome": "All of the above. Plus: Tyr knows in his bones this place was abandoned because something *happened* here. Not a withdrawal. A loss. He doesn't know what."
+              "outcome": "All the above. Plus: Tyr knows in his bones this place was abandoned because something HAPPENED here. Not a withdrawal. A loss. The shape of the broken crenellations on the upper level suggests violence, not weather."
             }
           ]
         },
         {
-          "skill": "History — ADRIK has advantage",
-          "context": "Recognizing the dwarven work below (Healing Hands background).",
+          "skill": "History (Adrik advantage — Healing Hands)",
+          "context": "Recognizing the dwarven workings beneath.",
           "tiers": [
             {
               "range": "< 10",
@@ -781,27 +785,61 @@
             },
             {
               "range": "20+",
-              "outcome": "All of the above. Plus: there is a name carved into the doorway lintel. Adrik can read it if he wants to. (DM: leave it unread unless Christian asks. If he asks, give Christian first refusal to invent the name.)"
+              "outcome": "All the above. Plus: there is a name carved into the doorway lintel. Adrik can read it: KARAK MELÚRZ. He doesn't know what it means or who founded it — the name is older than any dwarven holdings he was raised hearing about. (PLACEHOLDER — Christian can override or expand any time.)"
             },
             {
               "range": "Nat 20",
-              "outcome": "All of the above. Plus: Adrik knows that this hold was *not* abandoned voluntarily. The carvings show signs of being defaced after the dwarves left — by hands that were not dwarves."
+              "outcome": "All the above. Plus: Adrik knows this hold was NOT abandoned voluntarily. The carvings show signs of being defaced after the dwarves left — by hands that were not dwarves. The name was carved over an older, earlier inscription that has been chiseled out — what was written first is unrecoverable."
+            }
+          ]
+        },
+        {
+          "skill": "Perception (watching the lit window)",
+          "context": "Anyone observing the tower from the saddle.",
+          "tiers": [
+            {
+              "range": "< 10",
+              "outcome": "A single yellow light burning in the highest window. Steady. Doesn't flicker."
+            },
+            {
+              "range": "10–14",
+              "outcome": "The light source is a candle or oil lamp, not a fire. Whoever's up there has been in that room for a while."
+            },
+            {
+              "range": "15–19",
+              "outcome": "All the above. Plus: occasionally, a shadow moves across the window. Tall, slow-moving, deliberate. Not pacing — just shifting position."
+            },
+            {
+              "range": "20+",
+              "outcome": "All the above. Plus: the shadow's gait is not orcish. Whoever this is, they are not the kind of creature the party fought in the swamps. They are man-shaped, but their movement is UNUSUALLY SLOW — the pace of someone who has had centuries to learn that hurry doesn't matter."
+            },
+            {
+              "range": "Nat 20",
+              "outcome": "All the above. Plus: faintly, on the wind, the watcher can hear a man's voice — alternating between Westron and another language. The one they don't recognize is uncomfortable to listen to. (DM: Black Speech. Pharazôr reading aloud from his desk.)"
             }
           ]
         }
       ],
       "branches": [
         {
-          "condition": "Party enters the watchtower",
-          "outcome": "→ Scene 7, Level 1"
+          "condition": "Stealth approach (DC 14)",
+          "outcome": "→ Scene 7, Level 1 (tower exterior approach, position to enter)."
         },
         {
-          "condition": "Party enters the cave",
-          "outcome": "→ Scene 7, Level 2"
+          "condition": "Open approach",
+          "outcome": "→ Scene 7, but orcs are alerted; combat possible at ground floor."
         },
         {
-          "condition": "Party goes deeper to the workings",
-          "outcome": "→ Scene 7, Level 3"
+          "condition": "Wait and observe (long rest at saddle)",
+          "outcome": "Prisoner clock advances. → Scene 7 in morning, but prisoners may be reduced."
+        },
+        {
+          "condition": "Split the party",
+          "outcome": "→ DM call on logistics. Scenes 7 and 5A (if captive) may overlap heavily."
+        },
+        {
+          "condition": "Direct confrontation (call out to tower)",
+          "outcome": "→ Scene 8 may begin earlier. Pharazôr may speak from the tower window."
         }
       ]
     },
@@ -817,7 +855,7 @@
       "readAloud": null,
       "purpose": "Three thematic floors with different feels. Tyr's floor (watchtower), neutral middle (cave), Adrik's floor (workings).",
       "dmNotes": [
-        "LEVEL 1 — WATCHTOWER (Pharazôr's domain): Three stories. Ground floor: wrecked guardroom with the half-orc lair guards (NPC #3). Second floor: long-empty barracks; broken arrow-slits face the saddle. Third floor: Pharazôr's chambers — books in three languages including Adûnaic, a cold hearth, a chair that faces the north window, a desk with sealed correspondence. The lit window the party saw from outside is here. Half-orc combat possible if guards aren't bypassed (Stealth DC 14 to slip past). Pharazôr is on the third floor — if reached, GO TO SCENE 8. Letters on the desk (Investigation DC 12): up to three sealed letters, addressed in Westron to 'Brother Mehlin,' 'the Western Pact-Keeper,' and one untitled. Each implies a different Pharazôr-style operation elsewhere. NO Gothmog name in any of them.",
+        "LEVEL 1 — WATCHTOWER (Pharazôr's domain): Three stories. Ground floor: wrecked guardroom with the orc lair guards (NPC #3). Second floor: long-empty barracks; broken arrow-slits face the saddle. Third floor: Pharazôr's chambers — books in three languages including Adûnaic, a cold hearth, a chair that faces the north window, a desk with sealed correspondence. The lit window the party saw from outside is here. Orc combat possible if guards aren't bypassed (Stealth DC 14 to slip past). Pharazôr is on the third floor — if reached, GO TO SCENE 8. Letters on the desk (Investigation DC 12): up to three sealed letters, addressed in Westron to 'Brother Mehlin,' 'the Western Pact-Keeper,' and one untitled. Each implies a different Pharazôr-style operation elsewhere. NO Gothmog name in any of them.",
         "LEVEL 2 — CAVE (the bat roost): A natural cavern beneath the tower's foundation. Bats live here when not on patrol — currently 2–3 sleeping on rock outcrops, plus the wounded survivors from Scene 3 if the party didn't kill them all. Between the cave and the tower above: a narrow vertical shaft with iron rungs, descending. Between the cave and the dwarven workings below: a passage, partly natural, partly widened by old picks. Stealth (DC 15) to move through without waking bats. The shaft to the tower is Pharazôr's 'front door' for couriers.",
         "LEVEL 3 — DWARVEN WORKINGS (the shard): Down a stone passage, opening into what was once a small mining hold. Pillared chambers. A dry well in the center of one. Side galleries where the dwarves cut at the rock. The pit (Scene 5A) is at the far end of one of the larger chambers — cut originally as a refuse shaft, repurposed by Pharazôr. THE SHARD: at the end of one of the side galleries, sealed behind a wedged stone in a small alcove. Adrik's pendant points unmistakably here. The wedge is old. Investigating (DC 12) reveals that someone wedged it INTENTIONALLY — recently — sealing this alcove off, using a heavy stone and a hammered iron pin. Pharazôr did this. He believed it secure.",
         "REMOVING THE WEDGE: Strength check DC 17, OR tools/time/leverage to extract it without breaking the alcove (10 minutes, no roll).",
@@ -828,7 +866,7 @@
         {
           "skill": "Stealth (bypass tower guards)",
           "dc": 14,
-          "context": "Slip past the half-orcs on the ground floor.",
+          "context": "Slip past the orcs on the ground floor.",
           "tiers": [
             {
               "range": "DC 14",
@@ -1007,7 +1045,7 @@
     {
       "id": "w5",
       "category": "Track for master doc",
-      "label": "Kill log: who landed final blow on each bat / each half-orc?"
+      "label": "Kill log: who landed final blow on each bat / each orc?"
     },
     {
       "id": "w6",
