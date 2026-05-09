@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import data from "./session-data.json";
+import world from "./world-data.json";
  
 // ============================================================================
 // THEME — DM Cockpit
@@ -948,8 +949,1145 @@ function QuickLink({ onClick, title, subtitle }) {
 }
  
 // ============================================================================
-// Top navigation bar
+// WORLD — Phase 1
+// Map (Leaflet) / Locations / NPCs / Factions / Timeline / Search
+// All data from world-data.json. Cross-linkable via id-based references.
 // ============================================================================
+
+// --- Cross-linking: parse refs like "{npc:mez}" or "{location:lake-town}" in text ---
+// Used in description fields. Output is React-renderable.
+function renderLinkedText(text, onNav) {
+  if (!text) return null;
+  const re = /\{(npc|location|faction|event):([a-z0-9-]+)\}/gi;
+  const parts = [];
+  let last = 0;
+  let match;
+  while ((match = re.exec(text)) !== null) {
+    if (match.index > last) parts.push(text.slice(last, match.index));
+    const [, kind, id] = match;
+    parts.push(
+      <a
+        key={`${match.index}-${kind}-${id}`}
+        onClick={(e) => { e.preventDefault(); onNav(kind, id); }}
+        style={{ color: C.gold, cursor: "pointer", textDecoration: "underline", textDecorationStyle: "dotted" }}
+      >{worldEntityLabel(kind, id)}</a>
+    );
+    last = match.index + match[0].length;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return parts;
+}
+
+function worldEntityLabel(kind, id) {
+  const collection = kind === "npc" ? world.npcs
+    : kind === "location" ? world.locations
+    : kind === "faction" ? world.factions
+    : kind === "event" ? world.events : null;
+  if (!collection) return id;
+  const found = collection.find(e => e.id === id);
+  return found ? found.name : id;
+}
+
+// --- Hyperlink atom for direct navigation (used in lists) ---
+function WorldLink({ kind, id, onNav, children, dim }) {
+  const label = children || worldEntityLabel(kind, id);
+  return (
+    <a
+      onClick={(e) => { e.preventDefault(); onNav(kind, id); }}
+      style={{
+        color: dim ? C.textMute : C.gold,
+        cursor: "pointer",
+        textDecoration: "underline",
+        textDecorationStyle: "dotted",
+        textUnderlineOffset: 2,
+      }}
+    >{label}</a>
+  );
+}
+
+// --- Recently Viewed: stored in localStorage ---
+function useRecentlyViewed() {
+  const [recent, setRecent] = useState(() => lsGet("worldRecent", []));
+  useEffect(() => { lsSet("worldRecent", recent); }, [recent]);
+  const visit = (kind, id) => {
+    setRecent(prev => {
+      const filtered = prev.filter(r => !(r.kind === kind && r.id === id));
+      return [{ kind, id, ts: Date.now() }, ...filtered].slice(0, 8);
+    });
+  };
+  return [recent, visit];
+}
+
+// --- Search index: built once, used everywhere ---
+function buildSearchIndex() {
+  const idx = [];
+  for (const loc of world.locations || []) {
+    idx.push({
+      kind: "location", id: loc.id, name: loc.name,
+      type: loc.type, region: loc.region,
+      blob: [loc.name, loc.alt_names?.join(" "), loc.summary, loc.description, loc.tags?.join(" "), loc.region].filter(Boolean).join(" ").toLowerCase()
+    });
+  }
+  for (const npc of world.npcs || []) {
+    idx.push({
+      kind: "npc", id: npc.id, name: npc.name,
+      type: npc.race, region: npc.current_location,
+      blob: [npc.name, npc.alt_names?.join(" "), npc.race, npc.occupation, npc.physical_description, npc.personality, npc.tags?.join(" ")].filter(Boolean).join(" ").toLowerCase()
+    });
+  }
+  for (const f of world.factions || []) {
+    idx.push({
+      kind: "faction", id: f.id, name: f.name,
+      type: f.type, region: f.scope,
+      blob: [f.name, f.alignment, f.scope, f.methods, f.current_state, f.tags?.join(" ")].filter(Boolean).join(" ").toLowerCase()
+    });
+  }
+  for (const e of world.events || []) {
+    idx.push({
+      kind: "event", id: e.id, name: e.title,
+      type: e.type, region: e.in_world_date,
+      blob: [e.title, e.description, e.tags?.join(" "), e.in_world_date].filter(Boolean).join(" ").toLowerCase()
+    });
+  }
+  return idx;
+}
+
+// ============================================================================
+// World root: handles internal sub-tab routing
+// ============================================================================
+function WorldPage() {
+  const [view, setView] = useState(() => lsGet("worldView", "map"));
+  const [selectedKind, setSelectedKind] = useState(() => lsGet("worldSelectedKind", null));
+  const [selectedId, setSelectedId] = useState(() => lsGet("worldSelectedId", null));
+  const [layerVisibility, setLayerVisibility] = useState(() => lsGet("worldLayers", {}));
+  const [recent, visit] = useRecentlyViewed();
+
+  useEffect(() => { lsSet("worldView", view); }, [view]);
+  useEffect(() => { lsSet("worldSelectedKind", selectedKind); }, [selectedKind]);
+  useEffect(() => { lsSet("worldSelectedId", selectedId); }, [selectedId]);
+  useEffect(() => { lsSet("worldLayers", layerVisibility); }, [layerVisibility]);
+
+  // Navigate to an entity's detail view
+  const navTo = (kind, id) => {
+    visit(kind, id);
+    setSelectedKind(kind);
+    setSelectedId(id);
+    if (kind === "location") setView("locations");
+    else if (kind === "npc") setView("npcs");
+    else if (kind === "faction") setView("factions");
+    else if (kind === "event") setView("timeline");
+  };
+
+  const subTabs = [
+    { id: "map", label: "Map", icon: "⌖" },
+    { id: "locations", label: "Locations", icon: "◇" },
+    { id: "npcs", label: "NPCs", icon: "✦" },
+    { id: "factions", label: "Factions", icon: "❖" },
+    { id: "timeline", label: "Timeline", icon: "❡" },
+    { id: "search", label: "Search", icon: "⚲" },
+  ];
+
+  return (
+    <div style={{ height: "100%", display: "flex", flexDirection: "column" }}>
+      {/* Sub-nav for the World section */}
+      <div style={{
+        background: C.bg,
+        borderBottom: `1px solid ${C.border}`,
+        display: "flex",
+        alignItems: "stretch",
+        flexShrink: 0,
+        overflowX: "auto",
+      }}>
+        {subTabs.map(t => {
+          const active = view === t.id;
+          return (
+            <button
+              key={t.id}
+              onClick={() => { setView(t.id); setSelectedId(null); setSelectedKind(null); }}
+              style={{
+                background: active ? C.panel : "transparent",
+                border: "none",
+                borderBottom: active ? `2px solid ${C.gold}` : "2px solid transparent",
+                color: active ? C.goldBright : C.textDim,
+                padding: "8px 14px",
+                cursor: "pointer",
+                fontFamily: fonts.display,
+                fontSize: 11,
+                letterSpacing: "0.06em",
+                textTransform: "uppercase",
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                whiteSpace: "nowrap",
+              }}
+            >
+              <span style={{ fontSize: 11 }}>{t.icon}</span>
+              <span>{t.label}</span>
+            </button>
+          );
+        })}
+        <div style={{ flex: 1 }} />
+        {/* Recently viewed quick access */}
+        {recent.length > 0 && (
+          <div style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+            padding: "0 12px",
+            borderLeft: `1px solid ${C.border}`,
+          }}>
+            <span style={{
+              fontFamily: fonts.display, fontSize: 9, letterSpacing: "0.1em",
+              color: C.textDim, textTransform: "uppercase",
+            }}>Recent</span>
+            {recent.slice(0, 4).map((r, i) => (
+              <button
+                key={i}
+                onClick={() => navTo(r.kind, r.id)}
+                style={{
+                  background: "transparent",
+                  border: `1px solid ${C.border}`,
+                  color: C.textMute,
+                  padding: "3px 8px",
+                  fontSize: 10,
+                  fontFamily: fonts.body,
+                  cursor: "pointer",
+                  borderRadius: 2,
+                  whiteSpace: "nowrap",
+                  maxWidth: 130,
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+                title={`${r.kind}: ${worldEntityLabel(r.kind, r.id)}`}
+              >{worldEntityLabel(r.kind, r.id)}</button>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Active view */}
+      <div style={{ flex: 1, overflow: "hidden", minHeight: 0 }}>
+        {view === "map" && <WorldMap onNav={navTo} layerVisibility={layerVisibility} setLayerVisibility={setLayerVisibility} />}
+        {view === "locations" && <LocationsView selectedId={selectedId} onSelect={(id) => { setSelectedId(id); if (id) visit("location", id); }} onNav={navTo} />}
+        {view === "npcs" && <NpcsView selectedId={selectedId} onSelect={(id) => { setSelectedId(id); if (id) visit("npc", id); }} onNav={navTo} />}
+        {view === "factions" && <FactionsView selectedId={selectedId} onSelect={(id) => { setSelectedId(id); if (id) visit("faction", id); }} onNav={navTo} />}
+        {view === "timeline" && <TimelineView onNav={navTo} />}
+        {view === "search" && <SearchView onNav={navTo} />}
+      </div>
+    </div>
+  );
+}
+
+// ============================================================================
+// Map view — Leaflet, loaded via window.L (CDN in index.html)
+// ============================================================================
+function WorldMap({ onNav, layerVisibility, setLayerVisibility }) {
+  const [mapReady, setMapReady] = useState(false);
+
+  useEffect(() => {
+    if (!window.L) {
+      // Leaflet not loaded yet
+      const interval = setInterval(() => {
+        if (window.L) { clearInterval(interval); setMapReady(true); }
+      }, 100);
+      return () => clearInterval(interval);
+    }
+    setMapReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mapReady || !window.L) return;
+    const L = window.L;
+    const meta = world.world_meta;
+    const [w, h] = meta.world_map_bounds_px || [4096, 4096];
+
+    const container = document.getElementById("world-map-container");
+    if (!container) return;
+    container.innerHTML = "";
+
+    const map = L.map(container, {
+      crs: L.CRS.Simple,
+      minZoom: -3,
+      maxZoom: 2,
+      zoomControl: true,
+      attributionControl: false,
+    });
+
+    const bounds = [[0, 0], [h, w]];
+
+    // Try to load the map image; on failure, render a placeholder grid
+    const img = new Image();
+    img.onload = () => {
+      L.imageOverlay(meta.world_map_image, bounds).addTo(map);
+      map.fitBounds(bounds);
+    };
+    img.onerror = () => {
+      // No map yet — show parchment placeholder
+      const placeholder = L.layerGroup();
+      // grid rectangle
+      L.rectangle(bounds, { color: C.border, weight: 2, fillColor: C.panelMute, fillOpacity: 1 }).addTo(placeholder);
+      // Grid lines for orientation
+      for (let x = 0; x <= w; x += 512) {
+        L.polyline([[0, x], [h, x]], { color: C.border, weight: 1, opacity: 0.3 }).addTo(placeholder);
+      }
+      for (let y = 0; y <= h; y += 512) {
+        L.polyline([[y, 0], [y, w]], { color: C.border, weight: 1, opacity: 0.3 }).addTo(placeholder);
+      }
+      placeholder.addTo(map);
+      map.fitBounds(bounds);
+      // Add a "no map yet" notice
+      const notice = L.popup({ closeButton: false, autoClose: false, closeOnClick: false })
+        .setLatLng([h / 2, w / 2])
+        .setContent('<div style="font-family: ' + fonts.body + '; color: ' + C.textMute + '; padding: 4px 8px;">No world map image yet — using grid placeholder. Upload <code>world-map.png</code> to deploy.</div>');
+      notice.openOn(map);
+    };
+    img.src = meta.world_map_image;
+
+    // Custom icon for each marker — using SVG for crisp rendering
+    const makeIcon = (typeIcon, isDmOnly) => L.divIcon({
+      className: "world-marker",
+      html: `<div style="
+        background: ${isDmOnly ? C.secretBg : C.panel};
+        border: 1.5px solid ${isDmOnly ? C.secret : C.gold};
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: ${fonts.display};
+        font-size: 13px;
+        color: ${isDmOnly ? C.secret : C.goldBright};
+        box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      ">${typeIcon}</div>`,
+      iconSize: [24, 24],
+      iconAnchor: [12, 12],
+    });
+
+    // Place markers, respecting layer visibility
+    const typeLookup = {};
+    (world.location_types || []).forEach(t => { typeLookup[t.id] = t; });
+
+    (world.locations || []).forEach(loc => {
+      if (!loc.coords) return;
+      const typeInfo = typeLookup[loc.type] || { icon: "•", default_visible: true };
+      const visible = layerVisibility[loc.type] !== undefined ? layerVisibility[loc.type] : typeInfo.default_visible;
+      if (!visible) return;
+      const [x, y] = loc.coords;
+      const marker = L.marker([h - y, x], { icon: makeIcon(typeInfo.icon, typeInfo.dm_only) }).addTo(map);
+      const popupHtml = `
+        <div style="font-family: ${fonts.body}; color: ${C.text}; padding: 4px; min-width: 180px;">
+          <div style="font-family: ${fonts.display}; font-size: 14px; color: ${C.goldBright}; letter-spacing: 0.04em; margin-bottom: 4px;">${loc.name}</div>
+          <div style="font-size: 11px; color: ${C.textDim}; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">${typeInfo.label || loc.type} · ${loc.region || ""}</div>
+          <div style="font-size: 12px; color: ${C.textMute}; line-height: 1.4; margin-bottom: 8px;">${loc.summary || ""}</div>
+          <button data-loc-id="${loc.id}" style="
+            background: transparent;
+            border: 1px solid ${C.gold};
+            color: ${C.gold};
+            padding: 4px 10px;
+            font-family: ${fonts.display};
+            font-size: 10px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 2px;
+          ">Open Profile →</button>
+        </div>
+      `;
+      marker.bindPopup(popupHtml, { autoPan: true });
+      marker.on("popupopen", (e) => {
+        // Hook the button click since Leaflet popups are detached DOM
+        const btn = e.popup.getElement().querySelector('button[data-loc-id]');
+        if (btn) {
+          btn.onclick = () => onNav("location", loc.id);
+        }
+      });
+    });
+
+    return () => { map.remove(); };
+  }, [mapReady, layerVisibility, onNav]);
+
+  return (
+    <div style={{ height: "100%", display: "flex", flexDirection: "row" }}>
+      {/* Map container */}
+      <div style={{ flex: 1, position: "relative", background: C.panelMute }}>
+        <div id="world-map-container" style={{ height: "100%", width: "100%", background: C.bg }} />
+        {!mapReady && (
+          <div style={{
+            position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center",
+            color: C.textMute, fontFamily: fonts.body, fontSize: 14,
+          }}>
+            Loading map…
+          </div>
+        )}
+      </div>
+      {/* Layer panel */}
+      <div style={{
+        width: 220,
+        background: C.panelMute,
+        borderLeft: `1px solid ${C.border}`,
+        padding: "16px 14px",
+        overflowY: "auto",
+        flexShrink: 0,
+      }}>
+        <div style={{ marginBottom: 12 }}>
+          <Label>Layers</Label>
+        </div>
+        {(world.location_types || []).map(t => {
+          const visible = layerVisibility[t.id] !== undefined ? layerVisibility[t.id] : t.default_visible;
+          return (
+            <div
+              key={t.id}
+              onClick={() => setLayerVisibility(prev => ({ ...prev, [t.id]: !visible }))}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "5px 4px",
+                cursor: "pointer",
+                color: visible ? C.text : C.textDim,
+                fontFamily: fonts.body,
+                fontSize: 13,
+              }}
+            >
+              <div style={{
+                width: 14, height: 14,
+                border: `1.5px solid ${visible ? (t.dm_only ? C.secret : C.gold) : C.textDim}`,
+                background: visible ? (t.dm_only ? C.secret : C.gold) : "transparent",
+                borderRadius: 2,
+                flexShrink: 0,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: 10, fontWeight: "bold", color: C.bg,
+              }}>{visible ? "✓" : ""}</div>
+              <span style={{
+                fontFamily: fonts.display, fontSize: 11, color: t.dm_only ? C.secret : "inherit",
+              }}>{t.icon}</span>
+              <span>{t.label}</span>
+            </div>
+          );
+        })}
+        <div style={{ marginTop: 16, paddingTop: 12, borderTop: `1px solid ${C.border}` }}>
+          <Body size={11} color={C.textDim} mb={0}>
+            Click a marker for details. Trade routes and faction territories will be added in a later phase.
+          </Body>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================================
+// Locations: list + detail
+// ============================================================================
+function LocationsView({ selectedId, onSelect, onNav }) {
+  const [filter, setFilter] = useState("all");
+  const [search, setSearch] = useState("");
+  const types = ["all", ...new Set((world.locations || []).map(l => l.type))];
+  const filtered = (world.locations || [])
+    .filter(l => filter === "all" || l.type === filter)
+    .filter(l => !search || l.name.toLowerCase().includes(search.toLowerCase()) || (l.tags || []).some(t => t.toLowerCase().includes(search.toLowerCase())))
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  const selected = selectedId ? (world.locations || []).find(l => l.id === selectedId) : null;
+
+  if (selected) {
+    return <LocationDetail location={selected} onNav={onNav} onBack={() => onSelect(null)} />;
+  }
+
+  return (
+    <div style={{ overflowY: "auto", padding: "20px 24px", height: "100%", maxWidth: 800, margin: "0 auto" }}>
+      <HeadingDisplay size={24} mb={6}>Locations</HeadingDisplay>
+      <Body color={C.textMute} mb={14} size={14}>{filtered.length} {filtered.length === 1 ? "place" : "places"} in the world.</Body>
+
+      <div style={{ display: "flex", gap: 8, marginBottom: 14, flexWrap: "wrap" }}>
+        <input
+          type="text"
+          placeholder="Search by name or tag…"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          style={{
+            flex: 1, minWidth: 180,
+            background: C.panel, color: C.text,
+            border: `1px solid ${C.border}`, borderRadius: 3,
+            padding: "6px 10px", fontFamily: fonts.body, fontSize: 13,
+          }}
+        />
+      </div>
+
+      <div style={{ display: "flex", gap: 6, marginBottom: 16, flexWrap: "wrap" }}>
+        {types.map(t => (
+          <FilterButton key={t} active={filter === t} onClick={() => setFilter(t)}>{t}</FilterButton>
+        ))}
+      </div>
+
+      {filtered.map(loc => (
+        <Card key={loc.id} bg={C.panel} mb={8} padding={14} onClick={() => onSelect(loc.id)}>
+          <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 4, flexWrap: "wrap" }}>
+            <HeadingDisplay size={16} mb={0}>{loc.name}</HeadingDisplay>
+            <span style={{
+              fontFamily: fonts.display, fontSize: 10, color: C.goldDeep,
+              letterSpacing: "0.1em", textTransform: "uppercase",
+            }}>{loc.type}</span>
+            <span style={{
+              fontFamily: fonts.body, fontSize: 11, color: C.textDim,
+            }}>· {loc.region || "unknown region"}</span>
+          </div>
+          <Body size={13} color={C.textMute} mb={0}>{loc.summary}</Body>
+          {loc.tags && loc.tags.length > 0 && (
+            <div style={{ display: "flex", gap: 4, marginTop: 8, flexWrap: "wrap" }}>
+              {loc.tags.map(t => (
+                <span key={t} style={{
+                  fontSize: 10, fontFamily: fonts.mono, color: C.textDim,
+                  background: C.panelMute, padding: "2px 6px", borderRadius: 2,
+                }}>{t}</span>
+              ))}
+            </div>
+          )}
+        </Card>
+      ))}
+    </div>
+  );
+}
+
+function LocationDetail({ location, onNav, onBack }) {
+  return (
+    <div style={{ overflowY: "auto", padding: "20px 24px", height: "100%", maxWidth: 800, margin: "0 auto" }}>
+      <button onClick={onBack} style={{
+        background: "transparent", border: "none", color: C.textMute,
+        fontFamily: fonts.body, fontSize: 13, cursor: "pointer", marginBottom: 8,
+        padding: 0,
+      }}>← All locations</button>
+
+      <div style={{ marginBottom: 6 }}>
+        <Label color={C.goldDeep}>{location.type}{location.region ? ` · ${location.region}` : ""}</Label>
+      </div>
+      <HeadingDisplay size={28} mb={4}>{location.name}</HeadingDisplay>
+      {location.alt_names && location.alt_names.length > 0 && (
+        <Body size={13} color={C.textDim} italic mb={12}>
+          Also known as: {location.alt_names.join(", ")}
+        </Body>
+      )}
+
+      {location.summary && (
+        <Card bg={C.panel} mb={14} padding={14}>
+          <Body size={15} mb={0}>{location.summary}</Body>
+        </Card>
+      )}
+
+      {location.description && (
+        <FieldBlock label="Description">
+          <Body size={14} mb={0}>{renderLinkedText(location.description, onNav)}</Body>
+        </FieldBlock>
+      )}
+
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 14 }}>
+        {location.population != null && (
+          <Card bg={C.panelMute} padding={12} mb={0}>
+            <Label size={9}>Population</Label>
+            <Body size={13} mb={0}>{location.population}</Body>
+          </Card>
+        )}
+        {location.government && (
+          <Card bg={C.panelMute} padding={12} mb={0}>
+            <Label size={9}>Government</Label>
+            <Body size={13} mb={0}>{location.government}</Body>
+          </Card>
+        )}
+        {location.demographics && (
+          <Card bg={C.panelMute} padding={12} mb={0}>
+            <Label size={9}>Demographics</Label>
+            <Body size={13} mb={0}>{location.demographics}</Body>
+          </Card>
+        )}
+        {location.defenses && (
+          <Card bg={C.panelMute} padding={12} mb={0}>
+            <Label size={9}>Defenses</Label>
+            <Body size={13} mb={0}>{location.defenses}</Body>
+          </Card>
+        )}
+      </div>
+
+      {location.architecture && (
+        <FieldBlock label="Architecture"><Body size={13} mb={0}>{location.architecture}</Body></FieldBlock>
+      )}
+      {location.sensory && (
+        <FieldBlock label="Sights and Sounds"><Body size={13} mb={0} italic>{location.sensory}</Body></FieldBlock>
+      )}
+
+      {location.laws && (
+        <FieldBlock label="Laws and customs"><Body size={13} mb={0}>{location.laws}</Body></FieldBlock>
+      )}
+
+      {location.rumors && location.rumors.length > 0 && (
+        <FieldBlock label="Current rumors">
+          {location.rumors.map((r, i) => (
+            <div key={i} style={{ marginBottom: 8, paddingLeft: 8, borderLeft: `2px solid ${C.warning}55` }}>
+              <Body size={13} mb={2} italic>"{r.text}"</Body>
+              <span style={{ fontFamily: fonts.mono, fontSize: 11, color: C.textDim }}>
+                {r.credibility} · {r.spread}
+              </span>
+            </div>
+          ))}
+        </FieldBlock>
+      )}
+
+      {location.ongoing_problems && location.ongoing_problems.length > 0 && (
+        <FieldBlock label="Ongoing problems">
+          <ul style={{ paddingLeft: 18, margin: 0 }}>
+            {location.ongoing_problems.map((p, i) => (
+              <li key={i} style={{ fontFamily: fonts.body, fontSize: 13, color: C.text, marginBottom: 3 }}>{p}</li>
+            ))}
+          </ul>
+        </FieldBlock>
+      )}
+
+      {location.calendar_holidays && location.calendar_holidays.length > 0 && (
+        <FieldBlock label="Holidays and events">
+          {location.calendar_holidays.map((h, i) => (
+            <div key={i} style={{ fontFamily: fonts.body, fontSize: 13, color: C.text, marginBottom: 3 }}>· {h}</div>
+          ))}
+        </FieldBlock>
+      )}
+
+      {location.religion && (
+        <FieldBlock label="Religion"><Body size={13} mb={0}>{location.religion}</Body></FieldBlock>
+      )}
+
+      {location.hobbies_traditions && (
+        <FieldBlock label="Hobbies and traditions"><Body size={13} mb={0}>{location.hobbies_traditions}</Body></FieldBlock>
+      )}
+
+      {location.social_clubs && location.social_clubs.length > 0 && (
+        <FieldBlock label="Social clubs">
+          {location.social_clubs.map((c, i) => (
+            <div key={i} style={{ fontFamily: fonts.body, fontSize: 13, color: C.text, marginBottom: 3 }}>· {c}</div>
+          ))}
+        </FieldBlock>
+      )}
+
+      {location.factions_present && location.factions_present.length > 0 && (
+        <FieldBlock label="Factions present">
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+            {location.factions_present.map(fid => (
+              <WorldLink key={fid} kind="faction" id={fid} onNav={onNav} />
+            ))}
+          </div>
+        </FieldBlock>
+      )}
+
+      {location.npcs_resident && location.npcs_resident.length > 0 && (
+        <FieldBlock label="Notable NPCs">
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+            {location.npcs_resident.map(nid => (
+              <WorldLink key={nid} kind="npc" id={nid} onNav={onNav} />
+            ))}
+          </div>
+        </FieldBlock>
+      )}
+
+      {location.shops_services && location.shops_services.length > 0 && (
+        <FieldBlock label="Shops and services">
+          {location.shops_services.map((s, i) => (
+            <Card key={i} bg={C.panelMute} mb={8} padding={12}>
+              <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 4 }}>
+                <span style={{ fontFamily: fonts.display, fontSize: 13, color: C.goldBright }}>{s.name}</span>
+                <span style={{ fontFamily: fonts.mono, fontSize: 11, color: C.textDim }}>{s.type}</span>
+              </div>
+              {s.description && <Body size={12} mb={6}>{s.description}</Body>}
+              {s.owner_npc && <Body size={12} color={C.textMute} mb={4}>Run by <WorldLink kind="npc" id={s.owner_npc} onNav={onNav} /></Body>}
+              {s.menu_or_inventory && s.menu_or_inventory.length > 0 && (
+                <ul style={{ paddingLeft: 18, margin: "6px 0 0" }}>
+                  {s.menu_or_inventory.map((item, j) => (
+                    <li key={j} style={{ fontFamily: fonts.body, fontSize: 12, color: C.textMute, marginBottom: 2 }}>
+                      {item.item} <span style={{ color: C.gold }}>— {item.price}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </Card>
+          ))}
+        </FieldBlock>
+      )}
+
+      {location.tags && location.tags.length > 0 && (
+        <FieldBlock label="Tags">
+          <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
+            {location.tags.map(t => (
+              <span key={t} style={{
+                fontSize: 10, fontFamily: fonts.mono, color: C.textDim,
+                background: C.panelMute, padding: "3px 8px", borderRadius: 2,
+              }}>{t}</span>
+            ))}
+          </div>
+        </FieldBlock>
+      )}
+
+      {location.dm_notes && (
+        <SecretBox label="🔒 DM notes">{location.dm_notes}</SecretBox>
+      )}
+    </div>
+  );
+}
+
+function FieldBlock({ label, children }) {
+  return (
+    <div style={{ marginBottom: 14 }}>
+      <div style={{ marginBottom: 6 }}><Label>{label}</Label></div>
+      {children}
+    </div>
+  );
+}
+
+// ============================================================================
+// NPCs: list + detail
+// ============================================================================
+function NpcsView({ selectedId, onSelect, onNav }) {
+  const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState("all");
+
+  const allTags = [...new Set((world.npcs || []).flatMap(n => n.tags || []))].sort();
+  const filtered = (world.npcs || [])
+    .filter(n => filter === "all" || (n.tags || []).includes(filter))
+    .filter(n => !search || n.name.toLowerCase().includes(search.toLowerCase()))
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  const selected = selectedId ? (world.npcs || []).find(n => n.id === selectedId) : null;
+  if (selected) return <NpcDetail npc={selected} onNav={onNav} onBack={() => onSelect(null)} />;
+
+  return (
+    <div style={{ overflowY: "auto", padding: "20px 24px", height: "100%", maxWidth: 800, margin: "0 auto" }}>
+      <HeadingDisplay size={24} mb={6}>NPCs</HeadingDisplay>
+      <Body color={C.textMute} mb={14} size={14}>{filtered.length} characters in the world.</Body>
+
+      <input
+        type="text"
+        placeholder="Search by name…"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        style={{
+          width: "100%", boxSizing: "border-box",
+          background: C.panel, color: C.text,
+          border: `1px solid ${C.border}`, borderRadius: 3,
+          padding: "6px 10px", fontFamily: fonts.body, fontSize: 13,
+          marginBottom: 12,
+        }}
+      />
+
+      {allTags.length > 0 && (
+        <div style={{ display: "flex", gap: 6, marginBottom: 16, flexWrap: "wrap" }}>
+          <FilterButton active={filter === "all"} onClick={() => setFilter("all")}>all</FilterButton>
+          {allTags.map(t => (
+            <FilterButton key={t} active={filter === t} onClick={() => setFilter(t)}>{t}</FilterButton>
+          ))}
+        </div>
+      )}
+
+      {filtered.map(npc => (
+        <Card key={npc.id} bg={C.panel} mb={8} padding={14} onClick={() => onSelect(npc.id)}>
+          <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 4, flexWrap: "wrap" }}>
+            <HeadingDisplay size={16} mb={0}>{npc.name}</HeadingDisplay>
+            <span style={{
+              fontFamily: fonts.body, fontSize: 12, color: C.textDim,
+            }}>{npc.race || ""}{npc.occupation ? ` · ${npc.occupation}` : ""}</span>
+          </div>
+          <Body size={12} color={C.textMute} mb={4}>{npc.current_status}</Body>
+          {npc.tags && (
+            <div style={{ display: "flex", gap: 4, flexWrap: "wrap", marginTop: 6 }}>
+              {(npc.tags || []).slice(0, 4).map(t => (
+                <span key={t} style={{
+                  fontSize: 10, fontFamily: fonts.mono, color: C.textDim,
+                  background: C.panelMute, padding: "2px 6px", borderRadius: 2,
+                }}>{t}</span>
+              ))}
+            </div>
+          )}
+        </Card>
+      ))}
+    </div>
+  );
+}
+
+function NpcDetail({ npc, onNav, onBack }) {
+  return (
+    <div style={{ overflowY: "auto", padding: "20px 24px", height: "100%", maxWidth: 800, margin: "0 auto" }}>
+      <button onClick={onBack} style={{
+        background: "transparent", border: "none", color: C.textMute,
+        fontFamily: fonts.body, fontSize: 13, cursor: "pointer", marginBottom: 8,
+        padding: 0,
+      }}>← All NPCs</button>
+
+      <div style={{ marginBottom: 6 }}>
+        <Label color={C.goldDeep}>{npc.race || "unknown race"}{npc.occupation ? ` · ${npc.occupation}` : ""}</Label>
+      </div>
+      <HeadingDisplay size={28} mb={4}>{npc.name}</HeadingDisplay>
+      {npc.alt_names && npc.alt_names.length > 0 && (
+        <Body size={13} color={C.textDim} italic mb={4}>Also known as: {npc.alt_names.join(", ")}</Body>
+      )}
+      <Body size={14} color={C.warning} mb={14}>{npc.current_status}</Body>
+
+      {npc.physical_description && (
+        <FieldBlock label="Physical description"><Body size={14} mb={0}>{npc.physical_description}</Body></FieldBlock>
+      )}
+      {npc.voice_notes && (
+        <FieldBlock label="Voice"><Body size={13} mb={0} italic>{npc.voice_notes}</Body></FieldBlock>
+      )}
+      {npc.mannerisms && (
+        <FieldBlock label="Mannerisms"><Body size={13} mb={0}>{npc.mannerisms}</Body></FieldBlock>
+      )}
+      {npc.personality && (
+        <FieldBlock label="Personality"><Body size={13} mb={0}>{npc.personality}</Body></FieldBlock>
+      )}
+
+      {(npc.wants || npc.fears) && (
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 14 }}>
+          {npc.wants && (
+            <Card bg={C.panelMute} padding={12} mb={0}>
+              <Label size={9}>Wants</Label>
+              <Body size={13} mb={0}>{npc.wants}</Body>
+            </Card>
+          )}
+          {npc.fears && (
+            <Card bg={C.panelMute} padding={12} mb={0}>
+              <Label size={9}>Fears</Label>
+              <Body size={13} mb={0}>{npc.fears}</Body>
+            </Card>
+          )}
+        </div>
+      )}
+
+      {npc.would_die_for && (
+        <FieldBlock label="Would die for"><Body size={13} mb={0}>{npc.would_die_for}</Body></FieldBlock>
+      )}
+
+      {npc.current_location && (
+        <FieldBlock label="Currently at">
+          <WorldLink kind="location" id={npc.current_location} onNav={onNav} />
+        </FieldBlock>
+      )}
+
+      {npc.relationships && npc.relationships.length > 0 && (
+        <FieldBlock label="Relationships">
+          {npc.relationships.map((rel, i) => (
+            <Card key={i} bg={C.panelMute} mb={6} padding={10}>
+              <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap", marginBottom: 4 }}>
+                <WorldLink kind="npc" id={rel.npc_id} onNav={onNav} />
+                <span style={{ fontFamily: fonts.body, fontSize: 12, color: C.textDim }}>
+                  {rel.type}{rel.strength ? ` · ${rel.strength}` : ""}
+                </span>
+              </div>
+              {rel.notes && <Body size={12} color={C.textMute} mb={0}>{rel.notes}</Body>}
+            </Card>
+          ))}
+        </FieldBlock>
+      )}
+
+      {npc.factions && npc.factions.length > 0 && (
+        <FieldBlock label="Factions">
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+            {npc.factions.map(fid => (
+              <WorldLink key={fid} kind="faction" id={fid} onNav={onNav} />
+            ))}
+          </div>
+        </FieldBlock>
+      )}
+
+      {npc.tags && npc.tags.length > 0 && (
+        <FieldBlock label="Tags">
+          <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
+            {npc.tags.map(t => (
+              <span key={t} style={{
+                fontSize: 10, fontFamily: fonts.mono, color: C.textDim,
+                background: C.panelMute, padding: "3px 8px", borderRadius: 2,
+              }}>{t}</span>
+            ))}
+          </div>
+        </FieldBlock>
+      )}
+
+      {(npc.first_introduced || npc.last_seen_by_party) && (
+        <FieldBlock label="History with the party">
+          {npc.first_introduced && <Body size={12} mb={2} color={C.textMute}>First seen: {npc.first_introduced}</Body>}
+          {npc.last_seen_by_party && <Body size={12} mb={0} color={C.textMute}>Last seen: {npc.last_seen_by_party}</Body>}
+        </FieldBlock>
+      )}
+
+      {npc.secret_belief && (
+        <SecretBox label="🔒 Secret belief">{npc.secret_belief}</SecretBox>
+      )}
+      {npc.secret_knowledge && (
+        <SecretBox label="🔒 Secret knowledge">{npc.secret_knowledge}</SecretBox>
+      )}
+      {npc.dm_notes && (
+        <SecretBox label="🔒 DM notes">{npc.dm_notes}</SecretBox>
+      )}
+    </div>
+  );
+}
+
+// ============================================================================
+// Factions: list + detail
+// ============================================================================
+function FactionsView({ selectedId, onSelect, onNav }) {
+  const filtered = (world.factions || []).sort((a, b) => a.name.localeCompare(b.name));
+  const selected = selectedId ? (world.factions || []).find(f => f.id === selectedId) : null;
+
+  if (selected) return <FactionDetail faction={selected} onNav={onNav} onBack={() => onSelect(null)} />;
+
+  return (
+    <div style={{ overflowY: "auto", padding: "20px 24px", height: "100%", maxWidth: 800, margin: "0 auto" }}>
+      <HeadingDisplay size={24} mb={6}>Factions</HeadingDisplay>
+      <Body color={C.textMute} mb={16} size={14}>{filtered.length} organizations operating in the world.</Body>
+
+      {filtered.map(f => (
+        <Card key={f.id} bg={C.panel} mb={8} padding={14} onClick={() => onSelect(f.id)}>
+          <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 4, flexWrap: "wrap" }}>
+            <HeadingDisplay size={16} mb={0}>{f.name}</HeadingDisplay>
+            <span style={{
+              fontFamily: fonts.display, fontSize: 10,
+              color: f.alignment === "evil" ? C.secret : f.alignment === "good" ? C.success : C.textDim,
+              letterSpacing: "0.1em", textTransform: "uppercase",
+            }}>{f.alignment}</span>
+            <span style={{ fontFamily: fonts.body, fontSize: 11, color: C.textDim }}>· {f.scope}</span>
+          </div>
+          {f.current_state && <Body size={12} color={C.textMute} mb={0}>{f.current_state}</Body>}
+        </Card>
+      ))}
+    </div>
+  );
+}
+
+function FactionDetail({ faction, onNav, onBack }) {
+  return (
+    <div style={{ overflowY: "auto", padding: "20px 24px", height: "100%", maxWidth: 800, margin: "0 auto" }}>
+      <button onClick={onBack} style={{
+        background: "transparent", border: "none", color: C.textMute,
+        fontFamily: fonts.body, fontSize: 13, cursor: "pointer", marginBottom: 8,
+        padding: 0,
+      }}>← All factions</button>
+
+      <div style={{ marginBottom: 6 }}>
+        <Label color={C.goldDeep}>{faction.type} · {faction.scope}</Label>
+      </div>
+      <HeadingDisplay size={28} mb={6}>{faction.name}</HeadingDisplay>
+      <span style={{
+        fontFamily: fonts.display, fontSize: 11,
+        color: faction.alignment === "evil" ? C.secret : faction.alignment === "good" ? C.success : C.textDim,
+        letterSpacing: "0.12em", textTransform: "uppercase",
+        background: C.panelMute, padding: "3px 8px", borderRadius: 2,
+        display: "inline-block", marginBottom: 14,
+      }}>{faction.alignment}</span>
+
+      {faction.current_state && (
+        <FieldBlock label="Current state"><Body size={14} mb={0}>{faction.current_state}</Body></FieldBlock>
+      )}
+
+      {faction.leader_npc && (
+        <FieldBlock label="Leader">
+          <WorldLink kind="npc" id={faction.leader_npc} onNav={onNav} />
+        </FieldBlock>
+      )}
+
+      {faction.goals && faction.goals.length > 0 && (
+        <FieldBlock label="Goals">
+          {faction.goals.map((g, i) => (
+            <div key={i} style={{ marginBottom: 6, paddingLeft: 8, borderLeft: `2px solid ${g.priority === "primary" ? C.gold : C.border}` }}>
+              <Body size={13} mb={0}>{g.goal}</Body>
+              <span style={{ fontFamily: fonts.mono, fontSize: 10, color: C.textDim, textTransform: "uppercase" }}>{g.priority}</span>
+            </div>
+          ))}
+        </FieldBlock>
+      )}
+
+      {faction.methods && (
+        <FieldBlock label="Methods"><Body size={13} mb={0}>{faction.methods}</Body></FieldBlock>
+      )}
+
+      {faction.base_of_operations && (
+        <FieldBlock label="Base of operations">
+          <WorldLink kind="location" id={faction.base_of_operations} onNav={onNav} />
+        </FieldBlock>
+      )}
+
+      {faction.members && faction.members.length > 0 && (
+        <FieldBlock label="Members">
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+            {faction.members.map(nid => (
+              <WorldLink key={nid} kind="npc" id={nid} onNav={onNav} />
+            ))}
+          </div>
+        </FieldBlock>
+      )}
+
+      {faction.recent_actions && faction.recent_actions.length > 0 && (
+        <FieldBlock label="Recent actions">
+          {faction.recent_actions.map((a, i) => (
+            <div key={i} style={{ marginBottom: 6 }}>
+              <span style={{ fontFamily: fonts.mono, fontSize: 11, color: C.gold }}>{a.date}</span>
+              <Body size={13} mb={0}>{a.action}</Body>
+            </div>
+          ))}
+        </FieldBlock>
+      )}
+
+      {faction.known_to_party && (
+        <FieldBlock label="Known to the party"><Body size={13} mb={0}>{faction.known_to_party}</Body></FieldBlock>
+      )}
+
+      {faction.tags && faction.tags.length > 0 && (
+        <FieldBlock label="Tags">
+          <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
+            {faction.tags.map(t => (
+              <span key={t} style={{
+                fontSize: 10, fontFamily: fonts.mono, color: C.textDim,
+                background: C.panelMute, padding: "3px 8px", borderRadius: 2,
+              }}>{t}</span>
+            ))}
+          </div>
+        </FieldBlock>
+      )}
+
+      {faction.dm_notes && (
+        <SecretBox label="🔒 DM notes">{faction.dm_notes}</SecretBox>
+      )}
+    </div>
+  );
+}
+
+// ============================================================================
+// Timeline
+// ============================================================================
+function TimelineView({ onNav }) {
+  const events = [...(world.events || [])];
+  return (
+    <div style={{ overflowY: "auto", padding: "20px 24px", height: "100%", maxWidth: 800, margin: "0 auto" }}>
+      <HeadingDisplay size={24} mb={6}>Timeline</HeadingDisplay>
+      <Body color={C.textMute} mb={20} size={14}>{events.length} recorded events.</Body>
+
+      {events.map(evt => (
+        <Card key={evt.id} bg={C.panel} mb={10} padding={14}>
+          <div style={{ marginBottom: 4 }}>
+            <span style={{ fontFamily: fonts.mono, fontSize: 11, color: C.gold }}>{evt.in_world_date}</span>
+            {evt.real_world_session && (
+              <span style={{ fontFamily: fonts.mono, fontSize: 10, color: C.textDim, marginLeft: 8 }}>
+                ({evt.real_world_session})
+              </span>
+            )}
+          </div>
+          <HeadingDisplay size={15} mb={4}>{evt.title}</HeadingDisplay>
+          <Body size={13} mb={evt.actors || evt.locations ? 8 : 0}>{evt.description}</Body>
+
+          {evt.actors && evt.actors.length > 0 && (
+            <div style={{ marginBottom: 4 }}>
+              <span style={{ fontFamily: fonts.display, fontSize: 9, color: C.textDim, letterSpacing: "0.1em", textTransform: "uppercase", marginRight: 8 }}>Actors:</span>
+              {evt.actors.map((id, i) => (
+                <span key={id}>
+                  <WorldLink kind="npc" id={id} onNav={onNav} />
+                  {i < evt.actors.length - 1 ? ", " : ""}
+                </span>
+              ))}
+            </div>
+          )}
+          {evt.locations && evt.locations.length > 0 && (
+            <div style={{ marginBottom: 4 }}>
+              <span style={{ fontFamily: fonts.display, fontSize: 9, color: C.textDim, letterSpacing: "0.1em", textTransform: "uppercase", marginRight: 8 }}>Locations:</span>
+              {evt.locations.map((id, i) => (
+                <span key={id}>
+                  <WorldLink kind="location" id={id} onNav={onNav} />
+                  {i < evt.locations.length - 1 ? ", " : ""}
+                </span>
+              ))}
+            </div>
+          )}
+          {evt.factions && evt.factions.length > 0 && (
+            <div>
+              <span style={{ fontFamily: fonts.display, fontSize: 9, color: C.textDim, letterSpacing: "0.1em", textTransform: "uppercase", marginRight: 8 }}>Factions:</span>
+              {evt.factions.map((id, i) => (
+                <span key={id}>
+                  <WorldLink kind="faction" id={id} onNav={onNav} />
+                  {i < evt.factions.length - 1 ? ", " : ""}
+                </span>
+              ))}
+            </div>
+          )}
+          {evt.known_to_party === false && (
+            <div style={{ marginTop: 6 }}>
+              <span style={{
+                fontFamily: fonts.mono, fontSize: 10, color: C.secret,
+                background: C.secretBg, padding: "2px 6px", borderRadius: 2,
+              }}>Off-screen / DM only</span>
+            </div>
+          )}
+        </Card>
+      ))}
+    </div>
+  );
+}
+
+// ============================================================================
+// Search — universal across all world entities
+// ============================================================================
+function SearchView({ onNav }) {
+  const [query, setQuery] = useState("");
+  const index = buildSearchIndex();
+  const q = query.trim().toLowerCase();
+  const results = q.length === 0 ? [] : index.filter(item => item.blob.includes(q));
+
+  const grouped = {
+    location: results.filter(r => r.kind === "location"),
+    npc: results.filter(r => r.kind === "npc"),
+    faction: results.filter(r => r.kind === "faction"),
+    event: results.filter(r => r.kind === "event"),
+  };
+
+  return (
+    <div style={{ overflowY: "auto", padding: "20px 24px", height: "100%", maxWidth: 800, margin: "0 auto" }}>
+      <HeadingDisplay size={24} mb={6}>Search the world</HeadingDisplay>
+      <Body color={C.textMute} mb={14} size={14}>Find anything by name, tag, or description.</Body>
+
+      <input
+        type="text"
+        placeholder="Type to search…"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        autoFocus
+        style={{
+          width: "100%", boxSizing: "border-box",
+          background: C.panel, color: C.text,
+          border: `1px solid ${C.gold}`, borderRadius: 3,
+          padding: "10px 14px", fontFamily: fonts.body, fontSize: 15,
+          marginBottom: 16,
+        }}
+      />
+
+      {q.length > 0 && results.length === 0 && (
+        <Body color={C.textMute} mb={0}>No results for "{query}".</Body>
+      )}
+
+      {Object.entries(grouped).map(([kind, items]) => {
+        if (!items.length) return null;
+        const label = kind === "location" ? "Locations" : kind === "npc" ? "NPCs" : kind === "faction" ? "Factions" : "Events";
+        return (
+          <div key={kind} style={{ marginBottom: 18 }}>
+            <div style={{ marginBottom: 8 }}>
+              <Label>{label} ({items.length})</Label>
+            </div>
+            {items.map(item => (
+              <Card key={`${item.kind}-${item.id}`} bg={C.panel} mb={6} padding={10} onClick={() => onNav(item.kind, item.id)}>
+                <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+                  <span style={{ fontFamily: fonts.display, fontSize: 14, color: C.goldBright }}>{item.name}</span>
+                  {item.type && <span style={{ fontFamily: fonts.mono, fontSize: 10, color: C.textDim }}>{item.type}</span>}
+                  {item.region && <span style={{ fontFamily: fonts.body, fontSize: 11, color: C.textDim }}>· {item.region}</span>}
+                </div>
+              </Card>
+            ))}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+
 function TopNav({ page, onNav }) {
   const tabs = [
     { id: "overview", label: "Overview", icon: "◆" },
@@ -958,6 +2096,7 @@ function TopNav({ page, onNav }) {
     { id: "skills", label: "Skills", icon: "◇" },
     { id: "scenery", label: "Scenery", icon: "❡" },
     { id: "tracker", label: "Tracker", icon: "✓" },
+    { id: "world", label: "World", icon: "✺" },
   ];
  
   return (
@@ -1099,8 +2238,8 @@ export default function App() {
             resetSession={resetSession}
           />
         )}
+        {page === "world" && <WorldPage />}
       </div>
     </div>
   );
 }
- 
