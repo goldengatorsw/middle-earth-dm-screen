@@ -671,7 +671,7 @@
         "ADRIK'S PENDANT — SPECIFIC TRIGGER: At the moment the party crests a ridge and FIRST sees the tower silhouette, the pendant goes warm in Adrik's hand simultaneously. Christian decides whether/how to react. Let him steer.",
         "PRISONER CLOCK: If Survival < 15, forced camp = 6-8 hours lost = 1 of the 9 pit prisoners may not survive overnight. The party has to choose: push on without sleep, or pay the cost.",
         "THE LETTER (Nat 20 only): Half-page parchment, broken black wax seal with bird-of-prey silhouette (matches harness mark from S3A). Mostly Westron, switches to Black Speech mid-letter. Tyr can attempt INT (Investigation) DC 14 to translate Black Speech (he glimpsed it in Eli/booklet thread).",
-        "LETTER PAYLOAD: Don't explain to players. Foreshadowing is what the letter IS. Key beats embedded: (1) shipments north — supply chain. (2) Maldwin's pact was one of many ('older arrangements in the swamps... one of the smaller pacts has gone quiet'). (3) Pharazôr has agents in Lake Town's council ('the new agreement at the lake-town progresses... draw the bait in') — DIRECTLY connects to Palantír mission. (4) Pharazôr is autonomous from his master ('He has not written in eight moons... what He does not know is the second matter') — Pharazôr is hiding the shard agenda from Gothmog. (5) 'Ph.' signature — players may connect to Pharazôr later.",
+        "LETTER PAYLOAD: Don't explain to players. Foreshadowing is what the letter IS. Key beats embedded: (1) shipments north — supply chain. (2) Maldwin's pact was one of many AND Pharazôr cleaned up the village himself ('As you may know one of the smaller arrangements... I have already attended to the matter, and the loose ends are being collected'). The line sets up Mez and the prisoners they'll find in the pit. (3) Pharazôr has agents in Lake Town's council ('the new agreement at the lake-town progresses... draw the bait in') — DIRECTLY connects to Palantír mission. (4) Pharazôr is autonomous from his master ('He has not written in eight moons... what He does not know is the second matter') — Pharazôr is hiding the shard agenda from Gothmog. (5) 'Ph.' signature — players may connect to Pharazôr later.",
         "ATMOSPHERIC BEATS (use 2-3): Wind dies suddenly then returns. Scrap of leather harness in scrub. Distant view of gully far below. Single bat call far north, nothing answers. Tyr's exhaustion shows (hands on knees, Carl helps wordlessly).",
         "SESSION-END OPTION: If forced camp (Survival < 15) and table is running long, end session at camp as cliffhanger. Resume at dawn next session."
       ],
@@ -704,7 +704,7 @@
         }
       ],
       "dialogueSeeds": [
-        "[THE LETTER — read on Nat 20 Survival] Cousin — The work continues as agreed. The shipments north have not been disturbed and the older arrangements in the swamps hold for the moment, though I am told one of the smaller pacts has gone quiet. Look into it when you can spare the time. There is no urgency. The villagers there will not last another two winters at the current rate, and the matter resolves itself either way.",
+        "[THE LETTER — read on Nat 20 Survival] Cousin — The work continues as agreed. The shipments north have not been disturbed. As you may know one of the smaller arrangements in the swamps has gone quiet — I have already attended to the matter, and the loose ends are being collected. There is no urgency on your end. What remains of the pact will not last another two winters, and the matter resolves itself either way.",
         "[LETTER continued] The new agreement at the lake-town progresses. Their council remains useful. I expect to draw the bait in within the season.",
         "[LETTER — Black Speech section, alien script. Tyr INT DC 14 to translate.] He has not written in eight moons. The hand-that-holds knows what we built and approves it; what He does not know is the second matter. Keep it so. Burn this when read.",
         "[LETTER signature, back to Westron] — yours in the long work, Ph."
@@ -847,73 +847,138 @@
       "id": "scene-7",
       "number": "7",
       "title": "The Three Levels",
-      "subtitle": "Lair exploration",
-      "trigger": "The party enters the tower OR the cave OR the workings.",
-      "location": "Amon Lhuin and below, in three vertically stacked sections.",
-      "lighting": "Variable per level.",
-      "runtime": "45–75 minutes real-time depending on what they explore.",
-      "readAloud": null,
-      "purpose": "Three thematic floors with different feels. Tyr's floor (watchtower), neutral middle (cave), Adrik's floor (workings).",
+      "subtitle": "Lair exploration — watchtower, cave, workings",
+      "trigger": "End of Scene 6. Party has chosen approach (stealth/open/wait/etc.) and is entering the lair.",
+      "location": "Amon Lhuin and beneath. Three vertically stacked sections — watchtower (7.1), cave roost (7.2), dwarven workings (7.3).",
+      "lighting": "Full night, waxing moon. Inside: lamp-lit on Level 1, bat-darkness on Level 2, deep cold stone on Level 3.",
+      "runtime": "45–75 minutes real-time, depending on which levels and how they handle each",
+      "readAloud": "[ENTERING TOWER DOOR — Level 7.1] The door of the tower is iron-banded oak, weathered to grey-black. It is unlocked. Inside, the air is dry and cold and smells of woodsmoke. The ground floor is a guardroom — three pallets along the far wall, a cold hearth in the corner, weapons-rack with three iron-headed greataxes leaning. Two orcs sit at a wooden table playing a game with carved bone tiles. A third snores on the nearest pallet. None of them have noticed the door open.\n\n[ENTERING CAVE MOUTH — Level 7.2] The cave opens into a vault of natural rock perhaps thirty feet across at its widest. The ceiling is high and uneven — twenty feet in places, forty in others. The smell is the first thing — guano, ammonia, and underneath it, the sweet-sour rot of meat. The light from outside fades quickly. Two, perhaps three, large shapes hang from outcrops on the far wall, breathing slowly. They are asleep. For now. A vertical iron-runged shaft climbs into the rock above you, leading up toward the tower. Across the cavern, a wider passage descends.\n\n[ENTERING DWARVEN DOORWAY — Level 7.3] The passage opens into a chamber that doesn't belong to the upper mountain at all. The stone is cut, not natural — square pillars rise to a flat ceiling perhaps twenty feet up. Dwarven work, but old, OLD. There is a dry well in the center of the chamber. Three side galleries open off this room, and a fourth passage continues deeper. The air is colder here. Adrik's pendant pulls toward the leftmost gallery. It is no longer a feeling — it is a force. The cloth he wrapped around it is beginning to scorch.",
+      "purpose": "1) Lair exploration across three vertically-stacked sub-levels. 2) Orc combat in the watchtower. Bat stealth in the cave. Shard recovery + prisoner rescue in the workings. 3) Captive PC reunion (default at the pit; alternate if escaped). 4) Pharazôr can be confronted by ascending to Level 1 floor 3 → triggers Scene 8.",
       "dmNotes": [
-        "LEVEL 1 — WATCHTOWER (Pharazôr's domain): Three stories. Ground floor: wrecked guardroom with the orc lair guards (NPC #3). Second floor: long-empty barracks; broken arrow-slits face the saddle. Third floor: Pharazôr's chambers — books in three languages including Adûnaic, a cold hearth, a chair that faces the north window, a desk with sealed correspondence. The lit window the party saw from outside is here. Orc combat possible if guards aren't bypassed (Stealth DC 14 to slip past). Pharazôr is on the third floor — if reached, GO TO SCENE 8. Letters on the desk (Investigation DC 12): up to three sealed letters, addressed in Westron to 'Brother Mehlin,' 'the Western Pact-Keeper,' and one untitled. Each implies a different Pharazôr-style operation elsewhere. NO Gothmog name in any of them.",
-        "LEVEL 2 — CAVE (the bat roost): A natural cavern beneath the tower's foundation. Bats live here when not on patrol — currently 2–3 sleeping on rock outcrops, plus the wounded survivors from Scene 3 if the party didn't kill them all. Between the cave and the tower above: a narrow vertical shaft with iron rungs, descending. Between the cave and the dwarven workings below: a passage, partly natural, partly widened by old picks. Stealth (DC 15) to move through without waking bats. The shaft to the tower is Pharazôr's 'front door' for couriers.",
-        "LEVEL 3 — DWARVEN WORKINGS (the shard): Down a stone passage, opening into what was once a small mining hold. Pillared chambers. A dry well in the center of one. Side galleries where the dwarves cut at the rock. The pit (Scene 5A) is at the far end of one of the larger chambers — cut originally as a refuse shaft, repurposed by Pharazôr. THE SHARD: at the end of one of the side galleries, sealed behind a wedged stone in a small alcove. Adrik's pendant points unmistakably here. The wedge is old. Investigating (DC 12) reveals that someone wedged it INTENTIONALLY — recently — sealing this alcove off, using a heavy stone and a hammered iron pin. Pharazôr did this. He believed it secure.",
-        "REMOVING THE WEDGE: Strength check DC 17, OR tools/time/leverage to extract it without breaking the alcove (10 minutes, no roll).",
-        "INSIDE THE ALCOVE: A pale fragment of crystal-like substance, about the size of a thumb. Not glowing in any visible way. Cold to the touch except where Adrik's pendant is — there, where the two come close, both objects warm to body temperature and resonate. Christian and Adrik will feel it.",
-        "SHARD MECHANICS: Undefined. Christian decides what shards do. For Session 19: small, portable, palpably significant, mechanically inert. Adrik can pocket it. He will know when more shards are near. If asked what it does NOW: nothing visible. If Christian asks for an Arcana check, let him roll — and if he hits 20+, give him a single sentence of his choice, not yours: 'You know one true thing about this object — what is it?' Christian writes the lore."
+        "STRUCTURE: Scene 7 is three sub-levels (7.1 watchtower, 7.2 cave roost, 7.3 dwarven workings). Three entry points: tower door (best for confrontation/intel), cave mouth (best for stealth/fastest path to shard), dwarven doorway (direct shard recovery + prisoner rescue first).",
+        "ADRIK'S PENDANT: Now BURNING through cloth. Once below ground level, pulls visibly toward a specific side gallery in the workings. Adrik can follow it like a compass.",
+        "CAPTIVE REUNION: Default = at the pit in 7.3. Alternate = if captive escaped pit (Athletics 18+ in 5A), they may be wandering 7.1 or 7.2 — DM places them where dramatically interesting.",
+        "LEVEL 7.1 TOWER — 3 ORCS standard MM stats: AC 13, HP 15, STR 16/+3, Greataxe +5 (1d12+3), 3 Javelins +5 (1d6+3, range 30/120), Aggressive bonus action. Two awake at table, one asleep. Stealth = surprise round; open approach = orcs alert and defensive.",
+        "LEVEL 7.1 — Pharazôr will hear combat after ~4 rounds (sounds carry). He'll descend at start of round 5 unless party finishes orcs first. If he descends → Scene 8 in unusual combat-state circumstances.",
+        "LEVEL 7.1 — Orcs WILL NOT call up to Pharazôr — they're conditioned not to disturb him during evening recitation. They fight to ~half HP each (8), then attempt to flee.",
+        "LEVEL 7.1 NAT 20 GUARDROOM SEARCH = MAJOR PLANT: A burned letter fragment in the hearth: 'if the dwarf comes asking, do not engage. Withdraw. He is not to be killed under any condition. Bring him to me.' Pharazôr knows about Adrik. Standing orders to capture, not kill.",
+        "LEVEL 7.1 NAT 20 DESK = MASSIVE PLANT: Folded map under journal — Middle-earth with seven small marks. Five crossed out. Two remain — one here in the Misty Mountains, one east of the Lonely Mountain. These are shard locations. Pharazôr has been hunting them.",
+        "LEVEL 7.2 CAVE — Bat count depends on Scene 3 outcome. Use D&D Beyond LOTR Giant Bat statblock. Stealth DC 15 group/rogue-leads. Combat noise alerts orcs above (1-2 reinforcements descend shaft in 2-3 rounds — DM call).",
+        "LEVEL 7.2 NAT 20 STEALTH = ATMOSPHERIC PLANT: Scratches in cave wall where SOMETHING much larger than the current bats has slept in past. Roost was once home to a creature several times the size of the Alpha. Don't explain.",
+        "LEVEL 7.3 LAYOUT: Main pillared chamber with dry well center. THREE side galleries (LEFT = SHARD ALCOVE, CENTER = TOOLS incl. iron lever for wedge, RIGHT = BONES incl. elf-bone on Investigation 18). Deeper passage = PIT CHAMBER (Mez & 9 prisoners).",
+        "LEVEL 7.3 SHARD ALCOVE: Wedged stone (Investigation DC 12 to verify it's recent + intentional). Removal: STR DC 17 brute force, OR tools/leverage from CENTER gallery + 10 min no roll.",
+        "LEVEL 7.3 PIT REUNION: Domed chamber, ceiling cracked. Pit 20×20 ft. Mez looks up. Pause for player reaction — Adrik's moment if he was abducted. Use Mez dialogue seeds from Scene 5A.",
+        "LEVEL 7.3 PRISONER EXTRACTION: Rope = 1 round per person. Most prisoners too weak to climb (Athletics DC 15 they won't make). Two need to be carried. Rescuing all 9 = ~10 in-world minutes. Significant time cost — Pharazôr could descend during this.",
+        "SHARD RECOVERY MOMENT: Use the read-aloud passage. Pendant goes 'still and warm.' Both objects 'hum' faintly. If Christian asks Arcana check and hits 20+, HE writes one true sentence about the shard — accept as canon. This is intentional; shards are Adrik's narrative thread."
       ],
       "skillChecks": [
         {
-          "skill": "Stealth (bypass tower guards)",
-          "dc": 14,
-          "context": "Slip past the orcs on the ground floor.",
+          "skill": "Investigation (orc guardroom search — Level 7.1)",
+          "context": "Post-combat or after stealth bypass.",
           "tiers": [
             {
-              "range": "DC 14",
-              "outcome": "Bypass guards without combat."
-            }
-          ]
-        },
-        {
-          "skill": "Stealth (bypass cave bats)",
-          "dc": 15,
-          "context": "Move through the bat roost without waking sleeping bats.",
-          "tiers": [
-            {
-              "range": "DC 15",
-              "outcome": "Pass without combat."
-            }
-          ]
-        },
-        {
-          "skill": "Investigation (Pharazôr's desk)",
-          "dc": 12,
-          "context": "Read sealed letters on his desk.",
-          "tiers": [
-            {
-              "range": "DC 12",
-              "outcome": "Three sealed letters: 'Brother Mehlin,' 'the Western Pact-Keeper,' and one untitled. Implies wider operations. NO Gothmog name."
-            }
-          ]
-        },
-        {
-          "skill": "Strength (remove shard wedge)",
-          "dc": 17,
-          "context": "Brute-force the wedged stone sealing the alcove.",
-          "tiers": [
-            {
-              "range": "DC 17",
-              "outcome": "Wedge dislodges. Shard accessible."
+              "range": "< 10",
+              "outcome": "Three pallets, weapons rack, cold hearth, table with bone-tile game. Nothing useful."
             },
             {
-              "range": "Alternative",
-              "outcome": "Tools + 10 minutes, no roll."
+              "range": "10–14",
+              "outcome": "Small chest with hard rations, a few coppers, two skins of fermented goat-milk."
+            },
+            {
+              "range": "15–19",
+              "outcome": "All the above. Plus: under one pallet, hide pouch with 2d6 gold, three carved bone tokens — black bone, pierced through, leather thongs. (Pharazôr's mark of service for ground troops.)"
+            },
+            {
+              "range": "20+",
+              "outcome": "All the above. Plus: a roughly drawn map etched into the underside of the table — three peaks, tower marked with circle, arrows pointing east toward Lake Town and south toward swamp village ruins."
+            },
+            {
+              "range": "Nat 20",
+              "outcome": "All the above. Plus: in the cold hearth, partially burned remains of a sealed letter. Legible fragment: 'if the dwarf comes asking, do not engage. Withdraw. He is not to be killed under any condition. Bring him to me.' (Pharazôr knows about Adrik. Standing orders to CAPTURE, not kill. MAJOR plant for future arcs.)"
             }
           ]
         },
         {
-          "skill": "Investigation (the pit)",
-          "context": "Examining the pit interior — 5-tier table.",
+          "skill": "Investigation (Pharazôr's desk — Level 7.1 floor 3)",
+          "context": "Only if reached without Pharazôr noticing.",
+          "tiers": [
+            {
+              "range": "< 10",
+              "outcome": "A desk with parchment scattered across it. Quills. Ink. Nothing immediately useful."
+            },
+            {
+              "range": "10–14",
+              "outcome": "Three sealed letters. One to 'Cousin,' one to a name in unknown script, one untitled. Wax seals all bear bird-of-prey silhouette."
+            },
+            {
+              "range": "15–19",
+              "outcome": "All the above. Plus: the 'Cousin' letter is a duplicate of the letter the party may have already found on the trail. Confirms it was sent by whoever sits at this desk."
+            },
+            {
+              "range": "20+",
+              "outcome": "All the above. Plus: in desk drawer, leather-bound journal in Westron and Black Speech. Most recent entry: 'The dwarf has been seen on the High Pass. The pendant calls. Eight moons since silence from above; perhaps the second matter is finally stirring. I will be patient.'"
+            },
+            {
+              "range": "Nat 20",
+              "outcome": "All the above. Plus: folded map under journal — Middle-earth with seven small marks. Five crossed out. Two remain — one here, one east of the Lonely Mountain. (Shard locations. Pharazôr has been hunting them. MASSIVE plant.)"
+            }
+          ]
+        },
+        {
+          "skill": "Stealth (cave traversal — Level 7.2)",
+          "context": "Group check or rogue-leads through the bat roost.",
+          "tiers": [
+            {
+              "range": "< 10",
+              "outcome": "A bat wakes immediately. Roll initiative. Other bats wake on round 2."
+            },
+            {
+              "range": "10–14",
+              "outcome": "One bat stirs but doesn't wake. Halfway through, another stirs. Tension rises. Party makes it through but next attempt to traverse this cave (returning) at disadvantage."
+            },
+            {
+              "range": "15–19",
+              "outcome": "Party traverses without waking the bats. Clean pass."
+            },
+            {
+              "range": "20+",
+              "outcome": "All the above. Plus: lead PC notices Adrik's pendant aimed at one bat — a courier just back from a run, with another sealed letter still attached to its harness. Can be retrieved silently on second Stealth DC 15."
+            },
+            {
+              "range": "Nat 20",
+              "outcome": "All the above. Plus: lead PC sees, in the cave wall, scratches where SOMETHING much larger than current bats has slept in past. Roost was once home to a creature several times the size of the Alpha. It is not here now — but it has been here. (Foreshadowing.)"
+            }
+          ]
+        },
+        {
+          "skill": "Investigation/Arcana (the shard — Level 7.3)",
+          "context": "After the alcove is opened. Adrik or any caster.",
+          "tiers": [
+            {
+              "range": "< 10",
+              "outcome": "Cold to the touch. Pretty. Heavy for its size."
+            },
+            {
+              "range": "10–14",
+              "outcome": "Not natural crystal. Made by something. Ancient."
+            },
+            {
+              "range": "15–19",
+              "outcome": "The substance is unfamiliar. Not stone, not gem, not glass, not metal. The categories of mortal craft don't apply."
+            },
+            {
+              "range": "20+",
+              "outcome": "All the above. Plus: CHRISTIAN (ADRIK) GETS TO WRITE ONE TRUE SENTENCE about this object. What is it? Why does it matter? DM accepts as canon. (Intentional — shards are Adrik's narrative thread.)"
+            },
+            {
+              "range": "Nat 20",
+              "outcome": "All the above. Plus: when shard is held near the pendant, both objects briefly SHOW: pendant ripples like water, shard hums audibly for a heartbeat then silent. Adrik knows: there are MORE of these. Five at least. Perhaps seven. Spread across the world. (Matches count on Pharazôr's desk map if found.)"
+            }
+          ]
+        },
+        {
+          "skill": "Investigation (the pit chamber — Level 7.3)",
+          "context": "Examining the pit area when found.",
           "tiers": [
             {
               "range": "< 10",
@@ -925,7 +990,7 @@
             },
             {
               "range": "15–19",
-              "outcome": "All the above. Plus: there are MORE sets of marks on the wall than 9 — older marks. Scratches. Many people have been kept here over the years. The pit is a long-running operation."
+              "outcome": "All the above. Plus: more sets of marks on the wall than 9 — older marks. Scratches. Many people have been kept here over the years. The pit is a long-running operation."
             },
             {
               "range": "20+",
@@ -933,19 +998,31 @@
             },
             {
               "range": "Nat 20",
-              "outcome": "All the above. Plus: among the older bones at the very bottom of the pit (largely buried), there is one that is not human. Investigation reveals it as an elf-bone — very old, very long-dead. The party doesn't have time or context to learn more."
+              "outcome": "All the above. Plus: among older bones at the very bottom (largely buried), one is not human. Elf-bone — very old, very long-dead. The party doesn't have time or context to learn more."
             }
           ]
         }
       ],
       "branches": [
         {
-          "condition": "Party reaches third floor of watchtower",
-          "outcome": "→ Scene 8: Audience with Pharazôr"
+          "condition": "Party reaches Pharazôr's chambers (with him present)",
+          "outcome": "→ Scene 8: Audience with Pharazôr."
         },
         {
-          "condition": "Pharazôr descends to confront them",
-          "outcome": "→ Scene 8 (DM judgment based on noise, time, stealth)"
+          "condition": "Pharazôr descends due to noise/combat",
+          "outcome": "→ Scene 8 in unusual circumstances (combat-state transition)."
+        },
+        {
+          "condition": "Party recovers shard, rescues prisoners, exits without confronting Pharazôr",
+          "outcome": "→ DM call: Pharazôr realizes and pursues, but pursuit happens BETWEEN sessions. End of S19 cliffhanger."
+        },
+        {
+          "condition": "Party rescues prisoners, leaves shard, exits",
+          "outcome": "→ Pharazôr remains. Session ends in retreat. Shard recovery delayed to S20."
+        },
+        {
+          "condition": "Party defeats Pharazôr in his chamber",
+          "outcome": "→ Scene 8 turns to combat → resolution in Scene 8."
         }
       ]
     },
