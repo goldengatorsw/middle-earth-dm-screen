@@ -126,7 +126,7 @@
       "status": "Unknown to party at start",
       "surfaceRead": "Tall, ash-pale, dark-eyed, clearly old in a way that's not normal — a Man who has lived too long. Wears Númenórean-cut robes long out of fashion. Speaks formally, in the cadence of someone who has had centuries to choose his words.",
       "hidden": "Black Númenórean. Architect of pacts like Maldwin's. Reports to Gothmog but operates with broad freedom. Has a private agenda: collecting shards. Will sense Adrik's pendant as wrongness without identifying it. Recognizes Iron of Death's smithing-house lineage. WILL OFFER TERMS before fighting. Roughly 800 years old.",
-      "stats": "DM judgment — he's a major NPC. Suggested: HP 95, AC 16, Cha-based caster + martial. Has a Númenórean longsword. Avoid running him as a stat block until necessary; he's a story figure first."
+      "stats": "Custom statblock — see Scene 8 'PHARAZÔR — STATBLOCK'. Summary: AC 16, HP 95 (12d8+36), Speed 30 ft, INT 18 / CHA 18, Save DC 15. 9th-level Sorcerer. Damage Resist: Necrotic, Psychic. Magic Resistance. Preservation Anchor (cannot die from <70 dmg in single round). Iron of Cuiviénen longsword +5 (1d8+3 + 1d8 necrotic). Key spells: Hold Person, Misty Step, Mirror Image, Counterspell, Banishment, Greater Invisibility, Dominate Person (5th-lvl, signature)."
     }
   ],
   "scenes": [
@@ -1030,34 +1030,45 @@
       "id": "scene-8",
       "number": "8",
       "title": "Audience with Pharazôr",
-      "subtitle": "The session's emotional climax",
-      "trigger": "Party reaches the third floor of the watchtower OR Pharazôr descends to confront them in the workings (DM judgment based on noise, time, and whether the party has been stealthy).",
-      "location": "Pharazôr's chamber, third floor of the watchtower. OR wherever in the lair Pharazôr finds them. Pharazôr does NOT pursue if the party flees the area entirely.",
-      "lighting": "Whatever the scene calls for. If in his chamber, lit by a single candle and the moon through the north window.",
-      "runtime": "25–40 minutes real-time depending on whether it ends in combat or a deal.",
-      "readAloud": null,
-      "purpose": "The Tyr-mirror beat. The shard reveal. The cliffhanger. The session's emotional core.",
+      "subtitle": "The climax — terms, lineage, cliffhanger",
+      "trigger": "Party reaches third floor of watchtower OR Pharazôr descends to confront them. Pharazôr does NOT pursue if party flees the area entirely.",
+      "location": "Pharazôr's chamber, 3rd floor of watchtower. Wood-paneled circular room, books in three languages including Adûnaic, cold hearth, single chair facing north window, desk with sealed correspondence, low brazier fire.",
+      "lighting": "Single oil lamp on desk. Moon through north window. Cold but not bitter (brazier holds a small fire).",
+      "runtime": "25–40 minutes real-time",
+      "readAloud": "The third floor opens into a circular room, lamplit and cold. A man sits at a desk near the window, his back partly to you, writing. He does not stop when you enter. The pen continues for another full sentence — perhaps two — and only then does he set it down, with care. He turns in his chair. He is tall, though it's hard to tell precisely while seated. His skin is ash-pale, his eyes dark in a way that suggests he hasn't slept much in a long time, though 'a long time' for him does not mean what it would mean for you. His robes are old-cut, the kind of tailoring you have only seen in paintings of kings dead three thousand years.\n\nHe looks at each of you in turn, slowly, as if cataloguing. When his gaze lands on Tyr, his eyes hold a moment longer. When it lands on Adrik, longer still — and something passes across his face that he does not bother to hide. Curiosity. Not concern. Curiosity.\n\n'Please,' he says. His voice is soft. The cadence is wrong — too measured, the pace of someone who has had centuries to consider every word. 'Sit. There is no need for the weapons just yet. We have things to discuss, you and I.'",
+      "purpose": "The session climax. Pharazôr's character lands, terms are offered, Tyr-mirror moment via House Eldakar reveal, Adrik beat via pendant curiosity, and the session ends on one of six possible cliffhangers.",
       "dmNotes": [
-        "PHARAZÔR'S CHARACTER: Formal, patient, dangerous. Lived perhaps 800 years through means he does not explain. Speaks with the cadence of someone who has had too long to choose his words. NOT cartoonishly evil — sees himself as a steward of pacts that benefit both sides, a man who has made hard choices for a long arc of time. He believes Maldwin was a useful but limited tool. He believes the swamp villagers were a fair price for what their land yielded. He believes the prisoners in his pit are RESOURCES. He will say all of this without apology and without embarrassment if the conversation turns to morality. He is wrong, but he is sincerely wrong.",
-        "HE WILL OFFER TERMS BEFORE FIGHTING. Specifically:",
-        "  → If party HAS NOT yet recovered the shard: Safe passage out, in exchange for leaving the shard alone and not returning. 'There is something here that does not concern you. Walk away from it, and I will not impede you further.'",
-        "  → If party HAS recovered the shard: He offers to TRADE — he wants the shard, he will give them the prisoners' freedom in exchange. (His real plan: send the bats after them on their way out and recover both. But the offer is honest in the moment. He breaks it only if they refuse.)",
-        "  → If TYR is visible and armed: Before any of the above, Pharazôr names the Iron of Death — recognizes the smithing-house lineage — and offers Tyr alone an audience apart from the others. (DM: this is a Tyr-mirror moment. Don't script Tyr's response. Let Gabe play it.)",
-        "PARTIAL-AWARE OF ADRIK: At some point in the scene, Pharazôr looks directly at Adrik and says something like: 'You carry something that should not have come this far north. I cannot place it. But I feel it.' Christian decides what Adrik does with this."
+        "PHARAZÔR'S BEARING: Formal, patient, dangerous. ~800 years old. Speaks with cadence of someone who's had too long to choose his words. NOT cartoonishly evil — he is sincerely wrong, not theatrically wrong. Believes Maldwin was useful but small. Believes villagers were a fair price. Believes prisoners are RESOURCES. Will say all of this without apology if conversation turns to morality.",
+        "HE KNOWS ABOUT ADRIK ALREADY (per Scene 7.1 burned letter — 'do not engage. Bring him to me'). Will NOT show his hand on this. Is deeply curious about what Adrik carries.",
+        "HE DOES NOT KNOW WHAT THE SHARD IS. He has hunted them, recovered/eliminated 5 of 7 (per Scene 7.1 desk map). The shard is alien to him. Adrik's pendant resonating with it disturbs him — he had no idea such a connection existed.",
+        "HE IS HIDING SOMETHING FROM HIS MASTER (Gothmog, unnamed). 'Eight moons since silence from above.' If pressed about who he serves, he is evasive — players may notice this.",
+        "TYR-MIRROR BEAT (Iron of Death + House Eldakar): When Tyr is visible and armed, Pharazôr names the lineage. House Eldakar = Faithful Númenórean (canonically loyal to the Valar, ancestors of Aragorn's line). The Faithful LOST during Númenor's fall. Pharazôr knew the smith personally — he chose the OTHER side. Tyr's lineage is proud but tragic. Don't script Tyr's response — let Gabe play it.",
+        "ADRIK BEAT: 5-10 minutes into the conversation, Pharazôr addresses Adrik: 'What is it that you carry, dwarf? I cannot name it. But it sings to me, very faintly, and it should not be here.' If shard is in hand/pocket: 'Show it to me. Please. I have hunted things like this for longer than your kingdoms have existed.' Christian decides — share, deflect, lie, attack.",
+        "TERMS — SHARD NOT YET RECOVERED: 'There is something here that does not concern you. Walk away from it, and I will not impede you further. Take the prisoners. Take the corpses of my couriers. Just leave the lower workings alone.' GENUINE in moment, but he'll set watch and pursue afterward.",
+        "TERMS — SHARD RECOVERED: 'I will trade. The dwarf gives me what he has taken from my mountain. In exchange, every prisoner in my pit walks out alive and free. You may keep your lives and your weapons. I will not pursue.' Honest in offer, FALSE in follow-through — sends bats after party once they leave.",
+        "TERMS — IF COMBAT WITH ORCS HAPPENED IN 7.1: Same offers but with edge. 'You have already cost me three of my men. I am willing to call this a misunderstanding. Once. Decide quickly.'",
+        "PHARAZÔR'S WORD: He breaks it only when it is taken from him. If party accepts and leaves honorably, he pursues with regret — he sees himself as a man of his word, but pragmatic about exceptions.",
+        "COMBAT TRIGGERS: Party draws first / Tyr (or any PC) attacks / Party refuses offer in way that prevents safe departure / Pharazôr's couriers arrive (round 5+ if conversation went poorly) / Party tries to keep BOTH shard and prisoners.",
+        "ROUND 1 ACTION: Stands slowly. Misty Step into corner, drawing longsword as he reappears. 'I had hoped this would not be necessary. It almost never is.'",
+        "PHARAZÔR'S MORALE: Fights smart, not to death. Below 30 HP attempts escape (Misty Step + Fly OR window). If escape impossible, surrenders verbally — but this is deception. Will use any pause to cast final spell or call bats. SHOULD NOT DIE in S19 unless party is exceptional. Intended outcome: escapes wounded swearing return, OR captured at session end.",
+        "IRON OF CUIVIÉNEN (Pharazôr's longsword): Sister-blade to Tyr's 'Iron of Death.' Same forging tradition, made by House Eldakar. Pharazôr took it as spoils after Númenor fell. This lands HARDER than dialogue alone if revealed in combat or speech."
       ],
       "dialogueSeeds": [
+        "Please. Sit. There is no need for the weapons just yet. We have things to discuss, you and I.",
         "I have been here longer than your grandfather's grandfather drew breath.",
         "Every agreement I have made was honored on my side.",
         "Maldwin was a useful man. He was also a small man. He did not understand what he served.",
         "The villagers in my pit are a renewable resource. Most of them came to me willingly, in the end.",
         "You assume I am evil. Three thousand years ago, I would have agreed with you. You will not be alive in three thousand years to revise the question.",
-        "That sword. Lower it, please — not from fear. Because I knew the smith who made it. He was a good man. I would prefer not to see his work used poorly tonight.",
-        "What is it that you carry, dwarf? I cannot name it. But it sings to me, very faintly, and it should not be here."
+        "That sword. Lower it, please — not from fear. Because I knew the smith who made it. House Eldakar, of the Sea-Star. He was a good man. I have outlived more good men than you have ever met. I would prefer not to see his work used poorly tonight.",
+        "What is it that you carry, dwarf? I cannot name it. But it sings to me, very faintly, and it should not be here.",
+        "Show it to me. Please. I have hunted things like this for longer than your kingdoms have existed.",
+        "I had hoped this would not be necessary. It almost never is."
       ],
       "skillChecks": [
         {
           "skill": "Insight (read Pharazôr)",
-          "context": "5-tier table.",
+          "context": "Reading his intent during the audience.",
           "tiers": [
             {
               "range": "< 10",
@@ -1077,23 +1088,113 @@
             },
             {
               "range": "Nat 20",
-              "outcome": "All the above. Plus: the party reads that Pharazôr is NOT acting alone. He answered to someone. He has not heard from that someone in some time, and that absence weighs on him. (Closest the party gets to a Gothmog hint this session. Still no name.)"
+              "outcome": "All the above. Plus: Pharazôr is NOT acting alone. He answers to someone. He has not heard from that someone in some time, and that absence weighs on him. (Closest the party gets to a Gothmog hint this session. Still no name.)"
+            }
+          ]
+        },
+        {
+          "skill": "Persuasion / Intimidation / Deception (negotiating)",
+          "context": "Trying to move the terms in the party's favor.",
+          "tiers": [
+            {
+              "range": "< 10",
+              "outcome": "Pharazôr's expression doesn't change. He waits. The angle didn't land."
+            },
+            {
+              "range": "10–14",
+              "outcome": "He concedes one minor point — phrasing or face-saving. The substance of his offer doesn't move."
+            },
+            {
+              "range": "15–19",
+              "outcome": "He concedes a meaningful point: e.g., he'll allow ONE prisoner to leave even if party refuses his trade, OR he'll let them keep one item from his desk, OR he'll hold off the bats for an extra hour. (DM call.)"
+            },
+            {
+              "range": "20+",
+              "outcome": "He concedes a major point: e.g., he releases ALL prisoners regardless of trade outcome, OR he commits to no pursuit at all (which he honors only if party leaves the shard)."
+            },
+            {
+              "range": "Nat 20",
+              "outcome": "All the above. Plus: he tells one true thing he didn't need to tell. Possibilities: 'There is one of these in the east, near the Lonely Mountain — older than I am' (shard plant), OR 'The lake-town council has men who serve me. They do not know they do' (Lake Town plant), OR 'I have not heard from my master in eight moons. I do not know what that means' (Gothmog plant). DM picks based on what would land hardest."
+            }
+          ]
+        },
+        {
+          "skill": "Arcana (sense Pharazôr's nature)",
+          "context": "Reading the magic on him.",
+          "tiers": [
+            {
+              "range": "< 10",
+              "outcome": "Just an old man. Educated. Strange cadence."
+            },
+            {
+              "range": "10–14",
+              "outcome": "He is using something. A small magic — or a continuous one. The reader can't tell what."
+            },
+            {
+              "range": "15–19",
+              "outcome": "All the above. Plus: he is not a normal mortal. There is some kind of binding on him — preservation, or unnaturally extended life. The kind of magic that comes with cost paid by someone, somewhere."
+            },
+            {
+              "range": "20+",
+              "outcome": "All the above. Plus: the binding is not on him alone. There is something ELSE — an artifact, a token, a tattoo, a worn object — that acts as the anchor of his preservation. If destroyed or taken, his unnatural life would unravel. (Future-arc plant; don't reveal what or where.)"
+            },
+            {
+              "range": "Nat 20",
+              "outcome": "All the above. Plus: the reader senses Pharazôr has TOUCHED the kind of magic that runs the shard's resonance. Not the same magic — but adjacent. He has been near it before. Long ago. Perhaps in Númenor itself."
+            }
+          ]
+        },
+        {
+          "skill": "History (House Eldakar lineage — Tyr-driven)",
+          "context": "Only if Tyr asks Pharazôr questions about House Eldakar specifically.",
+          "tiers": [
+            {
+              "range": "< 10",
+              "outcome": "Pharazôr volunteers: House Eldakar was old and respected. That's all."
+            },
+            {
+              "range": "10–14",
+              "outcome": "Pharazôr explains: House Eldakar were Faithful. Held to the old ways when most of Númenor turned. They lost the war — the war BEFORE Sauron's fall, the one Sauron wasn't even visibly part of. Survived in exile."
+            },
+            {
+              "range": "15–19",
+              "outcome": "All the above. Plus: Pharazôr names the smith — 'Tar-Cinendil. He apprenticed to the great forge-houses of Armenelos. He survived the Downfall, fled east, set up his anvil somewhere in what is now the Anduin valley. The line of his work persisted longer than the line of his blood.'"
+            },
+            {
+              "range": "20+",
+              "outcome": "All the above. Plus: Pharazôr says, with what sounds genuinely like regret, 'He and I argued in our youth. About what was worth keeping and what was worth burning. Time has shown us each other's mistakes.' (Limited confession — Pharazôr admits to being wrong about something. Powerful Tyr-mirror.)"
+            },
+            {
+              "range": "Nat 20",
+              "outcome": "All the above. Plus: Pharazôr offers Tyr something — a book about House Eldakar, OR a name (still-living distant cousin somewhere east), OR: 'If you ever wish to know more, find me again. I will tell you what I remember. There are not many of us left who do.' Future-arc hook for Tyr."
             }
           ]
         }
       ],
       "branches": [
         {
-          "condition": "Cliffhanger A — Combat erupts mid-conversation",
-          "outcome": "Pharazôr's bats arrive, OR the party draws first, OR Tyr can't bear what he hears and attacks. END the session ON the initiative roll. 'We'll start there next time.' (Recommended if energy is high.)"
+          "condition": "A — Combat erupts mid-conversation",
+          "outcome": "END on the initiative roll. 'We'll start there next time.' Use when energy is high, players are fired up."
         },
         {
-          "condition": "Cliffhanger B — Pharazôr's deal is on the table",
-          "outcome": "Players are debating it. Cut the session on the choice. 'Take a week to decide. We'll start there.' (Recommended if energy is medium.)"
+          "condition": "B — Pharazôr's deal is on the table",
+          "outcome": "Cut on the choice. 'Take a week to decide. We'll start there.' Use when players are debating with real moral weight."
         },
         {
-          "condition": "Cliffhanger C — Adrik claims the shard, Pharazôr reacts",
-          "outcome": "Pharazôr's sense of the pendant resolves — he understands what Adrik has just done. His face changes. End scene as he stands. 'He is no longer being patient.' (Recommended if Adrik's arc was the strongest thread of the night.)"
+          "condition": "C — Adrik claims the shard, Pharazôr reacts",
+          "outcome": "Pharazôr's face changes. End scene as he stands. 'He is no longer being patient.' Use when Adrik's arc was the strongest thread."
+        },
+        {
+          "condition": "D — Party accepts terms, walks out, ambushed by bats",
+          "outcome": "END on bats descending on the saddle. 'Roll initiative.' Pharazôr's betrayal lands as final beat. (This is the 'Word of Pharazôr' branch.)"
+        },
+        {
+          "condition": "E — Combat happens, Pharazôr escapes wounded",
+          "outcome": "END on Pharazôr's exit (Misty Step out window, Fly into night). 'He will not forget tonight.' Use when combat went long but party survived intact."
+        },
+        {
+          "condition": "F — Pharazôr is defeated/captured",
+          "outcome": "END on party standing over him. He smiles, says: 'The hand-that-holds will know I am gone. He has not asked after me in eight moons. Perhaps he will now.' Then black. Use when party crushed it — massive Gothmog plant."
         }
       ]
     }
