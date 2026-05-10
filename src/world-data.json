@@ -3,37 +3,126 @@
     "name": "Middle-earth (Wanderings campaign)",
     "current_in_world_date": "Late autumn, Year 3019 of the Third Age",
     "campaign_session": 19,
-    "world_map_image": "/middle-earth-dm-screen/world-map.png",
-    "world_map_bounds_px": [4096, 4096],
-    "default_view": { "center": [2048, 2048], "zoom": -2 }
+    "world_map_image": "/middle-earth-dm-screen/world-map.jpg",
+    "world_map_bounds_px": [
+      2328,
+      1859
+    ],
+    "default_view": {
+      "center": [
+        930,
+        1164
+      ],
+      "zoom": -1
+    }
   },
-
   "location_types": [
-    { "id": "city", "label": "City", "icon": "◆", "default_visible": true },
-    { "id": "town", "label": "Town", "icon": "◇", "default_visible": true },
-    { "id": "village", "label": "Village", "icon": "○", "default_visible": true },
-    { "id": "homestead", "label": "Homestead", "icon": "·", "default_visible": true },
-    { "id": "fortification", "label": "Fortification", "icon": "▲", "default_visible": true },
-    { "id": "hideout", "label": "Hideout / Lair", "icon": "✗", "default_visible": true },
-    { "id": "ruin", "label": "Ruin", "icon": "▢", "default_visible": true },
-    { "id": "sacred", "label": "Sacred Site / Shrine", "icon": "✦", "default_visible": true },
-    { "id": "wonder", "label": "Wonder / Oddity", "icon": "✧", "default_visible": true },
-    { "id": "battlefield", "label": "Battlefield", "icon": "⚔", "default_visible": false },
-    { "id": "waystation", "label": "Waystation / Inn", "icon": "▭", "default_visible": true },
-    { "id": "mine", "label": "Mine / Quarry", "icon": "⛏", "default_visible": false },
-    { "id": "trade_post", "label": "Trade Post", "icon": "$", "default_visible": true },
-    { "id": "treasure", "label": "Hidden Treasure (DM only)", "icon": "★", "default_visible": false, "dm_only": true },
-    { "id": "operation", "label": "Faction Operation (DM only)", "icon": "●", "default_visible": false, "dm_only": true }
+    {
+      "id": "city",
+      "label": "City",
+      "icon": "◆",
+      "default_visible": true
+    },
+    {
+      "id": "town",
+      "label": "Town",
+      "icon": "◇",
+      "default_visible": true
+    },
+    {
+      "id": "village",
+      "label": "Village",
+      "icon": "○",
+      "default_visible": true
+    },
+    {
+      "id": "homestead",
+      "label": "Homestead",
+      "icon": "·",
+      "default_visible": true
+    },
+    {
+      "id": "fortification",
+      "label": "Fortification",
+      "icon": "▲",
+      "default_visible": true
+    },
+    {
+      "id": "hideout",
+      "label": "Hideout / Lair",
+      "icon": "✗",
+      "default_visible": true
+    },
+    {
+      "id": "ruin",
+      "label": "Ruin",
+      "icon": "▢",
+      "default_visible": true
+    },
+    {
+      "id": "sacred",
+      "label": "Sacred Site / Shrine",
+      "icon": "✦",
+      "default_visible": true
+    },
+    {
+      "id": "wonder",
+      "label": "Wonder / Oddity",
+      "icon": "✧",
+      "default_visible": true
+    },
+    {
+      "id": "battlefield",
+      "label": "Battlefield",
+      "icon": "⚔",
+      "default_visible": false
+    },
+    {
+      "id": "waystation",
+      "label": "Waystation / Inn",
+      "icon": "▭",
+      "default_visible": true
+    },
+    {
+      "id": "mine",
+      "label": "Mine / Quarry",
+      "icon": "⛏",
+      "default_visible": false
+    },
+    {
+      "id": "trade_post",
+      "label": "Trade Post",
+      "icon": "$",
+      "default_visible": true
+    },
+    {
+      "id": "treasure",
+      "label": "Hidden Treasure (DM only)",
+      "icon": "★",
+      "default_visible": false,
+      "dm_only": true
+    },
+    {
+      "id": "operation",
+      "label": "Faction Operation (DM only)",
+      "icon": "●",
+      "default_visible": false,
+      "dm_only": true
+    }
   ],
-
   "locations": [
     {
       "id": "amon-lhuin",
       "name": "Amon Lhuin",
-      "alt_names": ["The Tower in the Stone"],
+      "alt_names": [
+        "The Tower in the Stone"
+      ],
       "type": "hideout",
       "region": "High Pass, Misty Mountains",
-      "coords": [2400, 1400],
+      "coords": [
+        1075,
+        460
+      ],
       "summary": "A stacked three-level lair in the Misty Mountains: a Númenórean watchtower above, a natural cave roost in the middle, and abandoned dwarven workings (Karak Melúrz) below.",
       "description": "Amon Lhuin is built into the granite face of a high peak in the Misty Mountains, perhaps a quarter-mile from the High Pass saddle. The structure is three stories of cut grey stone — Númenórean foothold-tower work from the late Second Age, abandoned during the Last Alliance era. A natural cave mouth opens beneath the tower's foundation; deeper still, an arched dwarven doorway leads into the older mining hold called Karak Melúrz. Pharazôr the Architect has occupied the site for an unknown number of years, using it as the operational center of his shard hunt.",
       "population": 14,
@@ -42,9 +131,19 @@
       "defenses": "Three orc guards in the watchtower ground floor. Trained giant bat couriers as aerial patrol. Pharazôr himself in the upper chamber.",
       "architecture": "Three vertically stacked levels: Númenórean tower (Pharazôr's domain), natural cave (bat roost), abandoned dwarven mining hold (the shard alcove and the pit).",
       "sensory": "The tower smells of woodsmoke and old parchment. The cave smells of guano, ammonia, and the sweet-sour rot of meat. The dwarven workings are bitter cold, the kind of cold that lives in places that stopped having people.",
-      "factions_present": ["pharazors-network"],
-      "npcs_resident": ["pharazor", "mez"],
-      "tags": ["antagonist-base", "shard-location", "three-level", "active-pharazor"],
+      "factions_present": [
+        "pharazors-network"
+      ],
+      "npcs_resident": [
+        "pharazor",
+        "mez"
+      ],
+      "tags": [
+        "antagonist-base",
+        "shard-location",
+        "three-level",
+        "active-pharazor"
+      ],
       "dm_notes": "Site of Session 19's climax. After S19, depending on the cliffhanger outcome: either Pharazôr is still here (escaped from his chamber, wounded, sworn return), or he's been killed/captured. Update accordingly.",
       "player_visible": true,
       "first_visited": "session-19",
@@ -56,7 +155,10 @@
       "alt_names": [],
       "type": "ruin",
       "region": "The Anduin Swamps (south of the Misty Mountains)",
-      "coords": [2200, 2100],
+      "coords": [
+        1180,
+        700
+      ],
       "summary": "A small village of fishermen and reed-cutters that stood for generations under Maldwin's pact. Destroyed by Pharazôr's bat swarms three weeks after Maldwin was killed.",
       "description": "Once home to roughly 48 villagers, the swamp village was a community held together by a generations-old pact with Maldwin: yearly sacrifice in exchange for protection from the deeper threats of the swamp. After the party broke the pact in Session 17 by killing Maldwin, Pharazôr's bat couriers harvested the survivors over a period of weeks. The village now stands abandoned, structures rotting in the damp.",
       "population": 0,
@@ -64,7 +166,12 @@
       "recent_history": "S13: Party visits, learns of the lottery. S17: Party kills Maldwin, walks away. S17+~3 weeks: Pharazôr's bats harvest survivors. ~9 captured (now in Amon Lhuin pit), rest killed.",
       "factions_present": [],
       "npcs_resident": [],
-      "tags": ["ruined", "tragic", "pharazor-aftermath", "pre-campaign-ruined"],
+      "tags": [
+        "ruined",
+        "tragic",
+        "pharazor-aftermath",
+        "pre-campaign-ruined"
+      ],
       "dm_notes": "Mez was the innkeeper here. His wife was the last sacrifice before Maldwin's death. Bonkey, Tyndell, and others are now dead. Use this location as the emotional anchor for the 'you left us' beat.",
       "player_visible": true,
       "first_visited": "session-13",
@@ -73,10 +180,15 @@
     {
       "id": "lake-town",
       "name": "Lake-Town",
-      "alt_names": ["Esgaroth"],
+      "alt_names": [
+        "Esgaroth"
+      ],
       "type": "city",
       "region": "Long Lake (south of Erebor)",
-      "coords": [3200, 1800],
+      "coords": [
+        1455,
+        410
+      ],
       "summary": "A wooden city built on pilings over the Long Lake. Trade hub between the Lonely Mountain and southern realms. The Master's council is partly compromised by Pharazôr's network.",
       "description": "Lake-Town stands on wooden pilings driven into the lake bed, a city of fishermen, traders, and Erebor's middlemen. Houses lean over the water; smoke rises constantly from forges and kitchens. The Master rules from a hall at the city's center, elected and increasingly corrupt. Bardic descendants and dwarven traders pass through frequently.",
       "population": 3000,
@@ -88,9 +200,21 @@
       "architecture": "Wooden construction throughout. Houses on pilings. Smoke rises constantly. Bridges connect neighborhoods over open water.",
       "sensory": "Wet wood, fish, smoke. Sounds of water lapping, bells, gulls. The whole city sways slightly in heavy winds.",
       "rumors": [
-        { "text": "The Master is taking bribes from southern merchants.", "credibility": "true", "spread": "common" },
-        { "text": "A black-cloaked man has been seen meeting council members in the warehouse district at night.", "credibility": "true", "spread": "rare" },
-        { "text": "The fish stocks are dying. Some say a curse from the deep lake.", "credibility": "uncertain", "spread": "common" }
+        {
+          "text": "The Master is taking bribes from southern merchants.",
+          "credibility": "true",
+          "spread": "common"
+        },
+        {
+          "text": "A black-cloaked man has been seen meeting council members in the warehouse district at night.",
+          "credibility": "true",
+          "spread": "rare"
+        },
+        {
+          "text": "The fish stocks are dying. Some say a curse from the deep lake.",
+          "credibility": "uncertain",
+          "spread": "common"
+        }
       ],
       "ongoing_problems": [
         "Fish stocks are dropping",
@@ -109,10 +233,18 @@
         "The Master's Council (invitation-only, ~12 members)",
         "The Quiet Order (a discreet merchants' association — Pharazôr's recruiting ground)"
       ],
-      "factions_present": ["pharazors-network", "erebor-trade-mission"],
+      "factions_present": [
+        "pharazors-network",
+        "erebor-trade-mission"
+      ],
       "npcs_resident": [],
       "shops_services": [],
-      "tags": ["trade-hub", "corrupt-leadership", "future-arc", "palantir-mission"],
+      "tags": [
+        "trade-hub",
+        "corrupt-leadership",
+        "future-arc",
+        "palantir-mission"
+      ],
       "dm_notes": "The party's Palantír mission from Elrond points here. Pharazôr's letter (Scene 5B) confirms 'the new agreement at the lake-town progresses... draw the bait in within the season.' The Master's daughter going missing is connected to Pharazôr — DM only. The Quiet Order is the social club through which Pharazôr's agents recruit.",
       "player_visible": true,
       "first_visited": null,
@@ -121,31 +253,48 @@
     {
       "id": "rivendell",
       "name": "Rivendell",
-      "alt_names": ["Imladris", "The Last Homely House"],
+      "alt_names": [
+        "Imladris",
+        "The Last Homely House"
+      ],
       "type": "city",
       "region": "Eriador, west of the Misty Mountains",
-      "coords": [1800, 1600],
+      "coords": [
+        1095,
+        540
+      ],
       "summary": "Elrond's hidden valley refuge. Sanctuary, library, and forge. The party received the Palantír mission here.",
       "description": "Rivendell sits in a hidden cleft of the Misty Mountains' western foothills, a valley of waterfalls and white stone halls invisible until one is nearly upon it. Elrond Half-elven keeps the house, and the wisdom of three Ages sits in its libraries. The party's Palantír mission was given here; the corrupted seed pod is to be returned here.",
       "population": 600,
       "demographics": "High Elves (Noldor + Sindar). A small permanent staff of elf-friends among the Dúnedain.",
       "government": "Elrond's house. Decisions are his.",
       "defenses": "Hidden by enchantment. Most travelers cannot find the valley unaided. Internal defense by Elrond's household guard.",
-      "factions_present": ["elronds-allies"],
-      "npcs_resident": ["elrond"],
-      "tags": ["sanctuary", "elven", "lore-source", "mission-giver"],
+      "factions_present": [
+        "elronds-allies"
+      ],
+      "npcs_resident": [
+        "elrond"
+      ],
+      "tags": [
+        "sanctuary",
+        "elven",
+        "lore-source",
+        "mission-giver"
+      ],
       "dm_notes": "The corrupted seed pod from S? must be returned here. Elrond may know more about Adrik's pendant if asked — but Adrik would have to volunteer it.",
       "player_visible": true,
       "first_visited": "session-?",
       "last_visited": "session-?"
     }
   ],
-
   "npcs": [
     {
       "id": "pharazor",
       "name": "Pharazôr the Architect",
-      "alt_names": ["Ph.", "the Architect"],
+      "alt_names": [
+        "Ph.",
+        "the Architect"
+      ],
       "race": "Black Númenórean",
       "occupation": "Sorcerer, pact-architect",
       "current_status": "alive (status TBD by Session 19 cliffhanger)",
@@ -159,11 +308,25 @@
       "fears": "His master (Gothmog) discovering the shard project. Eight moons since silence from above; he reads this as either ominous or providential, can't tell which.",
       "secret_belief": "That his hidden shard agenda will eventually justify itself, even to his master, when the work is complete.",
       "secret_knowledge": "Has standing orders that the dwarf (Adrik) is to be CAPTURED, not killed. Knows Tyr's lineage (House Eldakar). Senses the shard's resonance with Adrik's pendant but cannot identify what either object IS.",
-      "tags": ["antagonist", "primary-villain-of-arc", "sorcerer", "ancient", "black-numenorean"],
-      "relationships": [
-        { "npc_id": "gothmog", "type": "master", "strength": "subordinate-but-private", "status": "alive (DM-only knowledge)", "notes": "Pharazôr serves Gothmog but has been operating semi-independently for 8 moons. His shard project is hidden from his master." }
+      "tags": [
+        "antagonist",
+        "primary-villain-of-arc",
+        "sorcerer",
+        "ancient",
+        "black-numenorean"
       ],
-      "factions": ["pharazors-network"],
+      "relationships": [
+        {
+          "npc_id": "gothmog",
+          "type": "master",
+          "strength": "subordinate-but-private",
+          "status": "alive (DM-only knowledge)",
+          "notes": "Pharazôr serves Gothmog but has been operating semi-independently for 8 moons. His shard project is hidden from his master."
+        }
+      ],
+      "factions": [
+        "pharazors-network"
+      ],
       "first_introduced": "session-19",
       "last_seen_by_party": "session-19",
       "dm_notes": "Stat block lives in S19 Scene 8. Should NOT die in S19 unless party is exceptional — designed to escape wounded or be captured for cliffhanger. Iron of Cuiviénen is his sister-blade to Tyr's Iron of Death."
@@ -186,11 +349,24 @@
       "secret_belief": "That the party did the right thing killing Maldwin. He cannot say so out loud, even to himself.",
       "secret_knowledge": "Knows the orcs change shifts at dawn. Has overheard 'the master' mentioned three times. Is hiding a sharp piece of dwarven stone he has been using as a tool.",
       "would_die_for": "Any of the other prisoners. Especially the two who can no longer walk.",
-      "tags": ["innkeeper", "prisoner", "swamp-village-survivor", "tragic"],
-      "relationships": [
-        { "npc_id": "tyndell", "type": "neighbor", "strength": "close", "status": "tyndell is dead", "notes": "Mez tried to save him during the harvest. Failed." }
+      "tags": [
+        "innkeeper",
+        "prisoner",
+        "swamp-village-survivor",
+        "tragic"
       ],
-      "factions": ["swamp-village-survivors"],
+      "relationships": [
+        {
+          "npc_id": "tyndell",
+          "type": "neighbor",
+          "strength": "close",
+          "status": "tyndell is dead",
+          "notes": "Mez tried to save him during the harvest. Failed."
+        }
+      ],
+      "factions": [
+        "swamp-village-survivors"
+      ],
       "first_introduced": "session-13",
       "last_seen_by_party": "session-19",
       "dm_notes": "Mez is the emotional anchor for the 'you left us' beat. Don't kill him in S19. Use his survival as the seed for his eventual reckoning."
@@ -198,7 +374,10 @@
     {
       "id": "elrond",
       "name": "Elrond Half-elven",
-      "alt_names": ["Lord Elrond", "Master of Rivendell"],
+      "alt_names": [
+        "Lord Elrond",
+        "Master of Rivendell"
+      ],
       "race": "Half-elf (Peredhel)",
       "occupation": "Lord of Rivendell",
       "current_status": "alive",
@@ -207,9 +386,17 @@
       "physical_description": "Tall, dark-haired, ageless in the way of Elves. Wears the Vilya ring (party may not know this).",
       "voice_notes": "Measured. Uses old-fashioned phrasing. Pauses often.",
       "personality": "Patient. Prefers to ask questions rather than answer them. Has been alive for thousands of years.",
-      "tags": ["ally", "elf-lord", "mission-giver", "powerful", "ancient"],
+      "tags": [
+        "ally",
+        "elf-lord",
+        "mission-giver",
+        "powerful",
+        "ancient"
+      ],
       "relationships": [],
-      "factions": ["elronds-allies"],
+      "factions": [
+        "elronds-allies"
+      ],
       "first_introduced": "session-?",
       "last_seen_by_party": "session-?",
       "dm_notes": "Gave the party the Palantír mission. Holds the corrupted seed pod for them to return. Has not been told about Adrik's pendant — that's Christian's call. If Adrik shares with Elrond, Elrond would tell him SOMETHING but not everything. Elrond may know what shards are; he is alive from the Second Age."
@@ -217,24 +404,39 @@
     {
       "id": "gothmog",
       "name": "Gothmog",
-      "alt_names": ["the hand-that-holds (Pharazôr's name for him)"],
+      "alt_names": [
+        "the hand-that-holds (Pharazôr's name for him)"
+      ],
       "race": "Nazgûl (one of the Nine)",
       "occupation": "Lieutenant of Sauron",
       "current_status": "alive (DM-only)",
       "current_location": "unknown",
       "permanent_location": "unknown (likely Mordor or a forward command position)",
       "physical_description": "Unknown to the party. Has not been seen.",
-      "tags": ["primary-antagonist-of-campaign", "nazgul", "off-screen", "dm-only"],
-      "relationships": [
-        { "npc_id": "pharazor", "type": "lieutenant", "strength": "command", "status": "alive", "notes": "Gothmog has not communicated with Pharazôr in 8 moons. Reasons unknown to either party member." }
+      "tags": [
+        "primary-antagonist-of-campaign",
+        "nazgul",
+        "off-screen",
+        "dm-only"
       ],
-      "factions": ["the-nine", "saurons-forces"],
+      "relationships": [
+        {
+          "npc_id": "pharazor",
+          "type": "lieutenant",
+          "strength": "command",
+          "status": "alive",
+          "notes": "Gothmog has not communicated with Pharazôr in 8 moons. Reasons unknown to either party member."
+        }
+      ],
+      "factions": [
+        "the-nine",
+        "saurons-forces"
+      ],
       "first_introduced": null,
       "last_seen_by_party": null,
       "dm_notes": "Campaign's primary antagonist. NOT to be named on screen until at least Arc 2.2. Pharazôr is currently operating with broad freedom from him; Gothmog's silence may be deliberate, may be circumstance."
     }
   ],
-
   "factions": [
     {
       "id": "pharazors-network",
@@ -243,23 +445,51 @@
       "alignment": "evil",
       "scope": "regional",
       "leader_npc": "pharazor",
-      "members": ["pharazor"],
+      "members": [
+        "pharazor"
+      ],
       "goals": [
-        { "goal": "Recover the seven shards before Gothmog learns of the project", "priority": "primary" },
-        { "goal": "Maintain established pacts in the swamps and lake-towns", "priority": "secondary" },
-        { "goal": "Cultivate agents in Lake-Town's council", "priority": "secondary" }
+        {
+          "goal": "Recover the seven shards before Gothmog learns of the project",
+          "priority": "primary"
+        },
+        {
+          "goal": "Maintain established pacts in the swamps and lake-towns",
+          "priority": "secondary"
+        },
+        {
+          "goal": "Cultivate agents in Lake-Town's council",
+          "priority": "secondary"
+        }
       ],
       "methods": "Bat couriers as aerial messengers and abduction agents. Established pacts with local rulers (Maldwin's was one; others exist or existed). Prisoners as leverage and resource. Long-term recruiting of agents through fronts (the Quiet Order in Lake-Town is one).",
       "base_of_operations": "amon-lhuin",
-      "territory": ["misty-mountains-region", "long-lake-region", "anduin-swamps"],
+      "territory": [
+        "misty-mountains-region",
+        "long-lake-region",
+        "anduin-swamps"
+      ],
       "current_state": "Active. Pharazôr operates semi-independently of Gothmog. 8 moons since communication from above. Five of seven shards already recovered or eliminated; two remain (one at Amon Lhuin, one east of the Lonely Mountain).",
       "recent_actions": [
-        { "date": "S17 + 3 weeks", "action": "Harvested swamp village survivors after Maldwin's death" },
-        { "date": "Ongoing", "action": "Recruiting agents in Lake-Town's council via the Quiet Order" },
-        { "date": "S19", "action": "Pharazôr confronts the party at Amon Lhuin (outcome TBD by cliffhanger)" }
+        {
+          "date": "S17 + 3 weeks",
+          "action": "Harvested swamp village survivors after Maldwin's death"
+        },
+        {
+          "date": "Ongoing",
+          "action": "Recruiting agents in Lake-Town's council via the Quiet Order"
+        },
+        {
+          "date": "S19",
+          "action": "Pharazôr confronts the party at Amon Lhuin (outcome TBD by cliffhanger)"
+        }
       ],
       "known_to_party": "Partial after S19. Party knows Pharazôr exists, knows the bat network, may know about Lake-Town agents (if Nat 20 letter or Insight checks landed). Does not know about the wider shard hunt.",
-      "tags": ["antagonist", "covert", "shard-hunt"],
+      "tags": [
+        "antagonist",
+        "covert",
+        "shard-hunt"
+      ],
       "dm_notes": "Pharazôr's plan is private from Gothmog. If party kills/captures Pharazôr, Gothmog eventually finds out and the network's behavior changes."
     },
     {
@@ -269,16 +499,30 @@
       "alignment": "good",
       "scope": "world",
       "leader_npc": "elrond",
-      "members": ["elrond"],
+      "members": [
+        "elrond"
+      ],
       "goals": [
-        { "goal": "Resist the rising shadow", "priority": "primary" },
-        { "goal": "Investigate strange artifacts and corruption (e.g., the seed pod, possibly the shards)", "priority": "secondary" }
+        {
+          "goal": "Resist the rising shadow",
+          "priority": "primary"
+        },
+        {
+          "goal": "Investigate strange artifacts and corruption (e.g., the seed pod, possibly the shards)",
+          "priority": "secondary"
+        }
       ],
       "methods": "Information-gathering, sending small parties on missions, providing sanctuary in Rivendell.",
       "base_of_operations": "rivendell",
-      "territory": ["rivendell"],
+      "territory": [
+        "rivendell"
+      ],
       "current_state": "Active. Aware of distant evil but not yet seeing the full picture.",
-      "tags": ["ally", "good", "loose-alliance"],
+      "tags": [
+        "ally",
+        "good",
+        "loose-alliance"
+      ],
       "dm_notes": "Elrond is the players' main ally. Mission-giver. Could become a critical resource for Adrik's pendant question."
     },
     {
@@ -288,20 +532,31 @@
       "alignment": "neutral",
       "scope": "local",
       "leader_npc": null,
-      "members": ["mez"],
+      "members": [
+        "mez"
+      ],
       "goals": [
-        { "goal": "Survive", "priority": "primary" },
-        { "goal": "Be remembered", "priority": "secondary" }
+        {
+          "goal": "Survive",
+          "priority": "primary"
+        },
+        {
+          "goal": "Be remembered",
+          "priority": "secondary"
+        }
       ],
       "methods": "None — they are captives.",
       "base_of_operations": "amon-lhuin (pit)",
       "current_state": "Nine prisoners alive in the pit at Amon Lhuin. Two are too weak to walk. Most have stopped speaking.",
       "known_to_party": "Discoverable in S19 Scene 5A or 7.3.",
-      "tags": ["victims", "tragedy", "pharazor-aftermath"],
+      "tags": [
+        "victims",
+        "tragedy",
+        "pharazor-aftermath"
+      ],
       "dm_notes": "If the party rescues them in S19, this faction becomes 'rescued villagers' and they may go to Lake-Town or Rivendell. If they remain captive past S19, the prisoner clock continues."
     }
   ],
-
   "events": [
     {
       "id": "evt-pharazor-swamp-harvest",
@@ -310,11 +565,24 @@
       "type": "world-event",
       "title": "Pharazôr's bats harvest the swamp village",
       "description": "Three weeks after the party killed Maldwin and walked away from the swamp village, Pharazôr's bat couriers descended in waves. Over a period of 5-7 days, they killed roughly 40 villagers and captured 9 — including the innkeeper Mez. The captives were carried to the pit at Amon Lhuin where they remain.",
-      "actors": ["pharazor", "mez"],
-      "locations": ["swamp-village", "amon-lhuin"],
-      "factions": ["pharazors-network", "swamp-village-survivors"],
+      "actors": [
+        "pharazor",
+        "mez"
+      ],
+      "locations": [
+        "swamp-village",
+        "amon-lhuin"
+      ],
+      "factions": [
+        "pharazors-network",
+        "swamp-village-survivors"
+      ],
       "known_to_party": false,
-      "tags": ["pharazor-arc", "off-screen", "tragedy"]
+      "tags": [
+        "pharazor-arc",
+        "off-screen",
+        "tragedy"
+      ]
     },
     {
       "id": "evt-elrond-mission",
@@ -323,14 +591,23 @@
       "type": "world-event",
       "title": "Elrond gives the Palantír mission",
       "description": "Elrond charges the party with investigating the activity around Lake-Town's council, where reports of strange artifacts and shifting allegiances have reached Rivendell. The party also receives the corrupted seed pod from a previous arc, to be returned here when investigation permits.",
-      "actors": ["elrond"],
-      "locations": ["rivendell", "lake-town"],
-      "factions": ["elronds-allies"],
+      "actors": [
+        "elrond"
+      ],
+      "locations": [
+        "rivendell",
+        "lake-town"
+      ],
+      "factions": [
+        "elronds-allies"
+      ],
       "known_to_party": true,
-      "tags": ["mission", "lake-town-arc"]
+      "tags": [
+        "mission",
+        "lake-town-arc"
+      ]
     }
   ],
-
   "trade_routes": [
     {
       "id": "northern-road",
@@ -338,7 +615,24 @@
       "description": "Trade road connecting Lake-Town to Erebor and the western Misty Mountain crossings.",
       "controlled_by": null,
       "danger_level": "moderate",
-      "points": [[3200, 1800], [3000, 1600], [2700, 1500], [2400, 1400]],
+      "points": [
+        [
+          1455,
+          410
+        ],
+        [
+          1300,
+          430
+        ],
+        [
+          1200,
+          445
+        ],
+        [
+          1075,
+          460
+        ]
+      ],
       "default_visible": false
     }
   ]
